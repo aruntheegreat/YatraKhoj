@@ -10344,6 +10344,8 @@ function loadTrends() {
 
         if (!trends) {
 
+            renderTrendStats(null);
+
             return;
 
         }
@@ -10363,52 +10365,272 @@ function loadTrends() {
 }
 
 
-function renderTrendStats(trends) {
+const KTM_TZ = "Asia/Kathmandu";
+const AVG_STAY_DAYS = 16.3;
+const SPEND_PER_DAY = 33;
 
-    const stats = [
-        {
-            id: "stat-1",
-            value: "1.16M",
-            label: "Arrivals in 2025"
-        },
-        {
-            id: "stat-2",
-            value: "16.3 days",
-            label: "Average stay"
-        },
-        {
-            id: "stat-3",
-            value: "$33",
-            label: "Spend per day"
-        },
-        {
-            id: "stat-4",
-            value: "33%",
-            label: "Arrivals from India"
+let liveTrends = null;
+let liveTicker = null;
+let liveStatsAnimated = false;
+
+
+function padNum(n) {
+    return (n < 10 ? "0" : "") + n;
+}
+
+
+function ktmClockParts() {
+
+    const parts =
+        new Intl.DateTimeFormat(
+            "en-GB",
+            {
+                timeZone: KTM_TZ,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: false
+            }
+        )
+        .formatToParts(new Date());
+
+    let h = 0, m = 0, s = 0;
+
+    parts.forEach(function(part) {
+
+        if (part.type === "hour") {
+            h = parseInt(part.value, 10) % 24;
+        } else if (part.type === "minute") {
+            m = parseInt(part.value, 10);
+        } else if (part.type === "second") {
+            s = parseInt(part.value, 10);
         }
-    ];
-
-
-    stats.forEach(function(stat) {
-
-        const el =
-            document.getElementById(
-                stat.id
-            );
-
-        if (!el) {
-
-            return;
-
-        }
-
-        el.querySelector("strong").textContent =
-            stat.value;
-
-        el.querySelector("span").textContent =
-            stat.label;
 
     });
+
+    return {
+        h: h,
+        m: m,
+        s: s,
+        hh: padNum(h),
+        mm: padNum(m),
+        ss: padNum(s)
+    };
+
+}
+
+
+function liveStatValues() {
+
+    const yearArr =
+        (liveTrends && liveTrends.arrivalsByYear) || [];
+
+    const last =
+        yearArr[yearArr.length - 1];
+
+    const annual =
+        (last && last.value) || 1158459;
+
+    const dailyRate =
+        annual / 365;
+
+    const clock =
+        ktmClockParts();
+
+    const frac =
+        (clock.h * 3600 + clock.m * 60 + clock.s) / 86400;
+
+    const arrivalsToday =
+        Math.round(dailyRate * frac);
+
+    return {
+        arrivalsToday: arrivalsToday,
+        spentToday: Math.round(arrivalsToday * SPEND_PER_DAY),
+        visitorsNow: Math.round((annual * AVG_STAY_DAYS) / 365),
+        clock: clock.hh + ":" + clock.mm + ":" + clock.ss
+    };
+
+}
+
+
+function setStat(id, value, label) {
+
+    const el =
+        document.getElementById(id);
+
+    if (!el) {
+
+        return;
+
+    }
+
+    const strong =
+        el.querySelector("strong");
+
+    const span =
+        el.querySelector("span");
+
+    if (strong) {
+
+        strong.textContent = value;
+
+    }
+
+    if (span && label) {
+
+        span.textContent = label;
+
+    }
+
+}
+
+
+function animateCount(el, target, formatter, duration) {
+
+    const dur = duration || 1100;
+    const start = performance.now();
+
+    function frame(now) {
+
+        const t =
+            Math.min(1, (now - start) / dur);
+
+        const eased =
+            1 - Math.pow(1 - t, 3);
+
+        el.textContent =
+            formatter(Math.round(target * eased));
+
+        if (t < 1) {
+
+            requestAnimationFrame(frame);
+
+        }
+
+    }
+
+    requestAnimationFrame(frame);
+
+}
+
+
+function tickLiveStats() {
+
+    const v =
+        liveStatValues();
+
+    setStat(
+        "stat-1",
+        "≈ " + v.arrivalsToday.toLocaleString("en-US"),
+        "Arrivals so far today (est.)"
+    );
+
+    setStat(
+        "stat-2",
+        v.clock,
+        "Kathmandu time"
+    );
+
+    setStat(
+        "stat-3",
+        "≈ $" + v.spentToday.toLocaleString("en-US"),
+        "Spent by visitors today (est.)"
+    );
+
+    setStat(
+        "stat-4",
+        "≈ " + v.visitorsNow.toLocaleString("en-US"),
+        "Visitors in Nepal right now (est.)"
+    );
+
+}
+
+
+function startLiveTicker() {
+
+    if (liveTicker) {
+
+        return;
+
+    }
+
+    liveTicker =
+        setInterval(tickLiveStats, 1000);
+
+}
+
+
+function renderTrendStats(trends) {
+
+    liveTrends = trends;
+
+    const v =
+        liveStatValues();
+
+    const card1 =
+        document.getElementById("stat-1");
+
+    const card2 =
+        document.getElementById("stat-2");
+
+    const card3 =
+        document.getElementById("stat-3");
+
+    const card4 =
+        document.getElementById("stat-4");
+
+    if (!liveStatsAnimated) {
+
+        liveStatsAnimated = true;
+
+        if (card1) {
+
+            animateCount(
+                card1.querySelector("strong"),
+                v.arrivalsToday,
+                function(n) {
+                    return "≈ " + n.toLocaleString("en-US");
+                }
+            );
+
+        }
+
+        if (card3) {
+
+            animateCount(
+                card3.querySelector("strong"),
+                v.spentToday,
+                function(n) {
+                    return "≈ $" + n.toLocaleString("en-US");
+                }
+            );
+
+        }
+
+        if (card4) {
+
+            animateCount(
+                card4.querySelector("strong"),
+                v.visitorsNow,
+                function(n) {
+                    return "≈ " + n.toLocaleString("en-US");
+                }
+            );
+
+        }
+
+        setStat("stat-1", null, "Arrivals so far today (est.)");
+        setStat("stat-2", v.clock, "Kathmandu time");
+        setStat("stat-3", null, "Spent by visitors today (est.)");
+        setStat("stat-4", null, "Visitors in Nepal right now (est.)");
+
+        setTimeout(startLiveTicker, 1300);
+
+    } else {
+
+        tickLiveStats();
+
+    }
 
 }
 

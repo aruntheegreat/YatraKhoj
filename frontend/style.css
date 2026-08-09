@@ -510,6 +510,57 @@ nav {
 }
 
 
+.page-header.page-hero {
+    position: relative;
+    overflow: hidden;
+
+    max-width: none;
+    margin: 0;
+
+    padding: 52px 28px 128px;
+
+    background:
+        linear-gradient(180deg, rgba(3, 8, 28, 0.8) 0%, rgba(7, 16, 54, 0.55) 42%, rgba(7, 16, 54, 0.88) 76%, #05081a 100%),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg?width=1600");
+
+    background-size: cover;
+    background-position: center 22%;
+
+    filter: saturate(0.92) contrast(1.05);
+}
+
+
+.page-header.page-hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 110px;
+    pointer-events: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20viewBox%3D%220%200%201440%20260%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22gB%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23ffd9a0%22%20stop-opacity%3D%220.9%22/%3E%3Cstop%20offset%3D%220.4%22%20stop-color%3D%22%23b96a35%22/%3E%3Cstop%20offset%3D%220.8%22%20stop-color%3D%22%233a4a85%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23223a75%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22gM%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23c3d0ee%22/%3E%3Cstop%20offset%3D%220.28%22%20stop-color%3D%22%235a6ea8%22/%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22%231e2c5e%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23141f4d%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22gF%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23e9efff%22%20stop-opacity%3D%220.95%22/%3E%3Cstop%20offset%3D%220.1%22%20stop-color%3D%22%23b9c6e8%22/%3E%3Cstop%20offset%3D%220.3%22%20stop-color%3D%22%234a5f9e%22/%3E%3Cstop%20offset%3D%220.65%22%20stop-color%3D%22%231b2a58%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a1128%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon%20points%3D%220,160%2060,70%20150,150%20260,45%20380,155%20500,60%20620,160%20740,55%20860,150%20980,50%201100,155%201220,65%201330,150%201440,80%201440,160%200,160%22%20fill%3D%22url(%23gB)%22/%3E%3Cpolygon%20points%3D%220,200%20120,100%20300,65%20480,110%20660,75%20860,120%201040,70%201230,110%201390,95%201440,200%200,200%22%20fill%3D%22url(%23gM)%22/%3E%3Cpolygon%20points%3D%220,260%200,180%2080,150%20120,70%20170,140%20260,185%20420,195%20600,210%20720,205%20880,215%201040,200%201160,190%201240,170%201300,110%201330,60%201380,130%201440,175%201440,260%200,260%22%20fill%3D%22url(%23gF)%22/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+.page-header.page-hero .mini-title {
+    background: rgba(5, 10, 32, 0.45);
+}
+
+
+.page-header.page-hero h1 {
+    text-shadow: 0 4px 26px rgba(3, 8, 28, 0.6);
+}
+
+
+.page-header.page-hero p {
+    color: #c5cfe8;
+    text-shadow: 0 2px 14px rgba(3, 8, 28, 0.7);
+}
+
+
 .page-container {
     padding: 0 28px 70px;
     max-width: 1120px;
@@ -3630,6 +3681,56 @@ nav {
 }
 
 
+.live-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 16px;
+
+    background: rgba(200, 16, 46, 0.12);
+    border: 1px solid rgba(242, 182, 50, 0.35);
+    border-radius: 999px;
+
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--flag-gold);
+}
+
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--light-red);
+
+    box-shadow: 0 0 12px rgba(255, 75, 114, 0.9);
+    animation: livePulse 1.4s ease-in-out infinite;
+}
+
+
+@keyframes livePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.45;
+        transform: scale(0.78);
+    }
+}
+
+
 .stat-card {
     display: flex;
     flex-direction: column;
@@ -3969,6 +4070,16 @@ footer {
     .page-container {
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+
+    .page-header.page-hero {
+        padding: 40px 16px 96px;
+    }
+
+
+    .page-header.page-hero::after {
+        height: 78px;
     }
 
 
