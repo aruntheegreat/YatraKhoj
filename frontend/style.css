@@ -5689,7 +5689,8 @@ footer {
 }
 
 
-.alt-card {
+.alt-card,
+.intl-card {
     padding: 22px;
 
     background:
@@ -5702,7 +5703,8 @@ footer {
 }
 
 
-.alt-card:hover {
+.alt-card:hover,
+.intl-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-card);
     border-color: rgba(0, 206, 201, 0.45);
@@ -5821,6 +5823,496 @@ footer {
         flex-direction: column;
     }
 
+}
+
+
+/* =========================================================
+   INTERNATIONAL ARRIVAL GUIDE
+========================================================= */
+
+.entry-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+}
+
+
+.entry-card {
+    padding: 18px;
+
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+
+    transition: all 0.2s ease;
+}
+
+
+.entry-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+}
+
+
+.entry-head {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    margin-bottom: 10px;
+}
+
+
+.entry-icon {
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+
+.entry-head h3 {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: var(--font-display);
+
+    margin: 0 0 3px;
+}
+
+
+.entry-head small {
+    display: block;
+
+    font-size: 11.5px;
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+
+.entry-card p {
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #cfd6e4;
+
+    margin: 0;
+}
+
+
+.entry-note {
+    grid-column: 1 / -1;
+
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+
+    padding: 14px 16px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    background: rgba(243, 156, 18, 0.08);
+    border-left: 3px solid #f39c12;
+    border-radius: 10px;
+}
+
+
+.entry-note strong {
+    flex-shrink: 0;
+
+    color: #f8c471;
+}
+
+
+.arrival-steps {
+    counter-reset: step;
+
+    list-style: none;
+
+    margin: 0 0 8px;
+    padding: 0;
+}
+
+
+.arrival-steps li {
+    position: relative;
+
+    padding: 14px 16px 14px 52px;
+
+    margin-bottom: 10px;
+
+    font-size: 13.5px;
+    line-height: 1.7;
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+}
+
+
+.arrival-steps li::before {
+    content: counter(step);
+    counter-increment: step;
+
+    position: absolute;
+    left: 16px;
+    top: 14px;
+
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.12);
+    border-radius: 50%;
+}
+
+
+.emergency-bar {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+
+    margin-top: 26px;
+    padding: 18px 20px;
+
+    background: rgba(200, 16, 46, 0.08);
+    border-left: 3px solid #c8102e;
+    border-radius: 12px;
+}
+
+
+.emergency-bar strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 14px;
+
+    color: #ff8f9f;
+}
+
+
+.emergency-bar span {
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: #d7dde9;
+}
+
+
+.intl-links .intl-card {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    width: 100%;
+
+    text-align: left;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+.intl-links .intl-card:hover {
+    border-color: rgba(243, 156, 18, 0.5);
+}
+
+
+.intl-links .intl-card-icon {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+
+.intl-links .intl-card strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 14px;
+}
+
+
+.intl-links .intl-card small {
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: var(--muted);
+}
+
+
+.smart-callout-crowd {
+    background: rgba(0, 206, 201, 0.08);
+    border-left: 3px solid #00cec9;
+}
+
+
+.smart-callout-crowd strong {
+    color: #63e6e2;
+}
+
+
+/* =========================================================
+   PLACES OF NEPAL DIRECTORY
+========================================================= */
+
+.places-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+.places-search {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    font-size: 14px;
+
+    color: #eef2fa;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+
+.places-search::placeholder {
+    color: #8b93a7;
+}
+
+
+.places-search:focus {
+    border-color: #f39c12;
+}
+
+
+.province-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.province-pill {
+    padding: 7px 14px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #cfd6e4;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.province-pill:hover {
+    border-color: rgba(243, 156, 18, 0.5);
+}
+
+
+.province-pill.active {
+    color: #fff;
+    background: #f39c12;
+    border-color: #f39c12;
+}
+
+
+.places-count {
+    margin-bottom: 18px;
+
+    font-size: 12.5px;
+
+    color: var(--muted);
+}
+
+
+.places-count strong {
+    color: #f8c471;
+}
+
+
+.places-province {
+    margin-bottom: 28px;
+}
+
+
+.places-province.hidden,
+.places-card.hidden {
+    display: none;
+}
+
+
+.places-province-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.places-province-head h2 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: var(--font-display);
+
+    color: #f8c471;
+
+    margin: 0;
+}
+
+
+.places-province-head span {
+    padding: 3px 10px;
+
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+
+    color: #8b93a7;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+}
+
+
+.places-province-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+
+.places-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 16px;
+
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+
+    transition: all 0.2s ease;
+}
+
+
+.places-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+    border-color: rgba(0, 206, 201, 0.4);
+}
+
+
+.places-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+
+.places-card-head h3 {
+    font-size: 15px;
+    font-weight: 700;
+    font-family: var(--font-display);
+
+    margin: 0;
+}
+
+
+.places-card-head span {
+    flex-shrink: 0;
+
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+
+.places-card p {
+    font-size: 12.5px;
+    line-height: 1.65;
+
+    color: #c6cedd;
+
+    margin: 0;
+}
+
+
+.places-spots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+.places-spots span {
+    padding: 3px 9px;
+
+    font-size: 10.5px;
+    font-weight: 600;
+
+    color: #7fb6ec;
+    background: rgba(46, 134, 222, 0.1);
+    border-radius: 999px;
+}
+
+
+.places-guide-btn {
+    margin-top: auto;
+
+    padding: 8px 12px;
+
+    font-size: 12.5px;
+    font-weight: 700;
+
+    color: #fff;
+    background: rgba(0, 206, 201, 0.16);
+    border: 1px solid rgba(0, 206, 201, 0.4);
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.places-guide-btn:hover {
+    background: #00cec9;
+    color: #04102e;
+}
+
+
+.places-no-guide {
+    margin-top: auto;
+
+    font-size: 11px;
+
+    color: #8b93a7;
 }
 
 

@@ -135,6 +135,24 @@
 
             <button
                 class="nav-btn"
+                onclick="showPage('intl', this)"
+                data-i18n="navIntl"
+            >
+                ✈ Arrival Guide
+            </button>
+
+
+            <button
+                class="nav-btn"
+                onclick="showPage('places', this)"
+                data-i18n="navPlaces"
+            >
+                🗺 Places of Nepal
+            </button>
+
+
+            <button
+                class="nav-btn"
                 onclick="showPage('insights', this)"
                 data-i18n="navInsights"
             >
@@ -3235,6 +3253,479 @@
 
 
         <!-- =================================================
+             INTERNATIONAL ARRIVAL GUIDE
+        ================================================== -->
+
+        <section
+            id="intl"
+            class="page"
+        >
+
+            <div class="page-header page-hero">
+
+                <span class="mini-title">
+                    WELCOME TO NEPAL
+                </span>
+
+                <h1>
+                    Arrival Guide for International Travelers
+                </h1>
+
+                <p>
+                    Visas, entry points, the first 24 hours, money, SIM
+                    cards and getting from the airport into the city —
+                    everything you need before your plane touches down.
+                </p>
+
+            </div>
+
+
+            <div class="page-container">
+
+
+                <!-- =========================
+                     BEFORE YOU FLY
+                ========================== -->
+
+                <div class="content-heading">
+
+                    <span class="mini-title">
+                        BEFORE YOU FLY
+                    </span>
+
+                    <h2>
+                        Paperwork you cannot skip
+                    </h2>
+
+                    <p>
+                        Nepal's visa rules are simple, but insurance and
+                        documents are the two things most people forget.
+                    </p>
+
+                </div>
+
+
+                <div class="smart-grid">
+
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🛂
+                            </div>
+
+                            <div>
+                                <span class="mini-title">
+                                    VISA ON ARRIVAL
+                                </span>
+                                <h2>
+                                    Entry visa
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Most nationalities get a tourist visa on arrival
+                            at Tribhuvan International Airport or a land
+                            border. Have cash USD ready.
+                        </p>
+
+                        <ul
+                            id="visaList"
+                            class="smart-checklist"
+                        >
+                            Loading visa info…
+                        </ul>
+
+                    </div>
+
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🧳
+                            </div>
+
+                            <div>
+                                <span class="mini-title">
+                                    DON'T LEAVE HOME WITHOUT
+                                </span>
+                                <h2>
+                                    Insurance & documents
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Hospitals in Nepal expect cash or insurance
+                            before treating you — evacuation alone can cost
+                            tens of thousands of dollars.
+                        </p>
+
+                        <ul
+                            id="intlDocsList"
+                            class="smart-checklist"
+                        >
+                            Loading checklist…
+                        </ul>
+
+                    </div>
+
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🚦
+                            </div>
+
+                            <div>
+                                <span class="mini-title">
+                                    DON'T RISK IT
+                                </span>
+                                <h2>
+                                    One hard rule
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            It only takes one photo to end a trip. Do not
+                            fly drones without a permit and never fly over
+                            restricted areas.
+                        </p>
+
+                        <div class="smart-callout smart-callout-guide">
+                            <strong>⚠️ Drones:</strong>
+                            <span>
+                                Nepal requires a Civil Aviation Authority
+                                permit for all drones — the fine for flying
+                                without one is serious and applied on the spot.
+                            </span>
+                        </div>
+
+                        <div class="smart-callout smart-callout-crowd">
+                            <strong>🚫 Prohibited:</strong>
+                            <span>
+                                Don't bring firecrackers, plastic sachets or
+                                single-use plastics over 4.5 microns — they
+                                are banned at customs.
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ENTRY POINTS
+                ========================== -->
+
+                <div class="content-heading">
+
+                    <span class="mini-title">
+                        ENTERING NEPAL
+                    </span>
+
+                    <h2>
+                        Entry points & the route to town
+                    </h2>
+
+                    <p>
+                        Kathmandu's airport is the main door, but there are
+                        five busy land crossings from India and one from
+                        Tibet if you arrive overland.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="entryPoints"
+                    class="entry-points"
+                >
+                    Loading entry points…
+                </div>
+
+
+                <!-- =========================
+                     FIRST 24 HOURS
+                ========================== -->
+
+                <div class="content-heading">
+
+                    <span class="mini-title">
+                        FIRST 24 HOURS
+                    </span>
+
+                    <h2>
+                        Your arrival checklist
+                    </h2>
+
+                    <p>
+                        A calm first day sets up the whole trip. Work
+                        through this list in order and you will be sorted
+                        by dinner time.
+                    </p>
+
+                </div>
+
+
+                <ul
+                    id="arrivalChecklist"
+                    class="arrival-steps"
+                >
+                    Loading checklist…
+                </ul>
+
+
+                <!-- =========================
+                     MONEY & SIM
+                ========================== -->
+
+                <div class="smart-grid">
+
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                💵
+                            </div>
+
+                            <div>
+                                <span class="mini-title">
+                                    NEPALI RUPEE
+                                </span>
+                                <h2>
+                                    Money
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <ul
+                            id="moneyList"
+                            class="smart-checklist"
+                        >
+                            Loading money tips…
+                        </ul>
+
+                    </div>
+
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                📶
+                            </div>
+
+                            <div>
+                                <span class="mini-title">
+                                    SIM & WIFI
+                                </span>
+                                <h2>
+                                    Staying connected
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <ul
+                            id="simList"
+                            class="smart-checklist"
+                        >
+                            Loading connectivity tips…
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     JUMP TO TOOLS
+                ========================== -->
+
+                <div class="content-heading">
+
+                    <span class="mini-title">
+                        KEEP GOING
+                    </span>
+
+                    <h2>
+                        Tools every traveler uses next
+                    </h2>
+
+                    <p>
+                        You landed — now plan smart, pay fair and stay safe
+                        with the rest of YatraKhoj.
+                    </p>
+
+                </div>
+
+
+                <div class="crowd-calendar intl-links">
+
+                    <button
+                        class="intl-card"
+                        onclick="showPage('fairprices')"
+                    >
+                        <span class="intl-card-icon">💵</span>
+                        <div>
+                            <strong>Fair Price Nepal</strong>
+                            <small>Know what a ride, room and meal should cost.</small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="intl-card"
+                        onclick="showPage('smart')"
+                    >
+                        <span class="intl-card-icon">🧠</span>
+                        <div>
+                            <strong>Travel Smart</strong>
+                            <small>Permits, vetting guides and women's safety.</small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="intl-card"
+                        onclick="showPage('safety')"
+                    >
+                        <span class="intl-card-icon">🛡</span>
+                        <div>
+                            <strong>Safety Info</strong>
+                            <small>Report problems and read live community alerts.</small>
+                        </div>
+                    </button>
+
+
+                    <button
+                        class="intl-card"
+                        onclick="showPage('currency')"
+                    >
+                        <span class="intl-card-icon">₨</span>
+                        <div>
+                            <strong>Currency Converter</strong>
+                            <small>Live rupee rates before you exchange.</small>
+                        </div>
+                    </button>
+
+                </div>
+
+
+                <!-- =========================
+                     EMERGENCY
+                ========================== -->
+
+                <div class="emergency-bar">
+
+                    <div class="smart-icon">
+                        🚨
+                    </div>
+
+                    <div>
+                        <strong>In an emergency</strong>
+                        <span>
+                            Police 100 · Ambulance 102 · Fire 101 · Tourist
+                            Police Kathmandu +977-1-4247041 · Always save
+                            your country's embassy number before you land.
+                        </span>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PLACES OF NEPAL DIRECTORY
+        ================================================== -->
+
+        <section
+            id="places"
+            class="page"
+        >
+
+            <div class="page-header page-hero">
+
+                <span class="mini-title">
+                    ALL 77 DISTRICTS
+                </span>
+
+                <h1>
+                    Places of Nepal
+                </h1>
+
+                <p>
+                    Every one of Nepal's 77 districts, grouped by its seven
+                    provinces. Search by name or tap any district to open
+                    its full travel guide.
+                </p>
+
+            </div>
+
+
+            <div class="page-container">
+
+
+                <div class="places-controls">
+
+                    <input
+                        id="placesSearch"
+                        class="places-search"
+                        type="text"
+                        placeholder="Search a district… (e.g. Pokhara, Mustang, Ilam)"
+                        oninput="filterPlaces()"
+                    >
+
+                    <div
+                        id="provinceFilter"
+                        class="province-filter"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="places-count">
+                    Showing <strong id="placesShown">0</strong> of
+                    77 districts across 7 provinces
+                </div>
+
+
+                <div
+                    id="placesGrid"
+                    class="places-grid"
+                >
+                    Loading districts…
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
              SETTINGS MODAL
         ================================================== -->
 
@@ -3476,6 +3967,8 @@
 <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 ></script>
+
+<script src="places.js"></script>
 
 <script src="script.js"></script>
 

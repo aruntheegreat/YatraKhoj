@@ -5653,6 +5653,14 @@ function showPage(pageName, button) {
 
         loadTrends();
 
+    } else if (pageName === "intl") {
+
+        renderIntl();
+
+    } else if (pageName === "places") {
+
+        renderPlacesDirectory();
+
     }
 
 }
@@ -8709,6 +8717,406 @@ function convertCurrency() {
 
 
 /* =========================================================
+   INTERNATIONAL ARRIVAL GUIDE
+========================================================= */
+
+const intlData = {
+
+    visa: [
+        "Tourist visa on arrival: 30 days US$50 · 90 days US$125 · 150 days US$250 — paid in USD cash",
+        "Bring your passport, 2 passport photos and a completed arrival card",
+        "Indian citizens get a free visa — up to 150 days in a calendar year",
+        "Only 3 days of grace after expiry — extend early at the Department of Immigration, Kathmandu",
+        "Visa on arrival works at TIA and the main land borders; carry clean small USD notes"
+    ],
+
+    docs: [
+        "Travel insurance covering trekking above 4,000 m and helicopter rescue — this matters more than any gear",
+        "At least 4 passport photos — needed again and again for permits and TIMS",
+        "Printable copies of bookings plus your embassy's 24-hour emergency number",
+        "Leave a copy of your passport and itinerary with someone at home"
+    ],
+
+    entry: [
+        {
+            name: "Tribhuvan International Airport (KTM)",
+            desc: "The main door. Visa on arrival, SIM shops and prepaid taxis are all in the arrivals hall — no need to leave the airport to set up.",
+            via: "Fly direct from ~40 cities or connect via Doha, Dubai, Bangkok, Delhi or Kuala Lumpur"
+        },
+        {
+            name: "Kodari / Tatopani (from Tibet, China)",
+            desc: "The only China border crossing, east of Kathmandu near the Friendship Bridge.",
+            via: "Overland from Lhasa on the Arniko Highway; permits required on the Chinese side"
+        },
+        {
+            name: "Kakarbhitta (from India, east)",
+            desc: "The east's busy border, gateway to Ilam's tea hills and the far east.",
+            via: "Bus from Siliguri / Darjeeling (5–7 hr) or Bagdogra airport"
+        },
+        {
+            name: "Birgunj (from India, centre)",
+            desc: "Nepal's busiest land crossing, closest to Kathmandu from the south.",
+            via: "Raxaul on the Indian side; buses to Kathmandu every half hour"
+        },
+        {
+            name: "Sunauli / Bhairahawa (from India, west)",
+            desc: "The route to Lumbini, Pokhara and the west, plus Gautam Buddha International Airport nearby.",
+            via: "Gorakhpur / Varanasi on the Indian side; then Siddharthanagar"
+        },
+        {
+            name: "Gaddachauki / Mahendranagar (from India, far west)",
+            desc: "The far-western crossing — for the busiest route to Shuklaphanta and the far west.",
+            via: "From the Indian plains via Nepalgunj or the Mahakali bridge"
+        }
+    ],
+
+    arrival: [
+        "Exchange about US$50 at the arrivals counter — enough cash for your first day",
+        "Buy an NCELL or NTC SIM at the arrivals shop — passport + photo needed",
+        "Take a prepaid taxi (ticket booth inside arrivals, fixed NPR price) or the airport bus to Ratna Park",
+        "Check in, rest, and confirm tomorrow's plan with your hotel before you sleep",
+        "Withdraw more cash from an ATM — most trek towns and village shops are cash-only",
+        "Sleep properly — Kathmandu sits at 1,400 m and altitude catches the over-excited"
+    ],
+
+    money: [
+        "ATMs (SBI, Nabil, NIC Asia) are everywhere in cities but the daily limit is often ~NPR 10,000 — withdraw in advance",
+        "Only accept clean notes; torn or faded rupees are refused in shops",
+        "Never change money with street changers at the border — use banks and official exchange counters",
+        "USD is the easiest currency to exchange — bring small, clean bills",
+        "Cities and hotels take cards, but trekking towns are almost entirely cash"
+    ],
+
+    sim: [
+        "NCELL and Nepal Telecom sell tourist SIMs at the arrivals hall — passport plus one photo",
+        "Unlimited-data tourist packs cost just a few dollars for 30 days",
+        "Nepal Telecom (NTC) has the better coverage on long remote treks",
+        "Roaming is expensive and patchy; a local SIM is cheaper and works everywhere it matters",
+        "Buy a power bank and a local data pack — battery and connectivity, in that order"
+    ]
+
+};
+
+
+
+function renderIntl() {
+
+    function fillList(id, items) {
+
+        const el =
+            document.getElementById(id);
+
+        if (!el) return;
+
+        el.innerHTML =
+            items.map(function(item) {
+                return "<li>" + item + "</li>";
+            }).join("");
+
+    }
+
+
+    fillList("visaList", intlData.visa);
+    fillList("intlDocsList", intlData.docs);
+    fillList("arrivalChecklist", intlData.arrival);
+    fillList("moneyList", intlData.money);
+    fillList("simList", intlData.sim);
+
+
+    const entries =
+        document.getElementById("entryPoints");
+
+    if (entries) {
+
+        entries.innerHTML =
+            intlData.entry.map(function(entry) {
+
+                return (
+                    '<div class="entry-card">' +
+                        '<div class="entry-head">' +
+                            '<span class="entry-icon">🛬</span>' +
+                            '<div>' +
+                                '<h3>' + entry.name + '</h3>' +
+                                '<small>' + entry.via + '</small>' +
+                            '</div>' +
+                        '</div>' +
+                        '<p>' + entry.desc + '</p>' +
+                    '</div>'
+                );
+
+            }).join("") +
+            '<div class="entry-note">' +
+                '<strong>💡 Land border tip:</strong>' +
+                '<span>Visa on arrival is available at the main crossings, but carry USD cash and expect a few forms — the process is slower than at the airport.</span>' +
+            '</div>';
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PLACES OF NEPAL DIRECTORY
+========================================================= */
+
+let placesRendered = false;
+
+let placesFilterProvince = "all";
+
+
+
+function renderPlacesDirectory() {
+
+    if (placesRendered) {
+
+        filterPlaces();
+
+        return;
+
+    }
+
+
+    placesRendered = true;
+
+
+    const filterBox =
+        document.getElementById("provinceFilter");
+
+
+    const allBtn =
+        '<button class="province-pill active" data-province="all" onclick="setPlaceProvince(\'all\')">' +
+            'All Nepal' +
+        '</button>';
+
+
+    filterBox.innerHTML =
+        allBtn +
+        nepalProvinces.map(function(prov) {
+
+            return (
+                '<button class="province-pill" data-province="' +
+                    prov.id + '" onclick="setPlaceProvince(\'' +
+                    prov.id + '\')">' +
+                    prov.name +
+                '</button>'
+            );
+
+        }).join("");
+
+
+    const grid =
+        document.getElementById("placesGrid");
+
+
+    let html = "";
+
+
+    nepalProvinces.forEach(function(prov) {
+
+        const districts =
+            nepalPlaces.filter(function(place) {
+                return place.p === prov.id;
+            });
+
+
+        html +=
+            '<div class="places-province" data-province="' +
+                prov.id + '">' +
+
+                '<div class="places-province-head">' +
+                    '<h2>' + prov.name + '</h2>' +
+                    '<span>' + districts.length + ' districts</span>' +
+                '</div>' +
+
+                '<div class="places-province-grid">' +
+
+                    districts.map(function(place) {
+
+                        const guide = place.dest
+                            ? '<button class="places-guide-btn" onclick="goToDestination(\'' +
+                                place.dest + '\')">' +
+                                'Open travel guide →' +
+                              '</button>'
+                            : '<span class="places-no-guide">Guide coming soon</span>';
+
+
+                        return (
+                            '<div class="places-card" data-name="' +
+                                (place.n + " " + place.hq + " " +
+                                 (place.known || "") + " " +
+                                 (place.spots || []).join(" ")).toLowerCase() +
+                                '">' +
+
+                                '<div class="places-card-head">' +
+                                    '<h3>' + place.n + '</h3>' +
+                                    '<span>HQ ' + place.hq + '</span>' +
+                                '</div>' +
+
+                                '<p>' + place.known + '</p>' +
+
+                                (place.spots && place.spots.length
+                                    ? '<div class="places-spots">' +
+                                        place.spots.map(function(spot) {
+                                            return "<span>" + spot + "</span>";
+                                        }).join("") +
+                                      '</div>'
+                                    : "") +
+
+                                guide +
+
+                            '</div>'
+                        );
+
+                    }).join("") +
+
+                '</div>' +
+
+            '</div>';
+
+    });
+
+
+    grid.innerHTML = html;
+
+
+    filterPlaces();
+
+}
+
+
+
+function setPlaceProvince(provinceId) {
+
+    placesFilterProvince =
+        provinceId;
+
+
+    document
+        .querySelectorAll(
+            ".province-pill"
+        )
+        .forEach(function(pill) {
+
+            pill.classList.toggle(
+                "active",
+                pill.getAttribute(
+                    "data-province"
+                ) === provinceId
+            );
+
+        });
+
+
+    filterPlaces();
+
+}
+
+
+
+function filterPlaces() {
+
+    const searchEl =
+        document.getElementById("placesSearch");
+
+    const query =
+        searchEl
+        ? searchEl.value.trim().toLowerCase()
+        : "";
+
+
+    const grid =
+        document.getElementById("placesGrid");
+
+    if (!grid) return;
+
+
+    let shown = 0;
+
+
+    document
+        .querySelectorAll(
+            ".places-province"
+        )
+        .forEach(function(group) {
+
+            const groupMatch =
+                placesFilterProvince === "all" ||
+                group.getAttribute("data-province") ===
+                    placesFilterProvince;
+
+
+            let groupShown = 0;
+
+
+            group
+                .querySelectorAll(
+                    ".places-card"
+                )
+                .forEach(function(card) {
+
+                    const matchesQuery =
+                        !query ||
+                        card.getAttribute("data-name").indexOf(query) !== -1;
+
+
+                    const visible =
+                        groupMatch && matchesQuery;
+
+
+                    card.classList.toggle(
+                        "hidden",
+                        !visible
+                    );
+
+                    if (visible) groupShown++;
+
+                });
+
+
+            const visible =
+                groupMatch && groupShown > 0;
+
+
+            group.classList.toggle(
+                "hidden",
+                !visible
+            );
+
+            if (visible) shown += groupShown;
+
+        });
+
+
+    const shownEl =
+        document.getElementById("placesShown");
+
+    if (shownEl) {
+
+        shownEl.textContent =
+            shown;
+
+    }
+
+}
+
+
+
+function goToDestination(key) {
+
+    showPage("home");
+
+    setTimeout(function() {
+
+        openDestination(key);
+
+    }, 60);
+
+}
+
+
+
+/* =========================================================
    LANGUAGE TOGGLE
 ========================================================= */
 
@@ -8722,6 +9130,8 @@ const uiDict = {
         navFairPrices: "💵 Fair Price Nepal",
         navSmart: "🧠 Travel Smart",
         navCrowds: "👥 Beat the Crowds",
+        navIntl: "✈ Arrival Guide",
+        navPlaces: "🗺 Places of Nepal",
         navInsights: "📊 Nepal in Numbers",
         navCurrency: "₨ Currency Converter",
         navAbout: "◎ About Us",
@@ -8736,6 +9146,8 @@ const uiDict = {
         navFairPrices: "💵 उचित मूल्य नेपाल",
         navSmart: "🧠 स्मार्ट यात्रा",
         navCrowds: "👥 भीडबाट बच्नुहोस्",
+        navIntl: "✈ आगमन गाइड",
+        navPlaces: "🗺 नेपालका स्थानहरू",
         navInsights: "📊 नेपाल संख्यामा",
         navCurrency: "₨ मुद्रा परिवर्तक",
         navAbout: "◎ हाम्रो बारेमा",
