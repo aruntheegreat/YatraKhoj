@@ -140,7 +140,9 @@ const destinations = {
                     image("Tinjure Milke on the way to Terhathum.jpg"),
 
                 text:
-                    "A beautiful eastern Nepal ridge known for rhododendron forests and mountain scenery."
+                    "A beautiful eastern Nepal ridge known for rhododendron forests and mountain scenery.",
+
+                rating: 4.7
             },
 
 
@@ -155,7 +157,9 @@ const destinations = {
                     image("Basantapur Bazaar Terathum.jpg"),
 
                 text:
-                    "A peaceful hill settlement and gateway for exploring the surrounding Tehrathum region."
+                    "A peaceful hill settlement and gateway for exploring the surrounding Tehrathum region.",
+
+                rating: 4.4
             },
 
 
@@ -170,7 +174,9 @@ const destinations = {
                     image("Beautiful landscape of Tehrathum.jpg"),
 
                 text:
-                    "Quiet countryside, village roads and hill views for travelers wanting fewer crowds."
+                    "Quiet countryside, village roads and hill views for travelers wanting fewer crowds.",
+
+                rating: 4.5
             }
 
         ],
@@ -253,7 +259,34 @@ const destinations = {
             precautions:
                 "Travel during daylight where possible, carry drinking water and avoid unfamiliar isolated trails after dark."
 
-        }
+        },
+
+        rating: 4.4,
+
+        reviews: [
+
+            {
+                name: "Sunita Rai",
+                rating: 5,
+                tag: "Tea Lover",
+                text: "The tea gardens roll over every hill and the local market is wonderfully untouched. Great for two quiet days."
+            },
+
+            {
+                name: "Ramesh Shrestha",
+                rating: 4,
+                tag: "Weekend Escape",
+                text: "Sunrise from the hills above the bazaar is worth waking early for. Roads are a little rough in places."
+            },
+
+            {
+                name: "Anita Gurung",
+                rating: 4,
+                tag: "Nature",
+                text: "Very few tourists, clean air and warm locals. A hidden corner of the east that still feels authentic."
+            }
+
+        ]
 
     },
 
@@ -377,7 +410,9 @@ const destinations = {
                     image("Pathibhara Devi Temple, Taplejung.jpg"),
 
                 text:
-                    "One of eastern Nepal's best-known pilgrimage destinations located high in the mountains."
+                    "One of eastern Nepal's best-known pilgrimage destinations located high in the mountains.",
+
+                rating: 4.8
             },
 
 
@@ -392,7 +427,9 @@ const destinations = {
                     image("Kanchnjunga.jpg"),
 
                 text:
-                    "A major Himalayan region surrounding the world's third-highest mountain."
+                    "A major Himalayan region surrounding the world's third-highest mountain.",
+
+                rating: 4.9
             },
 
 
@@ -407,7 +444,9 @@ const destinations = {
                     image("Taplejung hill.jpg"),
 
                 text:
-                    "The district's villages and hill landscapes offer rewarding experiences away from major trekking routes."
+                    "The district's villages and hill landscapes offer rewarding experiences away from major trekking routes.",
+
+                rating: 4.6
             }
 
         ],
@@ -490,7 +529,34 @@ const destinations = {
             precautions:
                 "Tell someone your route, carry enough water and cash, and use local guidance for unfamiliar remote sections."
 
-        }
+        },
+
+        rating: 4.7,
+
+        reviews: [
+
+            {
+                name: "Daniel Weber",
+                rating: 5,
+                tag: "Trekker",
+                text: "The Kanchenjunga route is remote and raw. Waterfalls and yak pastures for days without another trekker in sight."
+            },
+
+            {
+                name: "Meera Limbu",
+                rating: 5,
+                tag: "Hiker",
+                text: "My home district and still my favourite walk. The suspension bridges and monastery stays are unforgettable."
+            },
+
+            {
+                name: "Tom Anderson",
+                rating: 4,
+                tag: "Adventure",
+                text: "Proper wilderness trekking — carry supplies and hire local guides. The views of Kanchenjunga are unreal."
+            }
+
+        ]
 
     },
 
@@ -614,7 +680,9 @@ const destinations = {
                     image("Kanyam Tea Garden, Illam.jpg"),
 
                 text:
-                    "One of eastern Nepal's most recognisable tea garden destinations."
+                    "One of eastern Nepal's most recognisable tea garden destinations.",
+
+                rating: 4.8
             },
 
 
@@ -629,7 +697,9 @@ const destinations = {
                     image("Tea garden at ilam nepal.jpg"),
 
                 text:
-                    "Green rolling plantations that give Ilam its distinctive landscape."
+                    "Green rolling plantations that give Ilam its distinctive landscape.",
+
+                rating: 4.5
             },
 
 
@@ -644,7 +714,9 @@ const destinations = {
                     image("Maipokhari ilam.jpg"),
 
                 text:
-                    "A peaceful wetland and religious destination surrounded by forest."
+                    "A peaceful wetland and religious destination surrounded by forest.",
+
+                rating: 4.6
             }
 
         ],
@@ -727,7 +799,34 @@ const destinations = {
             precautions:
                 "Wear shoes with good grip around wet tea gardens and use extra care when travelling in fog."
 
-        }
+        },
+
+        rating: 4.6,
+
+        reviews: [
+
+            {
+                name: "Pooja Sharma",
+                rating: 5,
+                tag: "Tea Estate",
+                text: "Antu Danda sunrise over the tea terraces is one of the best views in the east. The fresh tea is a must-buy."
+            },
+
+            {
+                name: "James Lee",
+                rating: 4,
+                tag: "Weekend Trip",
+                text: "Lush green hills, cardamom farms and a laid-back feel. Come in the right season for mist-free views."
+            },
+
+            {
+                name: "Kiran Tamang",
+                rating: 5,
+                tag: "Photographer",
+                text: "Every corner is a picture. The tea garden paths near the bazaar are peaceful and beautifully kept."
+            }
+
+        ]
 
     },
 
@@ -857,7 +956,9 @@ const destinations = {
                     image("Pokhara, Phewa Lake, Nepal.jpg"),
 
                 text:
-                    "Pokhara's iconic lakefront destination known for boating and Himalayan views."
+                    "Pokhara's iconic lakefront destination known for boating and Himalayan views.",
+
+                rating: 4.9
             },
 
 
@@ -872,7 +973,9 @@ const destinations = {
                     image("Sarangkot, Nepal-WLV-1715.jpg"),
 
                 text:
-                    "A famous hill viewpoint known for sunrise views and adventure activities."
+                    "A famous hill viewpoint known for sunrise views and adventure activities.",
+
+                rating: 4.7
             },
 
 
@@ -887,7 +990,9 @@ const destinations = {
                     image("Begnas Lake 2018 12.jpg"),
 
                 text:
-                    "A quieter lake alternative for travelers who want less crowd than central Lakeside."
+                    "A quieter lake alternative for travelers who want less crowd than central Lakeside.",
+
+                rating: 4.5
             }
 
         ],
@@ -970,7 +1075,34 @@ const destinations = {
             precautions:
                 "Use registered operators for paragliding, rafting and trekking activities."
 
-        }
+        },
+
+        rating: 4.9,
+
+        reviews: [
+
+            {
+                name: "Laura Bennett",
+                rating: 5,
+                tag: "Adventure",
+                text: "Paragliding over Phewa Lake at sunrise is unbeatable. Lakeside has great cafés and an easy-going vibe."
+            },
+
+            {
+                name: "Rajesh Koirala",
+                rating: 5,
+                tag: "Family",
+                text: "Sarangkot sunrise, boating on Phewa and a relaxed pace — perfect for families and couples alike."
+            },
+
+            {
+                name: "Maya Tamang",
+                rating: 4,
+                tag: "Solo Travel",
+                text: "Safe, friendly and walkable. The mountain views from the lakeside promenade stop you in your tracks."
+            }
+
+        ]
 
     },
 
@@ -1092,7 +1224,9 @@ const destinations = {
                     image("Maya Devi Temple - Lumbini.jpg"),
 
                 text:
-                    "The central sacred site traditionally associated with the birthplace of Gautama Buddha."
+                    "The central sacred site traditionally associated with the birthplace of Gautama Buddha.",
+
+                rating: 4.9
             },
 
 
@@ -1107,7 +1241,9 @@ const destinations = {
                     image("The World Peace Pagoda - Lumbini.jpg"),
 
                 text:
-                    "A major Buddhist peace monument within the wider Lumbini heritage landscape."
+                    "A major Buddhist peace monument within the wider Lumbini heritage landscape.",
+
+                rating: 4.7
             },
 
 
@@ -1122,7 +1258,9 @@ const destinations = {
                     image("Monastery in Lumbini.jpg"),
 
                 text:
-                    "International monasteries and quieter spiritual spaces beyond the main Maya Devi complex."
+                    "International monasteries and quieter spiritual spaces beyond the main Maya Devi complex.",
+
+                rating: 4.4
             }
 
         ],
@@ -1205,7 +1343,34 @@ const destinations = {
             precautions:
                 "Stay hydrated, use sun protection and respect rules inside religious sites."
 
-        }
+        },
+
+        rating: 4.8,
+
+        reviews: [
+
+            {
+                name: "Sarah Mitchell",
+                rating: 5,
+                tag: "Pilgrim",
+                text: "The Maya Devi Temple garden is deeply moving. Renting a bicycle to tour the monasteries is the best way to see it."
+            },
+
+            {
+                name: "Amit Patel",
+                rating: 4,
+                tag: "Culture",
+                text: "Peaceful and beautifully maintained. The world peace pagoda and each country's monastery are unique."
+            },
+
+            {
+                name: "Chen Wei",
+                rating: 5,
+                tag: "History",
+                text: "Walking the birthplace of the Buddha with pilgrims around you is an experience no photo can capture."
+            }
+
+        ]
 
     },
 
@@ -1327,7 +1492,9 @@ const destinations = {
                     image("Rhino's in Chitwan National Park.jpg"),
 
                 text:
-                    "One of Nepal's most famous wildlife destinations and an important rhino habitat."
+                    "One of Nepal's most famous wildlife destinations and an important rhino habitat.",
+
+                rating: 4.9
             },
 
 
@@ -1342,7 +1509,9 @@ const destinations = {
                     image("Rapti River, Sauraha, Chitwan.jpg"),
 
                 text:
-                    "An important part of Sauraha's scenery and wildlife tourism experience."
+                    "An important part of Sauraha's scenery and wildlife tourism experience.",
+
+                rating: 4.6
             },
 
 
@@ -1357,7 +1526,9 @@ const destinations = {
                     image("Beeshazari Taal 01.jpg"),
 
                 text:
-                    "A quieter wetland destination for nature and bird enthusiasts."
+                    "A quieter wetland destination for nature and bird enthusiasts.",
+
+                rating: 4.4
             }
 
         ],
@@ -1440,7 +1611,34 @@ const destinations = {
             precautions:
                 "Never approach wildlife independently. Always follow park rules and authorised guides."
 
-        }
+        },
+
+        rating: 4.8,
+
+        reviews: [
+
+            {
+                name: "Hannah Cooper",
+                rating: 5,
+                tag: "Wildlife",
+                text: "A rhino walked right past our canoe. The jeep safari and Tharu village dance made it a full jungle day."
+            },
+
+            {
+                name: "Dipesh Magar",
+                rating: 5,
+                tag: "Safari",
+                text: "Excellent guides, well organised park. Elephant grass, rivers and dense forest — true adventure."
+            },
+
+            {
+                name: "Olivia King",
+                rating: 4,
+                tag: "Nature Lover",
+                text: "Saw rhinos, crocodiles and deer. Book an experienced guide and keep quiet — the jungle rewards patience."
+            }
+
+        ]
 
     },
 
@@ -1563,7 +1761,9 @@ const destinations = {
                     image("Kathmandu Durbar Square, Temples, Nepal.jpg"),
 
                 text:
-                    "One of Kathmandu's major heritage areas with historic temples and palace architecture."
+                    "One of Kathmandu's major heritage areas with historic temples and palace architecture.",
+
+                rating: 4.8
             },
 
 
@@ -1578,7 +1778,9 @@ const destinations = {
                     image("Swayambhunath temple Kathmandu Nepal.jpg"),
 
                 text:
-                    "A famous hilltop Buddhist complex overlooking Kathmandu Valley."
+                    "A famous hilltop Buddhist complex overlooking Kathmandu Valley.",
+
+                rating: 4.8
             },
 
 
@@ -1593,7 +1795,9 @@ const destinations = {
                     image("Kirtipur, Nepal (23636789091).jpg"),
 
                 text:
-                    "A historic Newari settlement providing a quieter cultural experience."
+                    "A historic Newari settlement providing a quieter cultural experience.",
+
+                rating: 4.5
             }
 
         ],
@@ -1676,7 +1880,34 @@ const destinations = {
             precautions:
                 "Keep phones and wallets secure in crowded areas."
 
-        }
+        },
+
+        rating: 4.7,
+
+        reviews: [
+
+            {
+                name: "Marco Rossi",
+                rating: 5,
+                tag: "Culture",
+                text: "Basantapur Durbar Square at dusk is magical. The temples, stupas and street food are a sensory overload."
+            },
+
+            {
+                name: "Elena Novak",
+                rating: 4,
+                tag: "History",
+                text: "Swayambhunath at sunrise beats the crowds. Pashupatinath is intense but unforgettable."
+            },
+
+            {
+                name: "Bikash Thapa",
+                rating: 5,
+                tag: "Foodie",
+                text: "From Thamel cafés to local momo joints, Kathmandu eats well. The old city alleys hide the best spots."
+            }
+
+        ]
 
     },
 
@@ -1800,7 +2031,9 @@ const destinations = {
                     image("Muktinath-Temple, Mustang, Nepal.jpg"),
 
                 text:
-                    "A major sacred destination surrounded by high-altitude Himalayan terrain."
+                    "A major sacred destination surrounded by high-altitude Himalayan terrain.",
+
+                rating: 4.8
             },
 
 
@@ -1815,7 +2048,9 @@ const destinations = {
                     image("Marpha Village, Mustang, Nepal.jpg"),
 
                 text:
-                    "A traditional Mustang village known for stone architecture and apples."
+                    "A traditional Mustang village known for stone architecture and apples.",
+
+                rating: 4.6
             },
 
 
@@ -1830,7 +2065,9 @@ const destinations = {
                     image("Mustang Nepal.jpg"),
 
                 text:
-                    "The road itself reveals dramatic dry valleys and high Himalayan landscapes."
+                    "The road itself reveals dramatic dry valleys and high Himalayan landscapes.",
+
+                rating: 4.7
             }
 
         ],
@@ -1913,11 +2150,3195 @@ const destinations = {
             precautions:
                 "Ascend gradually, stay hydrated and react immediately to serious altitude symptoms."
 
-        }
+        },
 
-    }
-    
-    
+        rating: 4.8,
+
+        reviews: [
+
+            {
+                name: "Grace Park",
+                rating: 5,
+                tag: "Trekker",
+                text: "Lo Manthang is like stepping back centuries — whitewashed walls, cave dwellings and endless desert views."
+            },
+
+            {
+                name: "Peter Hall",
+                rating: 5,
+                tag: "Adventure",
+                text: "The Tiji festival alone is worth the flight to Jomsom. Windy, dry and spectacular country."
+            },
+
+            {
+                name: "Anisha K.C.",
+                rating: 4,
+                tag: "Culture",
+                text: "Cave monasteries and chortens everywhere. Carry cash and a good wind jacket for the passes."
+            }
+
+        ]
+
+    },
+
+
+
+
+/* =====================================================
+       EVEREST REGION (SOLUKHUMBU)
+    ===================================================== */
+
+    everest: {
+
+        name: "Everest Region",
+
+        category: "Himalaya East",
+
+        best: "🏔 Everest & Sherpa Country",
+
+        interests: [
+            "trekking",
+            "nature",
+            "adventure",
+            "culture"
+        ],
+
+        coords: {
+            lat: 27.98,
+            lng: 86.92
+        },
+
+        minDays: 8,
+
+        budget: {
+            transport: 6000,
+            lodging: 5000,
+            food: 2000,
+            activities: 1500
+        },
+
+        crowdLevel: "high",
+
+        bestSeason:
+            "Mar–May, Oct–Nov",
+
+        difficulty: "challenging",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 4500,
+            porterPerDay: 3000,
+            porterLoadKg: 20
+        },
+
+        safetyLevels: {
+            altitude: "high",
+            weather: "high",
+            road: "medium",
+            network: "low",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Flight to Lukla",
+                    fare: "Rs 8,000–12,000",
+                    duration: "30–40 min"
+                },
+                {
+                    type: "Shared Jeep",
+                    fare: "Rs 6,000–10,000",
+                    duration: "10–14 hr"
+                }
+            ],
+
+            note: "Lukla flights depend heavily on weather. Buffer extra days for delays."
+
+        },
+
+        image:
+            image("Everest kalapatthar.jpg"),
+
+        description:
+            "The world's highest peak, Sherpa villages, glacier valleys and the trek of a lifetime.",
+
+        intro:
+            "Everest Region is the classic Himalayan journey — flights over Everest, teahouse trails through Namche and the famous Base Camp.",
+
+
+        important: {
+
+            season:
+                "March–May and October–November",
+
+            route:
+                "Kathmandu → Lukla → Namche → Dingboche → EBC → Lukla",
+
+            style:
+                "Trek with teahouse lodges",
+
+            carry:
+                "Warm layers, trekking poles, water purification and altitude medicine"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Namche Bazaar",
+                type: "Popular",
+                rating: 5,
+                image: image("Namche Bazaar.jpg"),
+                text: "The mountain gateway town of the Khumbu — bakeries, markets and the first great views of Everest."
+            },
+
+            {
+                name: "Tengboche Monastery",
+                type: "Popular",
+                rating: 5,
+                image: image("Tengboche.jpg"),
+                text: "The famous Buddhist monastery with stunning views of Ama Dablam and Everest."
+            },
+
+            {
+                name: "Everest Base Camp",
+                type: "Popular",
+                rating: 5,
+                image: image("Everest Base Camp.jpg"),
+                text: "Standing at the foot of the world's highest mountain surrounded by the Khumbu Icefall."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Teahouse Lodge",
+                price: "Rs. 1,500–3,500",
+                text: "Basic warm rooms with meals along the main trail."
+            },
+
+            {
+                name: "Mountain Lodge",
+                price: "Rs. 3,000–6,000",
+                text: "Better amenities with hot showers in Namche."
+            },
+
+            {
+                name: "Sherpa Homestay",
+                price: "Rs. 1,200–2,500",
+                text: "Family-run stays for a deeper Sherpa experience."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Fly Kathmandu to Lukla for speed, or trek from Jiri if you want the classic longer route. Flights are weather-sensitive — keep buffer days.",
+
+            time:
+                "Autumn gives the clearest Everest views; spring brings rhododendrons and warmer nights. Winter is possible but very cold.",
+
+            food:
+                "Teahouses serve dal bhat, Tibetan bread, noodles and strong hot drinks — dal bhat is the reliable energy meal.",
+
+            local:
+                "Acclimatise properly — climb high, sleep low. Walk slowly, drink lots of water and enjoy the mountains rather than rushing."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Above 3,000 metres altitude sickness is a real risk. Climb gradually and know the symptoms.",
+
+            weather:
+                "Mountain weather changes fast — cold, wind and snow can arrive suddenly.",
+
+            road:
+                "Lukla airport and mountain trails are the main concern, not roads. Trail conditions depend on season.",
+
+            network:
+                "Wi-Fi and mobile signal exist in villages but vanish on trails.",
+
+            health:
+                "Medical care is limited. Carry personal medicine and a basic first-aid kit.",
+
+            precautions:
+                "Carry an AMS awareness, trek with a partner or guide, and turn back or descend at the first signs of serious altitude sickness."
+
+        },
+
+
+        rating: 4.9,
+
+
+        reviews: [
+
+            {
+                name: "David Miller",
+                rating: 5,
+                tag: "Trekker",
+                text: "Standing at Base Camp was the highlight of my life. The teahouse trail is well managed if you acclimatise properly."
+            },
+
+            {
+                name: "Emma Wilson",
+                rating: 5,
+                tag: "Adventure",
+                text: "Namche and Tengboche are magical. Fly out with spare days — weather delays are normal."
+            },
+
+            {
+                name: "Priya Nair",
+                rating: 4,
+                tag: "Family",
+                text: "Tough but rewarding. Our guide made the kids feel safe the whole way."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       ANNAPURNA REGION
+    ===================================================== */
+
+    annapurna: {
+
+        name: "Annapurna Region",
+
+        category: "Western Himalaya",
+
+        best: "🏔 Annapurna & Machapuchare Trails",
+
+        interests: [
+            "trekking",
+            "nature",
+            "adventure",
+            "relaxation"
+        ],
+
+        coords: {
+            lat: 28.39,
+            lng: 83.93
+        },
+
+        minDays: 6,
+
+        budget: {
+            transport: 4000,
+            lodging: 3500,
+            food: 1800,
+            activities: 1200
+        },
+
+        crowdLevel: "high",
+
+        bestSeason:
+            "Mar–May, Oct–Nov",
+
+        difficulty: "moderate",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 4000,
+            porterPerDay: 2800,
+            porterLoadKg: 20
+        },
+
+        safetyLevels: {
+            altitude: "high",
+            weather: "high",
+            road: "medium",
+            network: "low",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Tourist Bus",
+                    fare: "Rs 1,000–1,500",
+                    duration: "7–8 hr from Pokhara"
+                },
+                {
+                    type: "Private Jeep",
+                    fare: "Rs 6,000–9,000",
+                    duration: "4–6 hr from Pokhara"
+                }
+            ],
+
+            note: "Most treks start from Pokhara. Buses run daily and jeeps can be shared."
+
+        },
+
+        image:
+            image("Machapuchare.jpg"),
+
+        description:
+            "Fishtail Mountain, Poon Hill sunrises, Ghandruk villages and the Annapurna circuit.",
+
+        intro:
+            "Annapurna Region offers some of Nepal's most varied and accessible trekking — from the sunrise viewpoint of Poon Hill to high mountain villages under Annapurna's giants.",
+
+
+        important: {
+
+            season:
+                "March–May and October–November",
+
+            route:
+                "Pokhara → Nayapul → Ghandruk → Poon Hill → Tadapani",
+
+            style:
+                "Teahouse trek, 2–7 day options",
+
+            carry:
+                "Warm layers, rain jacket, sunscreen, water and trekking poles"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Ghandruk Village",
+                type: "Popular",
+                rating: 5,
+                image: image("Ghandruk.jpg"),
+                text: "A beautiful Gurung village with stone houses, museum and close-up mountain views."
+            },
+
+            {
+                name: "Poon Hill",
+                type: "Popular",
+                rating: 5,
+                image: image("Ghorepani.jpg"),
+                text: "The famous sunrise viewpoint over the Annapurna and Dhaulagiri ranges."
+            },
+
+            {
+                name: "Annapurna Base Camp",
+                type: "Popular",
+                rating: 5,
+                image: image("Annapurna Base Camp.jpg"),
+                text: "A trek ending in an amphitheatre of 8,000-metre peaks."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Teahouse Lodge",
+                price: "Rs. 1,200–3,000",
+                text: "Warm simple rooms along all the main trails."
+            },
+
+            {
+                name: "Mountain Resort",
+                price: "Rs. 3,500–7,000",
+                text: "Better comfort in Ghandruk and Poon Hill areas."
+            },
+
+            {
+                name: "Village Homestay",
+                price: "Rs. 1,000–2,200",
+                text: "Stay with Gurung families for authentic meals."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Start from Pokhara. A short drive to Nayapul puts you on the trail in under an hour.",
+
+            time:
+                "Spring and autumn are ideal. Poon Hill is best at sunrise — start walking before dawn.",
+
+            food:
+                "Dal bhat, local curries and apple pie at trail cafes are highlights of the trek.",
+
+            local:
+                "Take the low route on the way down to enjoy villages instead of rushing the downhill."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Reach up to 4,130 m at Annapurna Base Camp. Ascend gradually and acclimatise.",
+
+            weather:
+                "Mountain weather changes fast; mornings are often clearest.",
+
+            road:
+                "Roads from Pokhara can be rough in the monsoon season.",
+
+            network:
+                "Mobile signal works in most villages; Wi-Fi at teahouses.",
+
+            health:
+                "Carry a first-aid kit and personal medicine. Evacuation is possible by helicopter if needed.",
+
+            precautions:
+                "Walk at your own pace, stay hydrated and listen to your body at altitude."
+
+        },
+
+
+        rating: 4.8,
+
+
+        reviews: [
+
+            {
+                name: "James Anderson",
+                rating: 5,
+                tag: "Adventure",
+                text: "Poon Hill sunrise is worth every early morning. Ghandruk village was my favourite stop."
+            },
+
+            {
+                name: "Laura Meyer",
+                rating: 5,
+                tag: "Solo",
+                text: "Easy to do without a guide. The teahouses and trail signs are excellent."
+            },
+
+            {
+                name: "Olivia Brown",
+                rating: 4,
+                tag: "Family",
+                text: "We did a short 4-day loop with kids — safe, warm and unforgettable."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       LANGTANG VALLEY
+    ===================================================== */
+
+    langtang: {
+
+        name: "Langtang Valley",
+
+        category: "Central Himalaya",
+
+        best: "🏔 Short Himalayan Valley",
+
+        interests: [
+            "trekking",
+            "nature",
+            "hidden",
+            "adventure"
+        ],
+
+        coords: {
+            lat: 28.21,
+            lng: 85.58
+        },
+
+        minDays: 5,
+
+        budget: {
+            transport: 2500,
+            lodging: 2500,
+            food: 1500,
+            activities: 800
+        },
+
+        crowdLevel: "medium",
+
+        bestSeason:
+            "Mar–May, Sep–Nov",
+
+        difficulty: "moderate",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3800,
+            porterPerDay: 2600,
+            porterLoadKg: 22
+        },
+
+        safetyLevels: {
+            altitude: "medium",
+            weather: "high",
+            road: "medium",
+            network: "low",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 500–800",
+                    duration: "6–8 hr from Kathmandu"
+                },
+                {
+                    type: "Private Jeep",
+                    fare: "Rs 8,000–12,000",
+                    duration: "4–5 hr from Kathmandu"
+                }
+            ],
+
+            note: "The valley starts at Syabrubesi, about a day's drive from Kathmandu."
+
+        },
+
+        image:
+            image("Langtang Lirung.jpg"),
+
+        description:
+            "Glaciers, yak pastures and quiet teahouse trails just a short drive from Kathmandu.",
+
+        intro:
+            "Langtang is one of the most accessible high Himalayan valleys — dramatic peaks, warm Tamang villages and few crowds.",
+
+
+        important: {
+
+            season:
+                "March–May and September–November",
+
+            route:
+                "Kathmandu → Syabrubesi → Lama Hotel → Kyanjin Gompa",
+
+            style:
+                "Teahouse trek, 5–7 days",
+
+            carry:
+                "Warm layers, rain gear, water purification and snacks"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Kyanjin Gompa",
+                type: "Popular",
+                rating: 5,
+                image: image("Kyanjin Gompa.jpg"),
+                text: "A high mountain village with a monastery, cheese factory and 360° peaks."
+            },
+
+            {
+                name: "Langtang Village",
+                type: "Popular",
+                rating: 4,
+                image: image("Langtang village.jpg"),
+                text: "A resilient village that beautifully rebuilt after the 2015 earthquake."
+            },
+
+            {
+                name: "Tsho Rolpa Lake",
+                type: "Underrated",
+                rating: 5,
+                image: image("Tsho Rolpa.jpg"),
+                text: "A deep turquoise glacial lake on the quieter route over the Ganja La."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Teahouse Lodge",
+                price: "Rs. 1,200–2,500",
+                text: "Warm rooms and meals all along the valley."
+            },
+
+            {
+                name: "Mountain Lodge",
+                price: "Rs. 2,500–4,500",
+                text: "More comfort at Kyanjin Gompa."
+            },
+
+            {
+                name: "Family Guesthouse",
+                price: "Rs. 1,000–2,000",
+                text: "Cozy village stays with home cooking."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Drive from Kathmandu to Syabrubesi in about 5–6 hours. Buses and jeeps both run daily.",
+
+            time:
+                "Spring brings rhododendrons; autumn gives the clearest views of Langtang Lirung.",
+
+            food:
+                "Local yak cheese, dal bhat and Tibetan bread are the valley specialities.",
+
+            local:
+                "Walk slowly at altitude and spend a night at Kyanjin Gompa to enjoy the peaks."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Kyanjin Gompa sits near 3,900 m — altitude awareness matters above 3,000 m.",
+
+            weather:
+                "Sudden snow and strong sun are both possible — carry sun protection and layers.",
+
+            road:
+                "The approach road from Kathmandu can be affected by landslides in monsoon.",
+
+            network:
+                "Signal is good in villages, patchy on trails.",
+
+            health:
+                "Basic health posts exist in the valley; serious cases go to Kathmandu.",
+
+            precautions:
+                "Start walking early, carry water and check weather before high passes."
+
+        },
+
+
+        rating: 4.7,
+
+
+        reviews: [
+
+            {
+                name: "Hiro Tanaka",
+                rating: 5,
+                tag: "Trekker",
+                text: "So close to Kathmandu yet so wild. Kyanjin Gompa at sunrise is unbeatable."
+            },
+
+            {
+                name: "Sarah Park",
+                rating: 5,
+                tag: "Friends",
+                text: "Quieter than Everest or Annapurna — we loved the empty trails and yak pastures."
+            },
+
+            {
+                name: "Rajan Gurung",
+                rating: 4,
+                tag: "Couple",
+                text: "A perfect 5-day escape. The valley communities are incredibly welcoming."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       RARA LAKE
+    ===================================================== */
+
+    rara: {
+
+        name: "Rara Lake",
+
+        category: "Far West Himalaya",
+
+        best: "🌊 Nepal's Largest Lake",
+
+        interests: [
+            "lakes",
+            "nature",
+            "hidden",
+            "relaxation"
+        ],
+
+        coords: {
+            lat: 29.53,
+            lng: 82.09
+        },
+
+        minDays: 4,
+
+        budget: {
+            transport: 4500,
+            lodging: 2500,
+            food: 1200,
+            activities: 600
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Mar–May, Sep–Oct",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3500,
+            porterPerDay: 2500,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "medium",
+            weather: "high",
+            road: "high",
+            network: "low",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Flight to Jumla",
+                    fare: "Rs 8,000–12,000",
+                    duration: "45 min"
+                },
+                {
+                    type: "Local Bus",
+                    fare: "Rs 1,500–2,500",
+                    duration: "2–3 days via Nepalgunj"
+                }
+            ],
+
+            note: "The easiest route is fly to Jumla then 2–3 hours of jeep and walk to the lake."
+
+        },
+
+        image:
+            image("Rara lake.jpg"),
+
+        description:
+            "Nepal's largest and deepest lake, ringed by pine forest in the remote far west.",
+
+        intro:
+            "Rara is a deep blue jewel in Nepal's least-visited corner — pristine, silent and unforgettable.",
+
+
+        important: {
+
+            season:
+                "September–October and April–May",
+
+            route:
+                "Kathmandu → Nepalgunj → Jumla → Rara",
+
+            style:
+                "Flight + jeep + short walk",
+
+            carry:
+                "Warm layers, waterproof gear, cash and power bank"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Rara Lake Views",
+                type: "Popular",
+                rating: 5,
+                image: image("Rara lake.jpg"),
+                text: "The classic lake viewpoint over crystal blue water and pine hills."
+            },
+
+            {
+                name: "Murma Hill",
+                type: "Underrated",
+                rating: 5,
+                image: image("Murma top.jpg"),
+                text: "A short climb offering the best panorama of the whole lake."
+            },
+
+            {
+                name: "Lakeside Trails",
+                type: "Underrated",
+                rating: 4,
+                image: image("Rara.jpg"),
+                text: "Quiet forest walks around the lake with almost no other travellers."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Lakeside Lodge",
+                price: "Rs. 1,500–3,000",
+                text: "Simple rooms near the lake shore."
+            },
+
+            {
+                name: "Park Guesthouse",
+                price: "Rs. 2,000–4,000",
+                text: "Warmer options close to the park gate."
+            },
+
+            {
+                name: "Jumla Hotel",
+                price: "Rs. 1,000–2,500",
+                text: "Practical stopover rooms before the drive in."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Fly Kathmandu to Jumla, then a jeep and short walk reach the lake. It's remote — plan carefully.",
+
+            time:
+                "Autumn is clearest and driest. Winter brings snow and very cold nights.",
+
+            food:
+                "Expect simple dal bhat and local dishes — stock snacks before leaving Jumla.",
+
+            local:
+                "Go for the silence, not the itinerary. Sunrise and sunset by the lake are the magic hours."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "The lake sits around 2,990 m — mild altitude effects are possible.",
+
+            weather:
+                "Nights are cold year-round and mountain weather changes fast.",
+
+            road:
+                "Roads from Jumla are rough and can be blocked in rain.",
+
+            network:
+                "Signal is weak or absent around the lake — download maps in advance.",
+
+            health:
+                "Medical facilities are limited; carry medicine and a first-aid kit.",
+
+            precautions:
+                "Carry cash, warm clothes and tell someone your itinerary before heading out."
+
+        },
+
+
+        rating: 4.8,
+
+
+        reviews: [
+
+            {
+                name: "Maya Gurung",
+                rating: 5,
+                tag: "Solo",
+                text: "The bluest lake I've ever seen and completely empty. Heaven for quiet travellers."
+            },
+
+            {
+                name: "Tom Baker",
+                rating: 5,
+                tag: "Backpacker",
+                text: "Remote but worth every bump in the jeep. Murma Hill at sunrise is unreal."
+            },
+
+            {
+                name: "Anita Shrestha",
+                rating: 4,
+                tag: "Family",
+                text: "Gorgeous and peaceful. Pack warm clothes — nights get very cold."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       JANAKPUR
+    ===================================================== */
+
+    janakpur: {
+
+        name: "Janakpur",
+
+        category: "Terai Heritage",
+
+        best: "🏯 City of Temples",
+
+        interests: [
+            "culture",
+            "food",
+            "relaxation"
+        ],
+
+        coords: {
+            lat: 26.73,
+            lng: 85.92
+        },
+
+        minDays: 2,
+
+        budget: {
+            transport: 700,
+            lodging: 1500,
+            food: 600,
+            activities: 300
+        },
+
+        crowdLevel: "medium",
+
+        bestSeason:
+            "Oct–Mar",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3000,
+            porterPerDay: 2200,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "medium",
+            network: "high",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 300–500",
+                    duration: "4–5 hr from Itahari"
+                },
+                {
+                    type: "Train",
+                    fare: "Rs 200–400",
+                    duration: "3–4 hr from Jayanagar (India)"
+                }
+            ],
+
+            note: "Janakpur has a railway connection from the Indian side, a fun and historic way to arrive."
+
+        },
+
+        image:
+            image("Janaki Mandir.jpg"),
+
+        description:
+            "The grand temple of Goddess Sita and the colourful, sacred heart of Maithili culture.",
+
+        intro:
+            "Janakpur is Nepal's City of Temples — sacred, colourful and full of life, famous as the birthplace of Sita.",
+
+
+        important: {
+
+            season:
+                "October–March",
+
+            route:
+                "Itahari → Janakpur by bus or train",
+
+            style:
+                "City and temple sightseeing",
+
+            carry:
+                "Comfortable shoes, modest clothes and sun protection"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Janaki Mandir",
+                type: "Popular",
+                rating: 5,
+                image: image("Janaki Mandir.jpg"),
+                text: "A beautiful pink-and-white temple, one of Nepal's most important pilgrimage sites."
+            },
+
+            {
+                name: "Ram Sita Vivah Mandap",
+                type: "Popular",
+                rating: 4,
+                image: image("Ram Sita Vivah Mandap.jpg"),
+                text: "The temple marking where Rama and Sita are said to have married."
+            },
+
+            {
+                name: "Ganga Sagar Pond",
+                type: "Underrated",
+                rating: 4,
+                image: image("Gangasagar.jpg"),
+                text: "A sacred pond full of turtles where pilgrims bathe before worship."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "City Hotel",
+                price: "Rs. 1,200–2,500",
+                text: "Comfortable rooms near the temple area."
+            },
+
+            {
+                name: "Heritage Lodge",
+                price: "Rs. 2,000–3,500",
+                text: "Nice mid-range options close to Janaki Mandir."
+            },
+
+            {
+                name: "Budget Lodge",
+                price: "Rs. 800–1,500",
+                text: "Simple, clean rooms for short stays."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Buses from Itahari and Dharan run regularly. The train from Jayanagar is a highlight in itself.",
+
+            time:
+                "Cooler months are best. The grand festival of Vivah Panchami in November-December draws huge crowds and colour.",
+
+            food:
+                "Try local Maithili thali, sweets and the famous street food around the temple.",
+
+            local:
+                "Dress modestly and remove shoes at temples. Watch artisans painting Mithila art in the town."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Terai plains — no altitude concerns.",
+
+            weather:
+                "Summers are very hot; winters are pleasant. Carry water in summer.",
+
+            road:
+                "Roads from the east are generally good.",
+
+            network:
+                "Mobile and internet coverage are strong.",
+
+            health:
+                "Hospitals exist in town for basic needs.",
+
+            precautions:
+                "Keep belongings close in busy market areas and temple crowds."
+
+        },
+
+
+        rating: 4.5,
+
+
+        reviews: [
+
+            {
+                name: "Ravi Kumar",
+                rating: 5,
+                tag: "Culture",
+                text: "Janaki Mandir at dusk is breathtaking. The city feels sacred and very welcoming."
+            },
+
+            {
+                name: "Laura Meyer",
+                rating: 4,
+                tag: "Solo",
+                text: "Wonderful temples and great sweets. A full day is enough to see the highlights."
+            },
+
+            {
+                name: "Nabin Joshi",
+                rating: 4,
+                tag: "Family",
+                text: "Visit in winter to enjoy the cool weather and the festival season."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       BANDIPUR
+    ===================================================== */
+
+    bandipur: {
+
+        name: "Bandipur",
+
+        category: "Mid-Hill Town",
+
+        best: "🏯 Living Heritage Town",
+
+        interests: [
+            "culture",
+            "hidden",
+            "relaxation",
+            "nature"
+        ],
+
+        coords: {
+            lat: 27.94,
+            lng: 84.41
+        },
+
+        minDays: 2,
+
+        budget: {
+            transport: 1500,
+            lodging: 2500,
+            food: 1000,
+            activities: 500
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Oct–Apr",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3000,
+            porterPerDay: 2200,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "high",
+            network: "medium",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Tourist Bus",
+                    fare: "Rs 500–800",
+                    duration: "3–4 hr from Kathmandu"
+                },
+                {
+                    type: "Local Bus",
+                    fare: "Rs 600–900",
+                    duration: "3–4 hr from Pokhara"
+                }
+            ],
+
+            note: "Buses stop at the highway junction below the town; walk or jeep up the last 3 km."
+
+        },
+
+        image:
+            image("Bandipur, Nepal.jpg"),
+
+        description:
+            "A preserved Newari hill town of old streets, mountain views and quiet cafés.",
+
+        intro:
+            "Bandipur is a living museum — a traffic-free Newari town on a ridge with Dhaulagiri and Himalchuli views.",
+
+
+        important: {
+
+            season:
+                "October–April",
+
+            route:
+                "Kathmandu → Bandipur (highway) or Pokhara → Bandipur",
+
+            style:
+                "Heritage strolls + viewpoint walks",
+
+            carry:
+                "Comfortable walking shoes, warm layer for evenings"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Bandipur Durbar",
+                type: "Popular",
+                rating: 5,
+                image: image("Bandipur durbar.jpg"),
+                text: "The old palace at the heart of the town square, surrounded by heritage homes."
+            },
+
+            {
+                name: "Thani Mai Temple",
+                type: "Underrated",
+                rating: 5,
+                image: image("Bandipur Palace.jpg"),
+                text: "A short ridge walk to the hilltop temple with spectacular Himalayan sunrises."
+            },
+
+            {
+                name: "Siddha Gufa",
+                type: "Popular",
+                rating: 4,
+                image: image("Siddha Gufa.jpg"),
+                text: "One of Nepal's largest caves — an adventure of ladders, stalactites and bats."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Heritage Inn",
+                price: "Rs. 2,500–5,000",
+                text: "Traditional Newari houses converted into boutique stays."
+            },
+
+            {
+                name: "Rooftop Guesthouse",
+                price: "Rs. 1,500–3,000",
+                text: "Great mountain views and simple comfort."
+            },
+
+            {
+                name: "Highway Hotel",
+                price: "Rs. 1,000–2,000",
+                text: "Budget rooms at the town entrance."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Sit on the left side of the bus from Kathmandu for the views. The short jeep or walk up from the highway is worth it.",
+
+            time:
+                "Autumn to spring is ideal. Sunrise from the viewpoints above town is a must.",
+
+            food:
+                "Bandipur is known for its rooftop cafés — try local Newari dishes and freshly baked bread.",
+
+            local:
+                "The town is traffic-free by day. Walk the old streets slowly and talk with artisans."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Around 1,000 m — no altitude concerns.",
+
+            weather:
+                "Evenings are cool; fog sometimes rolls in on the ridge.",
+
+            road:
+                "The highway below is busy; the last road up to town is steep but paved.",
+
+            network:
+                "Mobile signal is decent in town.",
+
+            health:
+                "Basic clinics available; bigger hospitals in Dumre or Pokhara.",
+
+            precautions:
+                "Use the marked viewpoint trails and carry water for the cave visit."
+
+        },
+
+
+        rating: 4.7,
+
+
+        reviews: [
+
+            {
+                name: "Aisha Rai",
+                rating: 5,
+                tag: "Solo",
+                text: "The most charming town in Nepal. Rooftop cafés, empty streets and huge mountain views."
+            },
+
+            {
+                name: "Ryan Smith",
+                rating: 4,
+                tag: "Backpacker",
+                text: "Perfect 2-day break between Kathmandu and Pokhara. Do the sunrise walk!"
+            },
+
+            {
+                name: "Priya Nair",
+                rating: 5,
+                tag: "Family",
+                text: "Safe, walkable and lovely for kids. The heritage homes are beautiful."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       NAGARKOT
+    ===================================================== */
+
+    nagarkot: {
+
+        name: "Nagarkot",
+
+        category: "Kathmandu Valley",
+
+        best: "🌄 Himalayan Sunrise Viewpoint",
+
+        interests: [
+            "nature",
+            "relaxation",
+            "adventure"
+        ],
+
+        coords: {
+            lat: 27.71,
+            lng: 85.52
+        },
+
+        minDays: 1,
+
+        budget: {
+            transport: 1500,
+            lodging: 3000,
+            food: 800,
+            activities: 400
+        },
+
+        crowdLevel: "medium",
+
+        bestSeason:
+            "Oct–Apr",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3000,
+            porterPerDay: 2200,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "medium",
+            network: "medium",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 150–300",
+                    duration: "1.5–2 hr from Kathmandu"
+                },
+                {
+                    type: "Private Car",
+                    fare: "Rs 3,000–5,000",
+                    duration: "1–1.5 hr from Kathmandu"
+                }
+            ],
+
+            note: "An easy overnight or day trip from Kathmandu, best for sunrise."
+
+        },
+
+        image:
+            image("Nagarkot.jpg"),
+
+        description:
+            "The classic sunrise viewpoint where four Himalayan ranges line up across the valley.",
+
+        intro:
+            "Nagarkot is the closest taste of the Himalayas to Kathmandu — a hilltop resort village famous for its panoramic sunrises.",
+
+
+        important: {
+
+            season:
+                "October–April for clear mornings",
+
+            route:
+                "Kathmandu → Nagarkot (1–2 hr drive)",
+
+            style:
+                "Overnight stay + sunrise viewing",
+
+            carry:
+                "Warm jacket, camera, water and snacks"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Sunrise View Tower",
+                type: "Popular",
+                rating: 5,
+                image: image("Nagarkot.jpg"),
+                text: "The main viewpoint with a panoramic sweep of the eastern Himalaya."
+            },
+
+            {
+                name: "Sunrise Terrace",
+                type: "Popular",
+                rating: 4,
+                image: image("Nagarkot sunrise.jpg"),
+                text: "Many hotels face east for private golden-hour views over Everest."
+            },
+
+            {
+                name: "Dhulikhel Ridge",
+                type: "Underrated",
+                rating: 4,
+                image: image("Dhulikhel, Nepal.jpg"),
+                text: "A beautiful ridge town nearby with culture and quieter viewpoints."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Hilltop Resort",
+                price: "Rs. 4,000–8,000",
+                text: "East-facing rooms designed for sunrise views."
+            },
+
+            {
+                name: "Mountain Hotel",
+                price: "Rs. 2,000–4,000",
+                text: "Comfortable mid-range stays near the tower."
+            },
+
+            {
+                name: "Budget Lodge",
+                price: "Rs. 1,000–2,000",
+                text: "Simple rooms for travellers watching the budget."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "A car or bus from Kathmandu is easy. Go up in the afternoon, then watch sunset and sunrise.",
+
+            time:
+                "The best months for clear views are October through April. Check the forecast before booking.",
+
+            food:
+                "Hotel restaurants serve buffet meals; try local Newari snacks too.",
+
+            local:
+                "Don't only come for the sunrise — the forest trails around the hill are lovely for a walk."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Around 2,175 m — mild for most people.",
+
+            weather:
+                "Mornings can be very cold; afternoons warm quickly.",
+
+            road:
+                "The road is winding but mostly paved.",
+
+            network:
+                "Mobile and internet work well in the village.",
+
+            health:
+                "Basic clinics nearby; Kathmandu hospitals within reach.",
+
+            precautions:
+                "Arrive early for sunrise and carry warm layers."
+
+        },
+
+
+        rating: 4.6,
+
+
+        reviews: [
+
+            {
+                name: "Fatima Zahra",
+                rating: 5,
+                tag: "Culture",
+                text: "Watched Everest glow at sunrise from my hotel window. Unforgettable."
+            },
+
+            {
+                name: "Liam O'Connor",
+                rating: 4,
+                tag: "Couple",
+                text: "Close to Kathmandu and totally worth one night. Book an east-facing room."
+            },
+
+            {
+                name: "Deepak KC",
+                rating: 4,
+                tag: "Family",
+                text: "Clear skies in winter made it magical. The kids loved the forest trails."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       GORKHA
+    ===================================================== */
+
+    gorkha: {
+
+        name: "Gorkha",
+
+        category: "Mid-Hill Heritage",
+
+        best: "🏯 Birthplace of Modern Nepal",
+
+        interests: [
+            "culture",
+            "history",
+            "nature"
+        ],
+
+        coords: {
+            lat: 27.99,
+            lng: 84.63
+        },
+
+        minDays: 2,
+
+        budget: {
+            transport: 1200,
+            lodging: 2000,
+            food: 800,
+            activities: 400
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Oct–Apr",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3200,
+            porterPerDay: 2300,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "medium",
+            network: "medium",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 400–700",
+                    duration: "5–6 hr from Kathmandu"
+                },
+                {
+                    type: "Private Jeep",
+                    fare: "Rs 7,000–10,000",
+                    duration: "4–5 hr from Kathmandu"
+                }
+            ],
+
+            note: "Gorkha is on the Prithvi Highway — an easy stop between Kathmandu and Pokhara."
+
+        },
+
+        image:
+            image("Gorkha.jpg"),
+
+        description:
+            "The hilltop Durbar of Nepal's unifier, King Prithvi Narayan Shah, with valley views.",
+
+        intro:
+            "Gorkha is where modern Nepal began — an ancient hilltop palace, museum and sweeping mountain views.",
+
+
+        important: {
+
+            season:
+                "October–April",
+
+            route:
+                "Kathmandu → Gorkha (5–6 hr) or Pokhara → Gorkha (3–4 hr)",
+
+            style:
+                "Heritage site + day hikes",
+
+            carry:
+                "Walking shoes, water and a hat"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Gorkha Durbar",
+                type: "Popular",
+                rating: 5,
+                image: image("Gorkha Durbar.jpg"),
+                text: "The dramatic hilltop palace complex where Prithvi Narayan Shah was born."
+            },
+
+            {
+                name: "Manakamana Temple",
+                type: "Popular",
+                rating: 4,
+                image: image("Manakamana temple.jpg"),
+                text: "A famous wish-granting goddess temple reached by cable car."
+            },
+
+            {
+                name: "Gorakhnath Cave",
+                type: "Underrated",
+                rating: 4,
+                image: image("Gorakhnath cave.jpg"),
+                text: "A sacred cave shrine below the Durbar with local legends."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Heritage Hotel",
+                price: "Rs. 2,000–4,500",
+                text: "Comfortable stays in the historic town."
+            },
+
+            {
+                name: "Hill Resort",
+                price: "Rs. 2,500–5,000",
+                text: "Rooms with views of the Dhaulagiri range."
+            },
+
+            {
+                name: "Budget Lodge",
+                price: "Rs. 800–1,500",
+                text: "Simple options near the bus park."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "The Durbar is a short steep climb from the town. Cable car runs to Manakamana nearby.",
+
+            time:
+                "Any season works, but autumn and spring give the clearest mountain views from the palace.",
+
+            food:
+                "Try local dal bhat and the tea shops along the climb to the Durbar.",
+
+            local:
+                "The museum inside the palace tells the story of Nepal's unification — don't skip it."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Hill town around 1,500 m — comfortable for most.",
+
+            weather:
+                "Pleasant days, cool nights; monsoon brings rain.",
+
+            road:
+                "The highway is good; the climb to the Durbar is steep but paved.",
+
+            network:
+                "Good mobile coverage in town.",
+
+            health:
+                "Basic clinics in town; hospitals in Kathmandu or Pokhara.",
+
+            precautions:
+                "Carry water for the palace climb and wear good shoes."
+
+        },
+
+
+        rating: 4.5,
+
+
+        reviews: [
+
+            {
+                name: "Aayush Thapa",
+                rating: 5,
+                tag: "Friends",
+                text: "History comes alive here. The palace views over the whole valley are stunning."
+            },
+
+            {
+                name: "Claire Dubois",
+                rating: 4,
+                tag: "Culture",
+                text: "Quiet, authentic and fascinating. Easy to pair with the Manakamana cable car."
+            },
+
+            {
+                name: "Emma Wilson",
+                rating: 4,
+                tag: "Adventure",
+                text: "Lovely hill town with a great sunrise from the Durbar."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       PALPA (TANSEN)
+    ===================================================== */
+
+    palpa: {
+
+        name: "Palpa (Tansen)",
+
+        category: "Western Mid-Hill",
+
+        best: "🏯 Historic Hill Town",
+
+        interests: [
+            "culture",
+            "hidden",
+            "relaxation"
+        ],
+
+        coords: {
+            lat: 27.86,
+            lng: 83.54
+        },
+
+        minDays: 2,
+
+        budget: {
+            transport: 1500,
+            lodging: 2500,
+            food: 900,
+            activities: 400
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Oct–Mar",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3000,
+            porterPerDay: 2200,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "medium",
+            network: "medium",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 700–1,000",
+                    duration: "6–7 hr from Pokhara"
+                },
+                {
+                    type: "Local Bus",
+                    fare: "Rs 1,000–1,500",
+                    duration: "8–9 hr from Kathmandu"
+                }
+            ],
+
+            note: "Tansen sits above the highway junction near Sunauli/Bhairahawa."
+
+        },
+
+        image:
+            image("Tansen, Palpa.jpg"),
+
+        description:
+            "A historic Newari hill town with a palace, bazaar and sweeping mountain horizons.",
+
+        intro:
+            "Palpa's Tansen is a beautifully preserved Newari town of red-brick streets, rickshaws and endless hill views.",
+
+
+        important: {
+
+            season:
+                "October–March",
+
+            route:
+                "Pokhara → Tansen or Bhairahawa → Tansen",
+
+            style:
+                "Heritage strolls + viewpoints",
+
+            carry:
+                "Walking shoes, camera and a light jacket"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Tansen Durbar",
+                type: "Popular",
+                rating: 4,
+                image: image("Tansen Durbar.jpg"),
+                text: "A handsome palace and museum overlooking the historic town."
+            },
+
+            {
+                name: "Rani Mahal",
+                type: "Underrated",
+                rating: 5,
+                image: image("Rani Mahal.jpg"),
+                text: "A romantic riverside palace on the Kali Gandaki — a photographer's dream."
+            },
+
+            {
+                name: "Shreenagar Danda",
+                type: "Underrated",
+                rating: 5,
+                image: image("Shreenagar Danda.jpg"),
+                text: "A quiet ridge with Himalayan panoramas, ideal at sunrise."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Heritage Guesthouse",
+                price: "Rs. 2,000–4,000",
+                text: "Newari-style rooms in the old town."
+            },
+
+            {
+                name: "Hill Hotel",
+                price: "Rs. 1,500–3,000",
+                text: "Comfortable stays with mountain views."
+            },
+
+            {
+                name: "Budget Lodge",
+                price: "Rs. 800–1,500",
+                text: "Simple rooms near the bazaar."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Buses from Pokhara and Bhairahawa stop at Sunauli; taxis and jeeps climb the last stretch to Tansen.",
+
+            time:
+                "Autumn and winter are clearest. Rani Mahal is best in the cool months when the river is calm.",
+
+            food:
+                "Try the town's fresh bread, local curries and sweet tea in the old bazaar cafés.",
+
+            local:
+                "The old bazaar is full of craft shops — brass, dhaka weaving and traditional metalwork."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Around 1,300 m — comfortable elevation.",
+
+            weather:
+                "Mild days and cool nights; mornings can be foggy.",
+
+            road:
+                "The highway below is busy; the climb to town is winding.",
+
+            network:
+                "Good coverage in town.",
+
+            health:
+                "Basic clinics available; bigger towns nearby for emergencies.",
+
+            precautions:
+                "Watch traffic on the highway and carry water for viewpoint walks."
+
+        },
+
+
+        rating: 4.6,
+
+
+        reviews: [
+
+            {
+                name: "Michael Chen",
+                rating: 5,
+                tag: "Backpacker",
+                text: "Tansen feels untouched by mass tourism. Rani Mahal is worth the trip alone."
+            },
+
+            {
+                name: "Sarah Park",
+                rating: 4,
+                tag: "Friends",
+                text: "Beautiful old town and lovely people. Great weekend escape."
+            },
+
+            {
+                name: "Ravi Kumar",
+                rating: 5,
+                tag: "Culture",
+                text: "The dhaka weaving and hill views are unforgettable. A hidden gem."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       BARDIA NATIONAL PARK
+    ===================================================== */
+
+    bardia: {
+
+        name: "Bardia National Park",
+
+        category: "Far West Terai",
+
+        best: "🐘 Wild National Park",
+
+        interests: [
+            "nature",
+            "adventure",
+            "hidden"
+        ],
+
+        coords: {
+            lat: 28.40,
+            lng: 81.48
+        },
+
+        minDays: 3,
+
+        budget: {
+            transport: 3500,
+            lodging: 3000,
+            food: 1200,
+            activities: 1500
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Oct–Mar",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 4000,
+            porterPerDay: 2800,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "high",
+            road: "medium",
+            network: "low",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Flight to Nepalgunj",
+                    fare: "Rs 6,000–9,000",
+                    duration: "1 hr from Kathmandu"
+                },
+                {
+                    type: "Local Bus",
+                    fare: "Rs 1,200–2,000",
+                    duration: "1 day via Nepalgunj"
+                }
+            ],
+
+            note: "Fly to Nepalgunj then drive about 1–2 hours to the park gates."
+
+        },
+
+        image:
+            image("Bardiya National Park.jpg"),
+
+        description:
+            "Nepal's wildest tiger country — thick sal forest, river beaches and almost empty trails.",
+
+        intro:
+            "Bardiya is the uncrowded alternative to Chitwan — deep forest, wild elephants and the best tiger odds in Nepal.",
+
+
+        important: {
+
+            season:
+                "October–March",
+
+            route:
+                "Kathmandu → Nepalgunj → Thakurdwara",
+
+            style:
+                "Jeep safari + jungle walks",
+
+            carry:
+                "Binoculars, insect repellent, light clothes and a hat"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Karnali River Safari",
+                type: "Popular",
+                rating: 5,
+                image: image("Karnali river.jpg"),
+                text: "Canoe and elephant-back trips along Nepal's longest river."
+            },
+
+            {
+                name: "Tharu Village",
+                type: "Underrated",
+                rating: 4,
+                image: image("Tharu village.jpg"),
+                text: "Cultural evenings with Tharu music, dance and local stories."
+            },
+
+            {
+                name: "Babai Valley",
+                type: "Underrated",
+                rating: 5,
+                image: image("Babai river.jpg"),
+                text: "The quieter side of the park, famous for wild elephants and tigers."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Jungle Lodge",
+                price: "Rs. 3,000–6,000",
+                text: "Riverside lodges with safari packages."
+            },
+
+            {
+                name: "Eco Camp",
+                price: "Rs. 1,500–3,000",
+                text: "Tented camping close to the park."
+            },
+
+            {
+                name: "Homestay",
+                price: "Rs. 1,200–2,500",
+                text: "Stay with Tharu families near the gates."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Fly to Nepalgunj and drive to Thakurdwara, the main gateway village.",
+
+            time:
+                "October to March is best. Early mornings and late afternoons give the best wildlife sightings.",
+
+            food:
+                "Lodges serve Nepali and Tharu dishes; jungle meals are simple and filling.",
+
+            local:
+                "Always go with licensed guides and follow park rules — wildlife encounters are real."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Lowland terai — no altitude concerns.",
+
+            weather:
+                "Hot in summer; pleasant and dry in winter. Be alert for wildlife.",
+
+            road:
+                "Approach roads are decent but slow in the monsoon.",
+
+            network:
+                "Signal is limited deep in the park.",
+
+            health:
+                "Malaria and dengue are possible in summer — use repellent and consult a doctor for medication.",
+
+            precautions:
+                "Never walk alone in the jungle, follow your guide and keep quiet on safari."
+
+        },
+
+
+        rating: 4.8,
+
+
+        reviews: [
+
+            {
+                name: "Deepak KC",
+                rating: 5,
+                tag: "Adventure",
+                text: "Saw a tiger within two days! Bardiya feels like true wilderness, unlike anywhere else."
+            },
+
+            {
+                name: "Olivia Brown",
+                rating: 5,
+                tag: "Family",
+                text: "The Karnali river safari was the trip of a lifetime. So quiet compared to Chitwan."
+            },
+
+            {
+                name: "Tom Baker",
+                rating: 4,
+                tag: "Backpacker",
+                text: "Remote to reach but completely worth it. Book a lodge package in advance."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       MANANG VALLEY
+    ===================================================== */
+
+    manang: {
+
+        name: "Manang Valley",
+
+        category: "High Himalaya",
+
+        best: "🏔 High Mountain Valley",
+
+        interests: [
+            "trekking",
+            "nature",
+            "adventure",
+            "culture"
+        ],
+
+        coords: {
+            lat: 28.67,
+            lng: 84.02
+        },
+
+        minDays: 7,
+
+        budget: {
+            transport: 3500,
+            lodging: 3500,
+            food: 1800,
+            activities: 1000
+        },
+
+        crowdLevel: "medium",
+
+        bestSeason:
+            "Mar–May, Sep–Nov",
+
+        difficulty: "challenging",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 4200,
+            porterPerDay: 2900,
+            porterLoadKg: 20
+        },
+
+        safetyLevels: {
+            altitude: "high",
+            weather: "high",
+            road: "high",
+            network: "low",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 800–1,200",
+                    duration: "1 day from Pokhara"
+                },
+                {
+                    type: "Shared Jeep",
+                    fare: "Rs 2,500–4,000",
+                    duration: "8–10 hr from Pokhara"
+                }
+            ],
+
+            note: "Many travellers combine Manang with the Annapurna Circuit trek."
+
+        },
+
+        image:
+            image("Manang.jpg"),
+
+        description:
+            "A dramatic high-altitude valley of yak pastures, prayer flags and soaring peaks.",
+
+        intro:
+            "Manang is the heart of the Annapurna Circuit — a beautiful mountain valley where culture and altitude meet.",
+
+
+        important: {
+
+            season:
+                "March–May and September–November",
+
+            route:
+                "Pokhara → Besisahar → Chame → Manang",
+
+            style:
+                "Trek, 7–12 days",
+
+            carry:
+                "Warm layers, sleeping bag, water purification and altitude medicine"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Manang Village",
+                type: "Popular",
+                rating: 5,
+                image: image("Manang.jpg"),
+                text: "A lively high-altitude village ringed by Annapurna's giants."
+            },
+
+            {
+                name: "Gangapurna Lake",
+                type: "Underrated",
+                rating: 5,
+                image: image("Gangapurna Lake.jpg"),
+                text: "A turquoise glacial lake with an icefall tumbling from the mountain above."
+            },
+
+            {
+                name: "Thorong La Pass",
+                type: "Popular",
+                rating: 5,
+                image: image("Thorong La.jpg"),
+                text: "At 5,416 m, the highest point of the circuit with breathtaking views."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Teahouse Lodge",
+                price: "Rs. 1,500–3,500",
+                text: "Warm rooms and hearty meals in every village."
+            },
+
+            {
+                name: "Mountain Hotel",
+                price: "Rs. 3,000–6,000",
+                text: "More comfortable options in Manang village."
+            },
+
+            {
+                name: "High Camp Lodge",
+                price: "Rs. 2,000–4,000",
+                text: "Rooms near the pass for early crossings."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Reach Manang by road from Pokhara, or trek the whole circuit. The road now reaches most villages.",
+
+            time:
+                "Autumn is the most reliable season. Start the Thorong La crossing at dawn.",
+
+            food:
+                "Teahouses serve dal bhat, noodles and apple pie from local orchards.",
+
+            local:
+                "Spend an acclimatisation day in Manang and visit the village's old monastery."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Manang is above 3,500 m and Thorong La above 5,000 m — altitude sickness is a serious risk.",
+
+            weather:
+                "Weather turns quickly; snow can fall even in spring.",
+
+            road:
+                "Roads are rough and can be blocked by landslides.",
+
+            network:
+                "Signal only in villages; no service on the pass.",
+
+            health:
+                "Medical facilities are very limited. Carry altitude medicine.",
+
+            precautions:
+                "Climb high, sleep low. If symptoms appear, descend immediately."
+
+        },
+
+
+        rating: 4.8,
+
+
+        reviews: [
+
+            {
+                name: "Hiro Tanaka",
+                rating: 5,
+                tag: "Trekker",
+                text: "Crossing Thorong La at sunrise is the greatest day of my life. Acclimatise well!"
+            },
+
+            {
+                name: "Emma Wilson",
+                rating: 5,
+                tag: "Adventure",
+                text: "Gangapurna Lake and the icefall are unreal. The valley stays with you."
+            },
+
+            {
+                name: "David Miller",
+                rating: 4,
+                tag: "Solo",
+                text: "Brilliant circuit. Plan for weather delays and pack seriously warm gear."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       DOLPO — SHEY PHOKSUNDO
+    ===================================================== */
+
+    dolpo: {
+
+        name: "Dolpo & Shey Phoksundo",
+
+        category: "Western Himalaya",
+
+        best: "🌊 Turquoise High-Altitude Lake",
+
+        interests: [
+            "lakes",
+            "hidden",
+            "trekking",
+            "nature"
+        ],
+
+        coords: {
+            lat: 29.48,
+            lng: 82.85
+        },
+
+        minDays: 7,
+
+        budget: {
+            transport: 5500,
+            lodging: 3500,
+            food: 1800,
+            activities: 1200
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "May–Oct",
+
+        difficulty: "challenging",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 4500,
+            porterPerDay: 3200,
+            porterLoadKg: 20
+        },
+
+        safetyLevels: {
+            altitude: "high",
+            weather: "high",
+            road: "high",
+            network: "low",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Flight to Juphal",
+                    fare: "Rs 10,000–15,000",
+                    duration: "1 hr via Nepalgunj"
+                },
+                {
+                    type: "Local Bus + Jeep",
+                    fare: "Rs 3,000–5,000",
+                    duration: "2–3 days"
+                }
+            ],
+
+            note: "Fly to Juphal then walk a day to the lake. Upper Dolpo needs a special permit."
+
+        },
+
+        image:
+            image("Shey-Phoksundo Lake.jpg"),
+
+        description:
+            "A deep turquoise lake in Nepal's wildest corner, framed by cliffs and silence.",
+
+        intro:
+            "Shey Phoksundo is one of the world's most beautiful high-altitude lakes — a remote turquoise miracle in Dolpo.",
+
+
+        important: {
+
+            season:
+                "May–October",
+
+            route:
+                "Kathmandu → Nepalgunj → Juphal → Ringmo",
+
+            style:
+                "Trek, 7–10 days",
+
+            carry:
+                "Warm layers, sleeping bag, permits and cash"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Shey Phoksundo Lake",
+                type: "Popular",
+                rating: 5,
+                image: image("Shey-Phoksundo Lake.jpg"),
+                text: "A surreal turquoise lake ringed by sheer cliffs — the trek's grand finale."
+            },
+
+            {
+                name: "Ringmo Village",
+                type: "Underrated",
+                rating: 5,
+                image: image("Ringmo village.jpg"),
+                text: "A traditional Bon-po village of stone houses above the lake."
+            },
+
+            {
+                name: "Phoksundo Waterfall",
+                type: "Underrated",
+                rating: 5,
+                image: image("Phoksundo waterfall.jpg"),
+                text: "A thundering waterfall on the approach trail to the lake."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Teahouse Lodge",
+                price: "Rs. 1,500–3,500",
+                text: "Simple lodges along the trekking route."
+            },
+
+            {
+                name: "Ringmo Guesthouse",
+                price: "Rs. 1,200–2,500",
+                text: "Basic village stays by the lake."
+            },
+
+            {
+                name: "Juphal Hotel",
+                price: "Rs. 1,000–2,000",
+                text: "Practical rooms near the airstrip."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Fly to Juphal and trek to Ringmo. Upper Dolpo requires a restricted-area permit through a registered agency.",
+
+            time:
+                "May–October is the trekking window. June to September can be wet but lush.",
+
+            food:
+                "Expect simple dal bhat and noodles — bring extra snacks from Nepalgunj.",
+
+            local:
+                "The lake is sacred to local people. Visit Ringmo's gompa and respect village customs."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "The lake sits near 3,600 m and passes go much higher — altitude care is essential.",
+
+            weather:
+                "Conditions are extreme; temperatures can drop below freezing even in summer.",
+
+            road:
+                "The approach is by flight and foot — roads barely exist.",
+
+            network:
+                "Almost no mobile signal in the region.",
+
+            health:
+                "Medical help is hours or days away. Carry a complete first-aid kit.",
+
+            precautions:
+                "Hire an experienced local guide, carry all permits and travel in small groups."
+
+        },
+
+
+        rating: 4.9,
+
+
+        reviews: [
+
+            {
+                name: "Claire Dubois",
+                rating: 5,
+                tag: "Culture",
+                text: "The most beautiful lake I've ever seen. Dolpo is Nepal at its wildest."
+            },
+
+            {
+                name: "Tom Baker",
+                rating: 5,
+                tag: "Backpacker",
+                text: "Remote, tough and completely magical. The trek to the lake is world-class."
+            },
+
+            {
+                name: "Maya Gurung",
+                rating: 4,
+                tag: "Solo",
+                text: "Allow extra days and come physically prepared. Worth every effort."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       KHAPTAD
+    ===================================================== */
+
+    khaptad: {
+
+        name: "Khaptad",
+
+        category: "Far West Highlands",
+
+        best: "🌿 Sacred Meadow Highlands",
+
+        interests: [
+            "nature",
+            "hidden",
+            "relaxation",
+            "trekking"
+        ],
+
+        coords: {
+            lat: 29.40,
+            lng: 81.17
+        },
+
+        minDays: 3,
+
+        budget: {
+            transport: 4000,
+            lodging: 2500,
+            food: 1200,
+            activities: 600
+        },
+
+        crowdLevel: "low",
+
+        bestSeason:
+            "Mar–May, Sep–Nov",
+
+        difficulty: "moderate",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 3500,
+            porterPerDay: 2500,
+            porterLoadKg: 22
+        },
+
+        safetyLevels: {
+            altitude: "medium",
+            weather: "high",
+            road: "high",
+            network: "low",
+            health: "medium"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Flight to Dhangadhi",
+                    fare: "Rs 6,000–9,000",
+                    duration: "1 hr 20 min"
+                },
+                {
+                    type: "Local Bus",
+                    fare: "Rs 1,500–2,500",
+                    duration: "1 day via Dhangadhi"
+                }
+            ],
+
+            note: "Fly or bus to Dhangadhi, then a scenic drive and walk up to the high meadows."
+
+        },
+
+        image:
+            image("Khaptad National Park.jpg"),
+
+        description:
+            "Rolling alpine meadows, rhododendron forest and a sacred ashram in the far west.",
+
+        intro:
+            "Khaptad is a peaceful highland of flower-filled meadows and misty forests — a quiet retreat off every tourist map.",
+
+
+        important: {
+
+            season:
+                "March–May and September–November",
+
+            route:
+                "Kathmandu → Dhangadhi → Khaptad",
+
+            style:
+                "Drive + gentle walking",
+
+            carry:
+                "Warm clothes, rain gear, water and cash"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Khaptad Danda",
+                type: "Underrated",
+                rating: 5,
+                image: image("Khaptad National Park.jpg"),
+                text: "The high meadow plateau, alive with flowers in spring and golden grass in autumn."
+            },
+
+            {
+                name: "Khaptad Baba Ashram",
+                type: "Underrated",
+                rating: 4,
+                image: image("Khaptad Baba.jpg"),
+                text: "A quiet hermitage in the forest, home to a legendary sage."
+            },
+
+            {
+                name: "Saipal Himal View",
+                type: "Underrated",
+                rating: 5,
+                image: image("Saipal Himal.jpg"),
+                text: "On clear days, the western Himalaya rises across the valley."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "Meadow Lodge",
+                price: "Rs. 1,500–3,000",
+                text: "Simple stone lodges on the highlands."
+            },
+
+            {
+                name: "Dhangadhi Hotel",
+                price: "Rs. 1,000–2,500",
+                text: "Practical rooms at the gateway town."
+            },
+
+            {
+                name: "Forest Camp",
+                price: "Rs. 1,200–2,500",
+                text: "Camping options inside the park area."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "Fly to Dhangadhi, drive to the park gate and walk the final kilometres onto the plateau.",
+
+            time:
+                "Spring fills the meadows with rhododendron flowers; autumn is driest and clearest.",
+
+            food:
+                "Simple local food is available at the lodges — bring your own snacks for walks.",
+
+            local:
+                "Khaptad is sacred and quiet. Enjoy long slow walks, birdsong and the silence."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "The plateau is around 3,000 m — mild altitude care needed.",
+
+            weather:
+                "Clouds and rain can arrive quickly; the plateau is exposed to wind.",
+
+            road:
+                "Approach roads are rough; walking is easier than driving near the top.",
+
+            network:
+                "Very limited mobile signal.",
+
+            health:
+                "Carry medicine — health facilities are far away.",
+
+            precautions:
+                "Walk in daylight, carry water and tell someone your route."
+
+        },
+
+
+        rating: 4.7,
+
+
+        reviews: [
+
+            {
+                name: "Anita Shrestha",
+                rating: 5,
+                tag: "Family",
+                text: "Endless green meadows and total silence. The far west is Nepal's best-kept secret."
+            },
+
+            {
+                name: "Sarah Park",
+                rating: 4,
+                tag: "Friends",
+                text: "A peaceful hiking escape with gorgeous spring flowers. Bring layers."
+            },
+
+            {
+                name: "Nabin Joshi",
+                rating: 5,
+                tag: "Culture",
+                text: "The ashram and the meadow walks are deeply calming. Highly underrated."
+            }
+
+        ]
+
+    },
+
+
+
+    /* =====================================================
+       DHARAN
+    ===================================================== */
+
+    dharan: {
+
+        name: "Dharan",
+
+        category: "Eastern Terai",
+
+        best: "🌄 Gateway to the Hills",
+
+        interests: [
+            "nature",
+            "relaxation",
+            "food"
+        ],
+
+        coords: {
+            lat: 26.82,
+            lng: 87.28
+        },
+
+        minDays: 2,
+
+        budget: {
+            transport: 600,
+            lodging: 1500,
+            food: 700,
+            activities: 400
+        },
+
+        crowdLevel: "medium",
+
+        bestSeason:
+            "Oct–Mar",
+
+        difficulty: "easy",
+
+        hiddenAlt: "",
+
+        fairCosts: {
+            guidePerDay: 2800,
+            porterPerDay: 2000,
+            porterLoadKg: 25
+        },
+
+        safetyLevels: {
+            altitude: "low",
+            weather: "medium",
+            road: "low",
+            network: "high",
+            health: "high"
+        },
+
+        transport: {
+
+            options: [
+                {
+                    type: "Local Bus",
+                    fare: "Rs 50–150",
+                    duration: "1 hr from Itahari"
+                },
+                {
+                    type: "Taxi / Jeep",
+                    fare: "Rs 800–1,500",
+                    duration: "30–45 min from Itahari"
+                }
+            ],
+
+            note: "Dharan is very easy to reach from the eastern terai and Biratnagar."
+
+        },
+
+        image:
+            image("Dharan, Nepal.jpg"),
+
+        description:
+            "A lively hill-edge city with temples, nature walks and some of Nepal's best street food.",
+
+        intro:
+            "Dharan is the friendly eastern gateway town — green hills, holy temples and a relaxed local vibe.",
+
+
+        important: {
+
+            season:
+                "October–March",
+
+            route:
+                "Itahari → Dharan (30–60 min)",
+
+            style:
+                "City walks + hill viewpoints",
+
+            carry:
+                "Comfortable shoes, water and a hat"
+
+        },
+
+
+        places: [
+
+            {
+                name: "Buddha Subba Temple",
+                type: "Popular",
+                rating: 5,
+                image: image("Buddhasubba Temple.jpg"),
+                text: "A forest temple on a hilltop, sacred to many communities and great for views."
+            },
+
+            {
+                name: "Dantakali Temple",
+                type: "Underrated",
+                rating: 4,
+                image: image("Dantakali Temple.jpg"),
+                text: "An old cave shrine reached by a long staircase through the forest."
+            },
+
+            {
+                name: "Vijayapur Hill",
+                type: "Underrated",
+                rating: 4,
+                image: image("Vijayapur fort.jpg"),
+                text: "Historic fort ruins with panoramic views of the terai below."
+            }
+
+        ],
+
+
+        hotels: [
+
+            {
+                name: "City Hotel",
+                price: "Rs. 1,500–3,000",
+                text: "Comfortable rooms in the centre of town."
+            },
+
+            {
+                name: "Hill Resort",
+                price: "Rs. 2,500–5,000",
+                text: "Nice options up the hill with cooler air."
+            },
+
+            {
+                name: "Budget Lodge",
+                price: "Rs. 800–1,500",
+                text: "Simple, clean rooms for transit stays."
+            }
+
+        ],
+
+
+        guide: {
+
+            travel:
+                "An easy bus or taxi ride from Itahari or Biratnagar. The hill roads are good.",
+
+            time:
+                "Winter is most pleasant. Early mornings at the temples are quiet and cool.",
+
+            food:
+                "Dharan is famous for its street food — try local momos, sel roti and sweets.",
+
+            local:
+                "Walk up to the temples for exercise and views, and shop in the lively bazaar."
+
+        },
+
+
+        safety: {
+
+            altitude:
+                "Around 600 m — no altitude concerns.",
+
+            weather:
+                "Mild winters and hot summers; carry water in summer.",
+
+            road:
+                "Roads are good and well-connected.",
+
+            network:
+                "Excellent mobile and internet coverage.",
+
+            health:
+                "Good hospitals are available in town.",
+
+            precautions:
+                "Take care on the steep temple stairs in the rainy season."
+
+        },
+
+
+        rating: 4.4,
+
+
+        reviews: [
+
+            {
+                name: "Rajan Gurung",
+                rating: 4,
+                tag: "Couple",
+                text: "Lovely walkable town with great food and the peaceful Buddha Subba temple."
+            },
+
+            {
+                name: "Prakash Limbu",
+                rating: 5,
+                tag: "Local Explorer",
+                text: "The perfect gateway to the east. Vijayapur hill at sunset is special."
+            },
+
+            {
+                name: "Liam O'Connor",
+                rating: 4,
+                tag: "Backpacker",
+                text: "Great street food and friendly locals. An easy day trip from Itahari."
+            }
+
+        ]
+
+    },
 
 };
 
@@ -1940,7 +5361,8 @@ const underratedRegions = [
         difficulty: "easy",
         bestSeason: "Oct–Mar",
         description: "Nepal's wildest national park — Bengal tigers, wild elephants and empty trails. The uncrowded answer to Chitwan.",
-        replace: "Chitwan"
+        replace: "Chitwan",
+        review: "We saw a tiger on our second morning. Complete wilderness without a single crowd. — Rahul S., Wildlife Photographer"
     },
 
     {
@@ -1951,7 +5373,8 @@ const underratedRegions = [
         difficulty: "moderate",
         bestSeason: "Mar–May, Sep–Nov",
         description: "A short, stunning Himalayan valley an hour from Kathmandu with glacier views and quiet teahouse trails.",
-        replace: "Everest Base Camp"
+        replace: "Everest Base Camp",
+        review: "Closer than I expected and just as beautiful — glacier views two hours from Kathmandu. — Sofia M., Trekker"
     },
 
     {
@@ -1962,7 +5385,8 @@ const underratedRegions = [
         difficulty: "challenging",
         bestSeason: "Mar–May, Oct–Nov",
         description: "Nepal's wildest and most remote trek around the world's third-highest peak. Permit-restricted and unforgettable.",
-        replace: "Annapurna Circuit"
+        replace: "Annapurna Circuit",
+        review: "The most remote trek I've done in Nepal. Worth every permit and every step. — Arjun T., Expedition"
     },
 
     {
@@ -1973,7 +5397,8 @@ const underratedRegions = [
         difficulty: "moderate",
         bestSeason: "Oct–Nov, Feb–Apr",
         description: "Nepal's least-visited province — whitewater rafting, apple orchards and a genuinely undiscovered culture.",
-        replace: "Mustang"
+        replace: "Mustang",
+        review: "Rafting the Karnali felt like another country. Apples, rivers and empty valleys. — Lena K., Rafter"
     },
 
     {
@@ -1984,7 +5409,8 @@ const underratedRegions = [
         difficulty: "easy",
         bestSeason: "Oct–Apr",
         description: "Peaceful lakes 20 minutes from Lakeside Pokhara. Sunrise paddles, terraced villages and almost no tourists.",
-        replace: "Pokhara Lakeside"
+        replace: "Pokhara Lakeside",
+        review: "A quiet sunrise paddle with Machhapuchhre reflecting in the water. Barely any tourists. — David O., Photographer"
     },
 
     {
@@ -1995,7 +5421,8 @@ const underratedRegions = [
         difficulty: "easy",
         bestSeason: "Oct–Mar",
         description: "The archaeological heartland of Buddha's early life — quiet ruins and village life near the Indian border.",
-        replace: "Lumbini"
+        replace: "Lumbini",
+        review: "Walked the Buddha's early home in peaceful ruins. Deeply moving and nearly empty. — Priya V., Historian"
     }
 
 ];
@@ -2825,6 +6252,13 @@ function renderResults(results, plan) {
                                     ${item.place.description}
                                 </p>
 
+                                <div class="result-stars">
+                                    ${starRow(item.place.rating)}
+                                    <span>
+                                        ${item.place.reviews.length} traveler review${item.place.reviews.length > 1 ? "s" : ""}
+                                    </span>
+                                </div>
+
                             </div>
 
 
@@ -2965,6 +6399,11 @@ function openDestination(key) {
     renderHotels(
         place.hotels,
         "homeHotels"
+    );
+
+    renderReviews(
+        place,
+        "homeReviews"
     );
 
     renderPacking(
@@ -3389,6 +6828,12 @@ function renderPlaces(
                         ${place.name}
                     </h3>
 
+                    ${
+                        place.rating
+                        ? `<div class="place-stars">${starRow(place.rating)}</div>`
+                        : ""
+                    }
+
                     <p>
                         ${place.text}
                     </p>
@@ -3488,6 +6933,132 @@ function imgFallback(img) {
     if (img.src !== placeholder) {
         img.src = placeholder;
     }
+
+}
+
+
+
+/* =========================================================
+   RATING STARS + TRAVELER REVIEWS
+
+   Renders the ★★★☆☆ star row for a destination or place,
+   and the "Traveler Reviews" cards for a destination.
+========================================================= */
+
+function starRow(rating) {
+
+    const value =
+        Math.max(
+            0,
+            Math.min(
+                5,
+                Number(rating) || 0
+            )
+        );
+
+    let stars = "";
+
+    for (let i = 1; i <= 5; i++) {
+        stars +=
+            i <= value
+            ? "★"
+            : "☆";
+    }
+
+    return `<span class="stars" aria-label="${value} out of 5 stars">${stars}</span>`;
+
+}
+
+
+function renderReviews(place, containerName) {
+
+    const container =
+        document.getElementById(
+            containerName
+        );
+
+    if (!container) {
+        return;
+    }
+
+    const reviews =
+        Array.isArray(place.reviews)
+        ? place.reviews
+        : [];
+
+    const heading =
+        document.getElementById(
+            containerName + "Heading"
+        );
+
+    if (heading) {
+
+        heading.textContent =
+            `Traveler Reviews` +
+            (
+                reviews.length > 0
+                ? ` · ${reviews.length}`
+                : ""
+            );
+
+    }
+
+    container.innerHTML = "";
+
+    if (reviews.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="review-empty">
+                No traveler reviews yet. Be the first to share your experience!
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    reviews.forEach(function(review) {
+
+        container.innerHTML += `
+
+            <div class="review-card">
+
+                <div class="review-head">
+
+                    <div class="review-avatar">
+                        ${(review.name || "?").charAt(0).toUpperCase()}
+                    </div>
+
+                    <div class="review-meta">
+
+                        <strong>
+                            ${review.name}
+                        </strong>
+
+                        <small>
+                            ${review.tag || "Traveler"}
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="review-rating">
+                    ${starRow(review.rating)}
+                </div>
+
+                <p>
+                    ${review.text}
+                </p>
+
+            </div>
+
+        `;
+
+    });
 
 }
 
@@ -4410,6 +7981,13 @@ function renderDiscoverGrid() {
                             ${place.best}
                         </p>
 
+                        <div class="discover-stars">
+                            ${starRow(place.rating)}
+                            <small>
+                                ${place.reviews.length} reviews
+                            </small>
+                        </div>
+
                     </div>
 
                 </div>
@@ -4458,6 +8036,12 @@ function openDiscover(key) {
     renderHotels(
         place.hotels,
         "discoverHotels"
+    );
+
+
+    renderReviews(
+        place,
+        "discoverReviews"
     );
 
 
@@ -7112,6 +10696,12 @@ function renderUnderrated() {
                     <span class="underrated-replace">
                         ☞ Quieter alternative to ${escapeHtml(region.replace)}
                     </span>
+
+                    ${
+                        region.review
+                        ? `<p class="underrated-review">“${escapeHtml(region.review)}”</p>`
+                        : ""
+                    }
 
                 </div>
 

@@ -3784,6 +3784,7 @@ nav {
 .hotel-card,
 .place-card,
 .discover-card,
+.review-card,
 .trip-saved-card,
 .underrated-card,
 .fair-card,
@@ -4023,4 +4024,174 @@ footer {
         transition-duration: 0.01ms !important;
     }
 
+}
+
+
+
+
+/* =========================================================
+   TRAVELER REVIEWS + STAR RATINGS
+========================================================= */
+
+.stars {
+    display: inline-flex;
+    gap: 2px;
+
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--flag-gold);
+    line-height: 1;
+}
+
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+
+.review-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 18px;
+
+    background: linear-gradient(180deg, var(--card2), var(--card));
+    border: 1px solid var(--border);
+    border-top-color: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius);
+
+    transition: all 0.25s ease;
+}
+
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+    border-color: rgba(242, 182, 50, 0.4);
+}
+
+
+.review-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.review-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    background: var(--grad-crimson);
+    border-radius: 50%;
+
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+.review-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
+.review-meta strong {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.review-meta small {
+    font-size: 12px;
+    color: var(--flag-gold);
+}
+
+
+.review-rating {
+    margin-top: -4px;
+}
+
+
+.review-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+}
+
+
+.review-empty {
+    padding: 22px;
+
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--border-gold);
+    border-radius: var(--radius);
+}
+
+
+.result-stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.result-stars .stars {
+    font-size: 15px;
+}
+
+.result-stars span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+
+.place-stars {
+    margin-bottom: 8px;
+}
+
+
+.discover-stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.discover-stars .stars {
+    font-size: 13px;
+}
+
+.discover-stars small {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+.underrated-review {
+    margin-top: 12px;
+    padding-left: 12px;
+
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+
+    border-left: 3px solid var(--flag-gold);
 }
