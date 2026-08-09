@@ -117,6 +117,15 @@
 
             <button
                 class="nav-btn"
+                onclick="showPage('smart', this)"
+                data-i18n="navSmart"
+            >
+                🧠 Travel Smart
+            </button>
+
+
+            <button
+                class="nav-btn"
                 onclick="showPage('insights', this)"
                 data-i18n="navInsights"
             >
@@ -1472,6 +1481,7 @@
                             <span class="legend-dot harassment"></span> Harassment
                             <span class="legend-dot theft"></span> Theft
                             <span class="legend-dot price"></span> Price
+                            <span class="legend-dot guide"></span> Guide
                             <span class="legend-dot info"></span> Info
                         </div>
 
@@ -1543,6 +1553,7 @@
                                     <option value="price">Price / fare check</option>
                                     <option value="harassment">Harassment</option>
                                     <option value="theft">Theft</option>
+                                    <option value="guide">Bad / fake guide</option>
                                     <option value="info">Safety info / alert</option>
                                 </select>
                             </div>
@@ -2515,6 +2526,410 @@
                         Prints the whole fair-price sheet for this destination —
                         handy when you are off the grid with no signal.
                     </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TRAVEL SMART
+        ================================================== -->
+
+        <section
+            id="smart"
+            class="page"
+        >
+
+            <div class="page-header page-hero">
+
+                <span class="mini-title">
+                    PLAY IT SMART
+                </span>
+
+                <h1>
+                    Travel Smart Nepal
+                </h1>
+
+                <p>
+                    Permits, vetting your guide, women's safety, emergency
+                    numbers, money on the trail and an offline survival kit —
+                    everything that makes a trip go right.
+                </p>
+
+            </div>
+
+
+            <div class="page-container">
+
+
+                <div class="smart-grid">
+
+
+                    <!-- =============================
+                         PERMITS & RULES
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🛂
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    BEFORE YOU GO
+                                </span>
+
+                                <h2>
+                                    Permits & rules
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Since September 2025 every independent trekker in
+                            Nepal must register on NepaliPort before hitting the
+                            trail — it is free and takes minutes.
+                        </p>
+
+                        <div
+                            id="permitList"
+                            class="permit-list"
+                        >
+                            Loading permits…
+                        </div>
+
+                        <div
+                            id="restrictedAlert"
+                            class="restricted-alert hidden"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <!-- =============================
+                         VET YOUR GUIDE
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🧭
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    LICENSED ONLY
+                                </span>
+
+                                <h2>
+                                    Vet your guide
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Unlicensed guides are the top source of bad trips and
+                            even missing-trekker cases. Ten minutes of checking
+                            avoids a week of regret.
+                        </p>
+
+                        <ul
+                            id="guideChecklist"
+                            class="smart-checklist"
+                        >
+                            Loading checklist…
+                        </ul>
+
+                        <div class="smart-callout smart-callout-guide">
+                            <strong>🚩 Red flag:</strong>
+                            <span>
+                                A "guide" who cannot show a TAAN or NTIA licence
+                                card, refuses to put details in writing, or
+                                quotes far below market rates.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- =============================
+                         WOMEN'S SAFETY
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🛡
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    SOLO & FEMALE TRAVELERS
+                                </span>
+
+                                <h2>
+                                    Women's safety
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <div class="emergency-card emergency-hotline">
+
+                            <div class="emergency-icon">
+                                📞
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    National women's helpline
+                                </h3>
+
+                                <div class="emergency-number">
+                                    1145
+                                </div>
+
+                                <p>
+                                    Free, confidential, 24/7. Also the One-Stop
+                                    Crisis Management Centres at major hospitals.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="smart-checklist women-list">
+                            <li>
+                                Use app taxis (InDrive, Pathao) at night instead
+                                of flagging street cabs.
+                            </li>
+                            <li>
+                                Keep the front desk informed of your daily
+                                itinerary.
+                            </li>
+                            <li>
+                                Share your live location with someone at home.
+                            </li>
+                            <li>
+                                On treks, hike with a buddy or hire a porter;
+                                avoid solo sections after dark.
+                            </li>
+                            <li>
+                                Trust your instinct — leave any situation that
+                                feels off and go to a busy place.
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <!-- =============================
+                         HEALTH & RESCUE
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🚑
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    IF SOMETHING HAPPENS
+                                </span>
+
+                                <h2>
+                                    Health & rescue
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Save these numbers before you lose signal. For
+                            evacuation, travel insurance with helicopter cover
+                            is the single most important purchase you will make.
+                        </p>
+
+                        <div
+                            id="emergencyGrid"
+                            class="emergency-grid"
+                        >
+                            Loading emergency numbers…
+                        </div>
+
+                        <div class="smart-callout smart-callout-altitude">
+                            <strong>⛰ Altitude:</strong>
+                            <span>
+                                Above ~3,000 m, ascend slowly, sleep lower than
+                                you climb, and treat any headache + nausea as
+                                altitude sickness until proven otherwise. The
+                                only cure is going down.
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- =============================
+                         MONEY ON THE TRAIL
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                💸
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    CASH IS KING
+                                </span>
+
+                                <h2>
+                                    Money on the trail
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <ul
+                            id="moneyTips"
+                            class="smart-checklist"
+                        >
+                            Loading money tips…
+                        </ul>
+
+                    </div>
+
+
+                    <!-- =============================
+                         OFFLINE KIT
+                    ============================== -->
+
+                    <div class="smart-block">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                📴
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    NO SIGNAL? NO PROBLEM
+                                </span>
+
+                                <h2>
+                                    Offline kit
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <p class="smart-intro">
+                            Above ~3,000 m mobile coverage drops fast. Take the
+                            essential numbers, rules and phrases with you before
+                            you leave the last signal.
+                        </p>
+
+                        <div
+                            id="offlineStatus"
+                            class="offline-status"
+                        >
+                        </div>
+
+                        <div class="offline-actions">
+
+                            <button
+                                class="report-btn"
+                                onclick="downloadSmartPack()"
+                            >
+                                📥 Download offline pack
+                            </button>
+
+                            <button
+                                class="report-cancel"
+                                onclick="printSmartPack()"
+                            >
+                                🖨 Print offline pack
+                            </button>
+
+                        </div>
+
+                        <p class="smart-note">
+                            The pack is a plain text file you can read anywhere
+                            — no app, no signal needed.
+                        </p>
+
+                    </div>
+
+
+                    <!-- =============================
+                         PHRASEBOOK
+                    ============================== -->
+
+                    <div class="smart-block smart-block-wide">
+
+                        <div class="smart-head">
+
+                            <div class="smart-icon">
+                                🗣
+                            </div>
+
+                            <div>
+
+                                <span class="mini-title">
+                                    ENGLISH ⇄ NEPALI
+                                </span>
+
+                                <h2>
+                                    Phrasebook
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="phrasebookList"
+                            class="phrasebook"
+                        >
+                            Loading phrases…
+                        </div>
+
+                    </div>
 
                 </div>
 

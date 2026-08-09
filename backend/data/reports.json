@@ -1,6 +1,18 @@
 {
     "reports": [
         {
+            "id": "r-1786289016004-ed813b7e",
+            "place": "kathmandu",
+            "lat": 27.72,
+            "lng": 85.32,
+            "category": "price",
+            "severity": "medium",
+            "title": "QA price check test",
+            "description": "Auto QA submitted price report.",
+            "time": "2026-08-09T15:23:36.005Z",
+            "source": "user"
+        },
+        {
             "id": "r-1786237495993-dd710dfc",
             "place": "kathmandu",
             "lat": 27.72,
@@ -46,6 +58,30 @@
             "title": "Park entry fee confirmation",
             "description": "Foreigner day pass confirmed at Rs 1,500 at the gate; keep the ticket for jeep bookings.",
             "time": "2026-08-07T09:10:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-guide-1",
+            "place": "pokhara",
+            "lat": 28.213,
+            "lng": 83.9856,
+            "category": "guide",
+            "severity": "high",
+            "title": "Fake guide without licence near Lakeside",
+            "description": "A man near the tourist bus stop claimed to be a trekking guide but had no TAAN/NTIA card. Ask for the licence and check the photo.",
+            "time": "2026-08-06T16:40:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-guide-2",
+            "place": "kathmandu",
+            "lat": 27.7122,
+            "lng": 85.3163,
+            "category": "guide",
+            "severity": "medium",
+            "title": "Unlicensed 'mountain guide' at airport",
+            "description": "Offered a cheap EBC package but refused to show any certification. Use a registered trekking agency only.",
+            "time": "2026-08-05T10:15:00.000Z",
             "source": "seed"
         },
         {

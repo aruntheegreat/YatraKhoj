@@ -5631,6 +5631,10 @@ function showPage(pageName, button) {
 
         }, 150);
 
+    } else if (pageName === "smart") {
+
+        loadSmartPage();
+
     } else if (pageName === "insights") {
 
         loadTrends();
@@ -8702,6 +8706,7 @@ const uiDict = {
         navGuides: "☷ Travel Guides",
         navSafety: "🛡 Safety Info",
         navFairPrices: "💵 Fair Price Nepal",
+        navSmart: "🧠 Travel Smart",
         navInsights: "📊 Nepal in Numbers",
         navCurrency: "₨ Currency Converter",
         navAbout: "◎ About Us",
@@ -8714,6 +8719,7 @@ const uiDict = {
         navGuides: "☷ यात्रा गाइड",
         navSafety: "🛡 सुरक्षा जानकारी",
         navFairPrices: "💵 उचित मूल्य नेपाल",
+        navSmart: "🧠 स्मार्ट यात्रा",
         navInsights: "📊 नेपाल संख्यामा",
         navCurrency: "₨ मुद्रा परिवर्तक",
         navAbout: "◎ हाम्रो बारेमा",
@@ -9891,6 +9897,11 @@ const reportCategoryNames = {
         ne: "मूल्य"
     },
 
+    guide: {
+        en: "Guide",
+        ne: "गाइड"
+    },
+
     info: {
         en: "Info",
         ne: "जानकारी"
@@ -10030,6 +10041,7 @@ function renderReportMap(reports) {
         harassment: "#F2B632",
         theft: "#8E44AD",
         price: "#2ECC71",
+        guide: "#F39C12",
         info: "#2E86DE"
     };
 
@@ -11707,6 +11719,7 @@ function renderFairReportMap(reports) {
         harassment: "#F2B632",
         theft: "#8E44AD",
         price: "#2ECC71",
+        guide: "#F39C12",
         info: "#2E86DE"
     };
 
@@ -12129,6 +12142,756 @@ function printFairSheet() {
 
     printRoot.innerHTML =
         buildFairPrintHTML();
+
+    printRoot.classList.remove(
+        "hidden"
+    );
+
+    window.print();
+
+    printRoot.classList.add(
+        "hidden"
+    );
+
+    printRoot.innerHTML = "";
+
+}
+
+
+/* =========================================================
+   TRAVEL SMART
+
+   Permits, vet-your-guide, women's safety, emergency
+   numbers, money on the trail, offline pack and an
+   English ⇄ Nepali phrasebook.
+========================================================= */
+
+const smartPermits = [
+
+    {
+        region: "All independent trekkers",
+        permit: "NepaliPort registration",
+        cost: "Free",
+        where: "nepaliport.gov.np",
+        note: "Mandatory since Sept 2025 — register before you start trekking.",
+        mandatory: true
+    },
+    {
+        region: "Annapurna & Langtang",
+        permit: "TIMS card",
+        cost: "Rs 1,000–3,000",
+        where: "NTB / TAAN offices",
+        note: "Confirm the current requirement at the NTB counter before departure."
+    },
+    {
+        region: "Annapurna",
+        permit: "ACAP conservation fee",
+        cost: "Rs 3,000",
+        where: "ACAP checkpoints",
+        note: "Entry conservation fee for the Annapurna area."
+    },
+    {
+        region: "Everest",
+        permit: "Sagarmatha NP + Khumbu Pasang Lhamu",
+        cost: "Rs ~3,000 + Rs 2,000",
+        where: "Monjo gateway",
+        note: "Two separate permits, both bought near the park entrance."
+    },
+    {
+        region: "Langtang",
+        permit: "Langtang NP entry",
+        cost: "Rs ~3,000",
+        where: "Dhunche / Syabrubesi"
+    },
+    {
+        region: "Rara",
+        permit: "Rara NP entry",
+        cost: "Rs ~3,000",
+        where: "Talcha / Ghatta"
+    },
+    {
+        region: "Dolpo",
+        permit: "Shey Phoksundo NP + restricted area",
+        cost: "US$10/day",
+        where: "Dept. of Immigration / agency",
+        note: "Organised, licensed trek required."
+    },
+    {
+        region: "Upper Mustang",
+        permit: "Restricted area permit",
+        cost: "~US$50/day",
+        where: "Authorised agency",
+        note: "Must travel with a licensed, organised trek."
+    },
+    {
+        region: "Manaslu & Kanchenjunga",
+        permit: "Restricted area permit",
+        cost: "US$75+ / US$20 per week",
+        where: "Dept. of Immigration",
+        note: "Licensed group required."
+    },
+    {
+        region: "Chitwan & Bardia",
+        permit: "National park entry",
+        cost: "Rs 1,500",
+        where: "Park gates",
+        note: "Keep the ticket — needed again for jeep safaris."
+    }
+
+];
+
+
+const smartEmergency = [
+
+    {
+        name: "Tourist Police — Thamel",
+        number: "+977-1-4700750",
+        note: "Main tourist hub, Kathmandu"
+    },
+    {
+        name: "Tourist Police — Airport",
+        number: "+977-1-6227122",
+        note: "Tribhuvan International"
+    },
+    {
+        name: "Tourist Police — Pokhara",
+        number: "+977-61-462761",
+        note: "Lakeside"
+    },
+    {
+        name: "Nepal Tourism Crisis Unit",
+        number: "97510-44088",
+        note: "24/7 tourism emergencies"
+    },
+    {
+        name: "National women's helpline",
+        number: "1145",
+        note: "Free, confidential"
+    },
+    {
+        name: "Police",
+        number: "100",
+        note: ""
+    },
+    {
+        name: "Ambulance",
+        number: "102",
+        note: ""
+    },
+    {
+        name: "Fire",
+        number: "101",
+        note: ""
+    },
+    {
+        name: "International SOS (Kathmandu)",
+        number: "+977-1-5580311",
+        note: "Private clinic & evacuation"
+    }
+
+];
+
+
+const smartMoneyTips = [
+
+    "ATMs end around Namche Bazaar (Everest), Jomsom (Mustang) and Besishahar (Annapurna) — above that it is cash only.",
+    "Carry small notes (Rs 100 / Rs 500) for teahouses, tips and village shops; big bills are hard to break.",
+    "Exchange money at banks or authorised counters and keep the receipt.",
+    "Budget roughly Rs 1,500–3,500 per day for food and lodging on popular treks.",
+    "Cards work in Kathmandu and Pokhara hotels, but expect cash-only in villages.",
+    "Tell your bank you are travelling so your card is not auto-blocked."
+
+];
+
+
+const smartGuideChecklist = [
+
+    "Ask for their TAAN or NTIA licence card and check the photo matches.",
+    "Confirm daily rate, meals, insurance and rescue cover in writing.",
+    "Make sure they are insured for rescue — you should never pay their evacuation.",
+    "Verify the agency is registered and get a printed itinerary with dates.",
+    "Read recent reviews of the guide or agency before paying anything.",
+    "Pay in instalments and keep receipts — never 100% upfront.",
+    "A good guide will never rush your altitude rest days or skip permits."
+
+];
+
+
+const smartPhrases = [
+
+    { en: "How much does this cost?", ne: "यसको मूल्य कति हो?" },
+    { en: "That is too expensive.", ne: "यो धेरै महँगो छ।" },
+    { en: "Please reduce the price.", ne: "कृपया मूल्य घटाउनुहोस्।" },
+    { en: "Please use the meter.", ne: "कृपया मिटर चलाउनुहोस्।" },
+    { en: "Is this the correct price?", ne: "के यो सही मूल्य हो?" },
+    { en: "I need a licensed guide.", ne: "मलाई इजाजतपत्र प्राप्त गाइड चाहिन्छ।" },
+    { en: "No, thank you.", ne: "होइन, धन्यवाद।" },
+    { en: "I don't want this.", ne: "मलाई यो चाहिँदैन।" },
+    { en: "Help!", ne: "मद्दत गर्नुहोस्!" },
+    { en: "Please call the police.", ne: "कृपया प्रहरीलाई फोन गर्नुहोस्।" },
+    { en: "I am lost.", ne: "म हराएँ।" },
+    { en: "I am not feeling well.", ne: "मलाई सन्चो छैन।" },
+    { en: "Where is the hospital?", ne: "अस्पताल कहाँ छ?" },
+    { en: "Where can I exchange money?", ne: "पैसा साट्न कहाँ पाइन्छ?" },
+    { en: "Is there an ATM nearby?", ne: "नजिकै एटिएम छ?" },
+    { en: "Please speak slowly.", ne: "कृपया बिस्तारै बोल्नुहोस्।" },
+    { en: "Delicious, thank you.", ne: "मीठो छ, धन्यवाद।" },
+    { en: "See you later.", ne: "फेरि भेटौँला।" }
+
+];
+
+
+const smartRestrictedAreas = [
+    "Upper Mustang",
+    "Upper Dolpo",
+    "Manaslu",
+    "Kanchenjunga"
+];
+
+
+function loadSmartPage() {
+
+    renderPermitList();
+
+    renderGuideChecklist();
+
+    renderEmergencyGrid();
+
+    renderMoneyTips();
+
+    renderPhrasebook();
+
+    renderOfflineStatus();
+
+}
+
+
+function renderPermitList() {
+
+    const el =
+        document.getElementById(
+            "permitList"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        smartPermits
+        .map(function(permit) {
+
+            return `
+
+                <div class="permit-item ${permit.mandatory ? "permit-mandatory" : ""}">
+
+                    <div class="permit-top">
+
+                        <div>
+
+                            <span class="permit-region">
+                                ${escapeHtml(permit.region)}
+                            </span>
+
+                            <h3>
+                                ${escapeHtml(permit.permit)}
+                            </h3>
+
+                        </div>
+
+                        ${permit.mandatory ? `
+                            <span class="permit-badge">
+                                MANDATORY
+                            </span>
+                        ` : ""}
+
+                    </div>
+
+                    <div class="permit-meta">
+                        <span>
+                            💰 ${escapeHtml(permit.cost)}
+                        </span>
+                        <span>
+                            📍 ${escapeHtml(permit.where)}
+                        </span>
+                    </div>
+
+                    ${permit.note ? `
+                        <p class="permit-note">
+                            ${escapeHtml(permit.note)}
+                        </p>
+                    ` : ""}
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+    const alert =
+        document.getElementById(
+            "restrictedAlert"
+        );
+
+    if (alert) {
+
+        alert.innerHTML =
+            `
+                <strong>🛑 Restricted areas:</strong>
+                ${escapeHtml(smartRestrictedAreas.join(", "))}
+                need a special permit and a licensed, organised trek.
+                Budget the permit cost before you book.
+            `;
+
+        alert.classList.remove(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+function renderGuideChecklist() {
+
+    const el =
+        document.getElementById(
+            "guideChecklist"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        smartGuideChecklist
+        .map(function(item) {
+
+            return `
+                <li>
+                    <span class="check-dot">✓</span>
+                    <span>${escapeHtml(item)}</span>
+                </li>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderEmergencyGrid() {
+
+    const el =
+        document.getElementById(
+            "emergencyGrid"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        smartEmergency
+        .map(function(entry) {
+
+            return `
+
+                <div class="emergency-card">
+
+                    <div class="emergency-icon">
+                        📞
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            ${escapeHtml(entry.name)}
+                        </h3>
+
+                        <div class="emergency-number">
+                            ${escapeHtml(entry.number)}
+                        </div>
+
+                        ${entry.note ? `
+                            <p>
+                                ${escapeHtml(entry.note)}
+                            </p>
+                        ` : ""}
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderMoneyTips() {
+
+    const el =
+        document.getElementById(
+            "moneyTips"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        smartMoneyTips
+        .map(function(tip) {
+
+            return `
+                <li>
+                    <span class="check-dot">✓</span>
+                    <span>${escapeHtml(tip)}</span>
+                </li>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderPhrasebook() {
+
+    const el =
+        document.getElementById(
+            "phrasebookList"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        smartPhrases
+        .map(function(phrase, index) {
+
+            return `
+                <div class="phrase-row">
+
+                    <span class="phrase-en">
+                        ${escapeHtml(phrase.en)}
+                    </span>
+
+                    <span class="phrase-arrow">
+                        →
+                    </span>
+
+                    <span class="phrase-ne">
+                        ${escapeHtml(phrase.ne)}
+                    </span>
+
+                </div>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderOfflineStatus() {
+
+    const el =
+        document.getElementById(
+            "offlineStatus"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    if ("serviceWorker" in navigator) {
+
+        if (navigator.serviceWorker.controller) {
+
+            el.textContent =
+                "✅ Offline mode active — this page opens without signal.";
+
+            el.className =
+                "offline-status offline-ready";
+
+        } else if (
+            location.protocol === "https:" ||
+            location.hostname === "localhost" ||
+            location.hostname === "127.0.0.1"
+        ) {
+
+            el.textContent =
+                "⚙️ Offline mode activates on your next visit.";
+
+            el.className =
+                "offline-status offline-pending";
+
+        } else {
+
+            el.textContent =
+                "⚠️ Offline mode needs HTTPS — available on the live site.";
+
+            el.className =
+                "offline-status offline-unavailable";
+
+        }
+
+    } else {
+
+        el.textContent =
+            "⚠️ This browser does not support offline mode.";
+
+        el.className =
+            "offline-status offline-unavailable";
+
+    }
+
+}
+
+
+function buildSmartPackText() {
+
+    const lines = [];
+
+    lines.push(
+        "YATRAKHOJ — OFFLINE SURVIVAL PACK"
+    );
+
+    lines.push(
+        "Keep this for treks and areas without signal."
+    );
+
+    lines.push("");
+
+    if (
+        fairPricesData &&
+        fairPricesData.destinations[
+            fairSelected
+        ]
+    ) {
+
+        const destination =
+            fairPricesData.destinations[
+                fairSelected
+            ];
+
+        lines.push(
+            "=== FAIR PRICES: " +
+            destination.title.toUpperCase() +
+            " (NPR) ==="
+        );
+
+        (destination.taxiRoutes || []).forEach(
+            function(route) {
+
+                lines.push(
+                    "Taxi " +
+                    route.route +
+                    " — meter " +
+                    route.meter +
+                    ", fair " +
+                    route.fair
+                );
+
+            }
+        );
+
+        if (destination.guidePorter) {
+
+            lines.push(
+                "Guide " +
+                formatCost(destination.guidePorter.guidePerDay) +
+                "/day, porter " +
+                formatCost(destination.guidePorter.porterPerDay) +
+                "/day"
+            );
+
+        }
+
+        lines.push("");
+
+    }
+
+    lines.push("=== EMERGENCY NUMBERS ===");
+
+    smartEmergency.forEach(function(entry) {
+
+        lines.push(
+            entry.name +
+            " — " +
+            entry.number +
+            (entry.note ? " (" + entry.note + ")" : "")
+        );
+
+    });
+
+    lines.push("");
+
+    lines.push("=== PERMITS & RULES ===");
+
+    smartPermits.forEach(function(permit) {
+
+        lines.push(
+            permit.region +
+            ": " +
+            permit.permit +
+            " — " +
+            permit.cost +
+            " (" +
+            permit.where +
+            ")"
+        );
+
+    });
+
+    lines.push("");
+
+    lines.push("=== VET YOUR GUIDE ===");
+
+    smartGuideChecklist.forEach(function(item) {
+
+        lines.push("- " + item);
+
+    });
+
+    lines.push("");
+
+    lines.push("=== MONEY ON THE TRAIL ===");
+
+    smartMoneyTips.forEach(function(tip) {
+
+        lines.push("- " + tip);
+
+    });
+
+    lines.push("");
+
+    lines.push("=== PHRASEBOOK (ENGLISH -> NEPALI) ===");
+
+    smartPhrases.forEach(function(phrase) {
+
+        lines.push(
+            phrase.en +
+            " = " +
+            phrase.ne
+        );
+
+    });
+
+    lines.push("");
+
+    lines.push(
+        "Stay safe. Find Hidden. Go Local. — YatraKhoj"
+    );
+
+    return lines.join("\n");
+
+}
+
+
+function downloadSmartPack() {
+
+    const text =
+        buildSmartPackText();
+
+    const blob =
+        new Blob([text], {
+            type: "text/plain;charset=utf-8"
+        });
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href =
+        URL.createObjectURL(blob);
+
+    link.download =
+        "yatra-khoj-offline-pack.txt";
+
+    link.click();
+
+    URL.revokeObjectURL(
+        link.href
+    );
+
+    showToast(
+        "Offline pack downloaded."
+    );
+
+}
+
+
+function printSmartPack() {
+
+    const printRoot =
+        document.getElementById(
+            "fairPrintRoot"
+        );
+
+    if (!printRoot) {
+
+        showToast(
+            "Print area not available."
+        );
+
+        return;
+    }
+
+    const html =
+        buildSmartPackText()
+        .split("\n")
+        .map(function(line) {
+
+            if (/^===/.test(line)) {
+
+                return (
+                    "<h2>" +
+                    escapeHtml(line.replace(/=+/g, "").trim()) +
+                    "</h2>"
+                );
+
+            }
+
+            if (/^YATRAKHOJ/.test(line)) {
+
+                return (
+                    "<h1>" +
+                    escapeHtml(line) +
+                    "</h1>"
+                );
+
+            }
+
+            return (
+                "<p>" +
+                escapeHtml(line) +
+                "</p>"
+            );
+
+        })
+        .join("");
+
+    printRoot.innerHTML = html;
 
     printRoot.classList.remove(
         "hidden"
@@ -12795,6 +13558,32 @@ function startWebsite() {
     renderUnderrated();
 
     loadTrends();
+
+    registerServiceWorker();
+
+}
+
+
+function registerServiceWorker() {
+
+    if (
+        !("serviceWorker" in navigator) ||
+        (
+            location.protocol !== "https:" &&
+            location.hostname !== "localhost" &&
+            location.hostname !== "127.0.0.1"
+        )
+    ) {
+
+        return;
+
+    }
+
+    navigator.serviceWorker
+        .register("sw.js")
+        .catch(function() {
+            /* offline mode is best-effort */
+        });
 
 }
 

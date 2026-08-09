@@ -405,7 +405,7 @@ function saveReports(reports) {
     );
 }
 
-const REPORT_CATEGORIES = ["scam", "harassment", "theft", "info", "price"];
+const REPORT_CATEGORIES = ["scam", "harassment", "theft", "info", "price", "guide"];
 const REPORT_SEVERITIES = ["low", "medium", "high"];
 
 function validateReport(body) {
