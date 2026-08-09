@@ -48,6 +48,8 @@
 
 html {
     scroll-behavior: smooth;
+    scrollbar-color: #223061 var(--background);
+    scrollbar-width: thin;
 }
 
 
@@ -73,6 +75,12 @@ textarea {
 
 button {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+button:active:not(:disabled) {
+    transform: scale(0.97);
 }
 
 
@@ -107,6 +115,7 @@ a:hover {
 :focus-visible {
     outline: 2px solid var(--flag-gold);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(242, 182, 50, 0.14);
 }
 
 
@@ -584,13 +593,51 @@ nav {
     position: relative;
     overflow: hidden;
 
-    padding: 68px 28px 72px;
+    padding: 68px 28px 96px;
     text-align: center;
 
     background:
-        radial-gradient(900px 420px at 50% -20%, rgba(242, 182, 50, 0.12), transparent 60%),
+        radial-gradient(900px 420px at 50% -20%, rgba(242, 182, 50, 0.14), transparent 60%),
         radial-gradient(700px 500px at 85% 20%, rgba(200, 16, 46, 0.3), transparent 55%),
+        radial-gradient(520px 360px at 8% 30%, rgba(11, 30, 91, 0.65), transparent 60%),
+        radial-gradient(620px 420px at 96% 60%, rgba(200, 16, 46, 0.18), transparent 55%),
         var(--grad-hero);
+}
+
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -45%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    pointer-events: none;
+
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(242, 182, 50, 0.14) 0deg 5deg,
+        rgba(242, 182, 50, 0.02) 5deg 16deg
+    );
+    mask-image: radial-gradient(circle at 50% 10%, #000 0%, transparent 58%);
+    -webkit-mask-image: radial-gradient(circle at 50% 10%, #000 0%, transparent 58%);
+}
+
+
+.hero-ridge {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 96px;
+    pointer-events: none;
+    z-index: 0;
+
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201200%20100'%20preserveAspectRatio='none'%3E%3Cpolygon%20points='0%2060%2080%2010%20160%2055%20240%200%20340%2060%20430%2025%20520%2065%20610%2010%20700%2060%20790%2020%20880%2065%20970%205%201060%2055%201140%2025%201200%2060%201200%20100%200%20100'%20fill='%230B1E5B'%20opacity='0.9'/%3E%3Cpolygon%20points='0%2080%20100%2045%20200%2075%20300%2035%20420%2078%20520%2050%20640%2080%20760%2040%20860%2078%20980%2055%201100%2080%201200%2060%201200%20100%200%20100'%20fill='%23C8102E'%20opacity='0.85'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 -2px 12px rgba(5, 8, 26, 0.55));
 }
 
 
@@ -625,10 +672,19 @@ nav {
 
 
 .hero h1 span {
-    background: linear-gradient(120deg, var(--flag-crimson-bright), var(--flag-gold));
+    background: linear-gradient(120deg, var(--flag-crimson-bright), var(--flag-gold) 45%, var(--flag-crimson-bright));
+    background-size: 220% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: heroShimmer 7s linear infinite;
+}
+
+
+@keyframes heroShimmer {
+    to {
+        background-position: 220% center;
+    }
 }
 
 
@@ -659,6 +715,17 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(6px);
     color: #e6ecff;
+
+    transition: all 0.2s ease;
+}
+
+
+.hero-tags span:hover {
+    background: rgba(242, 182, 50, 0.12);
+    border-color: var(--border-gold);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 
@@ -681,6 +748,20 @@ nav {
 
     box-shadow: var(--shadow-card), 0 0 0 1px rgba(200, 16, 46, 0.12);
     backdrop-filter: blur(14px);
+}
+
+
+.trip-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 2px;
+
+    background: linear-gradient(90deg, var(--flag-crimson), var(--flag-gold), var(--flag-navy));
+    border-radius: 999px;
+    opacity: 0.85;
 }
 
 
@@ -1035,6 +1116,12 @@ nav {
     min-height: 220px;
     object-fit: cover;
     display: block;
+    transition: transform 0.45s ease;
+}
+
+
+.result-card:hover > img {
+    transform: scale(1.04);
 }
 
 
@@ -3690,6 +3777,48 @@ nav {
 
 
 /* =========================================================
+   POLISH — GLASS EDGES & MICRO-INTERACTIONS
+========================================================= */
+
+.result-card,
+.hotel-card,
+.place-card,
+.discover-card,
+.trip-saved-card,
+.underrated-card,
+.fair-card,
+.info-card,
+.transport-card,
+.safety-card,
+.weather-card,
+.stat-card,
+.chart-card,
+.guide-body,
+.report-item,
+.report-form,
+.settings-panel {
+    border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+
+.bar-col:hover .bar-fill {
+    filter: brightness(1.2);
+}
+
+
+.market-row:hover .market-fill {
+    filter: brightness(1.25);
+}
+
+
+.interest:active,
+.nav-btn:active {
+    transform: scale(0.97);
+}
+
+
+
+/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -3815,7 +3944,18 @@ footer {
 
 
     .hero {
-        padding: 48px 18px 56px;
+        padding: 44px 18px 74px;
+    }
+
+
+    .hero-ridge {
+        height: 58px;
+    }
+
+
+    .trip-box::before {
+        left: 20px;
+        right: 20px;
     }
 
 
