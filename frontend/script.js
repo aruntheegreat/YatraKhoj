@@ -5617,6 +5617,20 @@ function showPage(pageName, button) {
 
         }, 150);
 
+    } else if (pageName === "fairprices") {
+
+        loadFairPrices();
+
+        setTimeout(function() {
+
+            if (fairPriceMap) {
+
+                fairPriceMap.invalidateSize();
+
+            }
+
+        }, 150);
+
     } else if (pageName === "insights") {
 
         loadTrends();
@@ -8687,6 +8701,7 @@ const uiDict = {
         navDiscover: "⌖ Discover Places",
         navGuides: "☷ Travel Guides",
         navSafety: "🛡 Safety Info",
+        navFairPrices: "💵 Fair Price Nepal",
         navInsights: "📊 Nepal in Numbers",
         navCurrency: "₨ Currency Converter",
         navAbout: "◎ About Us",
@@ -8698,6 +8713,7 @@ const uiDict = {
         navDiscover: "⌖ स्थानहरू पत्ता लगाउनुहोस्",
         navGuides: "☷ यात्रा गाइड",
         navSafety: "🛡 सुरक्षा जानकारी",
+        navFairPrices: "💵 उचित मूल्य नेपाल",
         navInsights: "📊 नेपाल संख्यामा",
         navCurrency: "₨ मुद्रा परिवर्तक",
         navAbout: "◎ हाम्रो बारेमा",
@@ -9870,6 +9886,11 @@ const reportCategoryNames = {
         ne: "चोरी"
     },
 
+    price: {
+        en: "Price",
+        ne: "मूल्य"
+    },
+
     info: {
         en: "Info",
         ne: "जानकारी"
@@ -10008,6 +10029,7 @@ function renderReportMap(reports) {
         scam: "#C8102E",
         harassment: "#F2B632",
         theft: "#8E44AD",
+        price: "#2ECC71",
         info: "#2E86DE"
     };
 
@@ -10321,6 +10343,1806 @@ function submitReport() {
 
 }
 
+
+
+/* =========================================================
+   FAIR PRICE NEPAL
+
+   Street-level NPR prices per destination + universal
+   scam scripts, feeding the tabs, the "Am I overpaying?"
+   estimator and the live price-check report map.
+========================================================= */
+
+let fairPricesData = null;
+
+let fairSelected = "kathmandu";
+
+let fairPriceMap = null;
+
+let fairPriceMarkers = [];
+
+
+function loadFairPrices() {
+
+    const selector =
+        document.getElementById(
+            "fairDestination"
+        );
+
+    if (selector) {
+
+        fairSelected =
+            selector.value ||
+            fairSelected;
+
+    }
+
+    if (fairPricesData) {
+
+        renderFairPrices();
+
+        return;
+
+    }
+
+    apiGet(
+        "/api/fairprices",
+        { success: false, fairprices: null }
+    )
+    .then(function(data) {
+
+        if (
+            data &&
+            data.success &&
+            data.fairprices
+        ) {
+
+            fairPricesData =
+                data.fairprices;
+
+            renderFairPrices();
+
+        } else {
+
+            showFairUnavailable();
+
+        }
+
+    });
+
+}
+
+
+function showFairUnavailable() {
+
+    const title =
+        document.getElementById(
+            "fairTitle"
+        );
+
+    if (title) {
+
+        title.textContent =
+            "Fair-price data is temporarily unavailable.";
+
+    }
+
+}
+
+
+function renderFairPrices() {
+
+    const destination =
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    if (!destination) {
+
+        return;
+
+    }
+
+    const title =
+        document.getElementById(
+            "fairTitle"
+        );
+
+    if (title) {
+
+        title.textContent =
+            "Fair prices in " +
+            destination.title;
+
+    }
+
+    const subtitle =
+        document.getElementById(
+            "fairSubtitle"
+        );
+
+    if (subtitle) {
+
+        subtitle.textContent =
+            "Updated " +
+            fairPricesData.updated +
+            " · all prices in Nepali Rupees (NPR)";
+    }
+
+    renderFairTaxiTab(destination);
+
+    renderFairEntryTab(destination);
+
+    renderFairFoodTab(destination);
+
+    renderFairScamTab(
+        destination,
+        fairPricesData.universal
+    );
+
+    populateFairRouteSelect(destination);
+
+    loadFairReports();
+
+}
+
+
+function switchFairTab(tab, button) {
+
+    document
+        .querySelectorAll(
+            ".fair-tab"
+        )
+        .forEach(function(el) {
+
+            el.classList.remove(
+                "active"
+            );
+
+        });
+
+    if (button) {
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+    document
+        .querySelectorAll(
+            ".fair-panel"
+        )
+        .forEach(function(el) {
+
+            el.classList.toggle(
+                "active",
+                el.id ===
+                    "fair-" + tab
+            );
+
+        });
+
+}
+
+
+function parseNprRange(str) {
+
+    if (!str) {
+
+        return null;
+
+    }
+
+    const cleaned =
+        String(str)
+        .replace(/[Rs.,~\s]/g, "");
+
+    const parts =
+        cleaned.split(/[–\-–]/);
+
+    const numbers =
+        parts
+        .map(Number)
+        .filter(function(n) {
+
+            return (
+                !isNaN(n) &&
+                n > 0
+            );
+
+        });
+
+    if (numbers.length === 0) {
+
+        return null;
+
+    }
+
+    return {
+        min: Math.min.apply(null, numbers),
+        max: Math.max.apply(null, numbers)
+    };
+
+}
+
+
+function fairRangeText(str) {
+
+    return String(str || "");
+
+}
+
+
+function renderFairTaxiTab(destination) {
+
+    const notesEl =
+        document.getElementById(
+            "fairTaxiNotes"
+        );
+
+    const universal =
+        fairPricesData.universal;
+
+    if (notesEl) {
+
+        notesEl.innerHTML =
+            escapeHtml(
+                universal.taxiNotes || ""
+            );
+
+    }
+
+    const list =
+        document.getElementById(
+            "fairTaxiList"
+        );
+
+    if (!list) {
+
+        return;
+
+    }
+
+    const routes =
+        destination.taxiRoutes || [];
+
+    const busNote =
+        universal.busNotes ||
+        "";
+
+    list.innerHTML =
+        routes
+        .map(function(route) {
+
+            return `
+                <div class="fair-card">
+
+                    <div class="fair-icon">
+                        🚕
+                    </div>
+
+                    <h3>
+                        ${escapeHtml(route.route)}
+                    </h3>
+
+                    <div class="fair-price-row">
+                        <span class="fair-label">
+                            Meter
+                        </span>
+                        <span class="fair-value">
+                            ${escapeHtml(route.meter)}
+                        </span>
+                    </div>
+
+                    <div class="fair-price-row fair-row-highlight">
+                        <span class="fair-label">
+                            Fair
+                        </span>
+                        <span class="fair-value">
+                            ${escapeHtml(formatCost(fairRangeMid(route.fair)))}
+                        </span>
+                    </div>
+
+                    ${route.note ? `
+                        <p class="fair-note">
+                            ${escapeHtml(route.note)}
+                        </p>
+                    ` : ""}
+
+                </div>
+            `;
+
+        })
+        .join("") +
+        (busNote
+            ? `
+                <div class="fair-card fair-bus-card">
+
+                    <div class="fair-icon">
+                        🚌
+                    </div>
+
+                    <h3>
+                        Buses
+                    </h3>
+
+                    <p class="fair-note">
+                        ${escapeHtml(busNote)}
+                    </p>
+
+                </div>
+            `
+            : "");
+
+}
+
+
+function fairRangeMid(str) {
+
+    const range =
+        parseNprRange(str);
+
+    if (!range) {
+
+        return 0;
+
+    }
+
+    return Math.round(
+        (range.min + range.max) / 2
+    );
+
+}
+
+
+function renderFairEntryTab(destination) {
+
+    const el =
+        document.getElementById(
+            "fairEntryContent"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    const universal =
+        fairPricesData.universal;
+
+    const fees =
+        destination.entryFees || [];
+
+    const guidePorter =
+        destination.guidePorter;
+
+    let html =
+        `
+            <div class="fair-notes">
+                ${escapeHtml(universal.entryNote || "")}
+            </div>
+        `;
+
+    if (fees.length > 0) {
+
+        html += `
+            <div class="fair-entry-heading">
+                <h3>Entry fees</h3>
+            </div>
+            <div class="fair-grid">
+                ${fees.map(function(fee) {
+
+                    return `
+                        <div class="fair-card">
+
+                            <div class="fair-icon">
+                                🎟
+                            </div>
+
+                            <h3>
+                                ${escapeHtml(fee.site)}
+                            </h3>
+
+                            <div class="fair-price-row">
+                                <span class="fair-label">
+                                    Foreigner
+                                </span>
+                                <span class="fair-value">
+                                    ${escapeHtml(fee.foreign)}
+                                </span>
+                            </div>
+
+                            ${fee.saarc ? `
+                                <div class="fair-price-row">
+                                    <span class="fair-label">
+                                        SAARC
+                                    </span>
+                                    <span class="fair-value">
+                                        ${escapeHtml(fee.saarc)}
+                                    </span>
+                                </div>
+                            ` : ""}
+
+                            ${fee.nepali ? `
+                                <div class="fair-price-row">
+                                    <span class="fair-label">
+                                        Nepali
+                                    </span>
+                                    <span class="fair-value">
+                                        ${escapeHtml(fee.nepali)}
+                                    </span>
+                                </div>
+                            ` : ""}
+
+                            ${fee.note ? `
+                                <p class="fair-note">
+                                    ${escapeHtml(fee.note)}
+                                </p>
+                            ` : ""}
+
+                        </div>
+                    `;
+
+                }).join("")}
+            </div>
+        `;
+
+    }
+
+    if (guidePorter) {
+
+        html += `
+            <div class="fair-guide-box">
+
+                <div class="fair-icon">
+                    🧭
+                </div>
+
+                <div>
+                    <h3>Licensed guide & porter</h3>
+                    <div class="fair-price-row">
+                        <span class="fair-label">
+                            Guide per day
+                        </span>
+                        <span class="fair-value">
+                            ${formatCost(guidePorter.guidePerDay)}
+                        </span>
+                    </div>
+                    <div class="fair-price-row">
+                        <span class="fair-label">
+                            Porter per day
+                        </span>
+                        <span class="fair-value">
+                            ${formatCost(guidePorter.porterPerDay)}
+                        </span>
+                    </div>
+                    <p class="fair-note">
+                        Porter carries up to
+                        ${escapeHtml(String(guidePorter.porterLoadKg || 25))} kg.
+                        A licensed guide makes a big difference to the price
+                        of a bad day.
+                    </p>
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    el.innerHTML = html;
+
+}
+
+
+function renderFairFoodTab(destination) {
+
+    const el =
+        document.getElementById(
+            "fairFoodContent"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    const meals =
+        destination.mealBands;
+
+    const shopping =
+        destination.shoppingSanity || [];
+
+    let html = "";
+
+    if (meals) {
+
+        html += `
+            <div class="fair-meals">
+
+                <div class="fair-meal-card fair-meal-budget">
+                    <span class="mini-title">BUDGET</span>
+                    <div class="fair-meal-price">
+                        ${escapeHtml(meals.budget)}
+                    </div>
+                    <p>Local eateries, dal bhat, street food</p>
+                </div>
+
+                <div class="fair-meal-card fair-meal-standard">
+                    <span class="mini-title">STANDARD</span>
+                    <div class="fair-meal-price">
+                        ${escapeHtml(meals.standard)}
+                    </div>
+                    <p>Mid-range restaurants, tourist menu</p>
+                </div>
+
+                <div class="fair-meal-card fair-meal-tourist">
+                    <span class="mini-title">TOURIST</span>
+                    <div class="fair-meal-price">
+                        ${escapeHtml(meals.tourist)}
+                    </div>
+                    <p>Fancy rooftop spots, lakeside dining</p>
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    if (shopping.length > 0) {
+
+        html += `
+            <div class="fair-shopping">
+
+                <h3>
+                    Souvenir sanity check
+                </h3>
+
+                <div class="fair-grid">
+                    ${shopping.map(function(item) {
+
+                        return `
+                            <div class="fair-card fair-shopping-card">
+
+                                <div class="fair-icon">
+                                    🛍
+                                </div>
+
+                                <h3>
+                                    ${escapeHtml(item.item)}
+                                </h3>
+
+                                <div class="fair-price-row fair-row-highlight">
+                                    <span class="fair-label">
+                                        Fair price
+                                    </span>
+                                    <span class="fair-value">
+                                        ${escapeHtml(item.fair)}
+                                    </span>
+                                </div>
+
+                                ${item.check ? `
+                                    <p class="fair-note">
+                                        ✅ ${escapeHtml(item.check)}
+                                    </p>
+                                ` : ""}
+
+                            </div>
+                        `;
+
+                    }).join("")}
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    if (!meals && shopping.length === 0) {
+
+        html += `
+            <div class="reports-empty">
+                Food and shopping guidance is being collected
+                for this destination.
+            </div>
+        `;
+
+    }
+
+    el.innerHTML = html;
+
+}
+
+
+function renderFairScamTab(destination, universal) {
+
+    const el =
+        document.getElementById(
+            "fairScamContent"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    const localScams =
+        destination.scamCards || [];
+
+    const universalScams =
+        universal.scams || [];
+
+    const allScams =
+        localScams.concat(universalScams);
+
+    const phrases =
+        universal.phrases || [];
+
+    let html =
+        allScams
+        .map(function(scam, index) {
+
+            return `
+                <div class="fair-scam-card">
+
+                    <div class="fair-scam-head">
+                        <span class="fair-scam-badge">
+                            ⚠ SCAM ${index + 1}
+                        </span>
+                        <h3>
+                            ${escapeHtml(scam.title)}
+                        </h3>
+                    </div>
+
+                    <p class="fair-scam-script">
+                        ${escapeHtml(scam.script)}
+                    </p>
+
+                    ${scam.redFlags && scam.redFlags.length
+                        ? `
+                            <div class="fair-redflags">
+                                <strong>🚩 Red flags</strong>
+                                <ul>
+                                    ${scam.redFlags.map(function(flag) {
+                                        return `
+                                            <li>
+                                                ${escapeHtml(flag)}
+                                            </li>
+                                        `;
+                                    }).join("")}
+                                </ul>
+                            </div>
+                        `
+                        : ""}
+
+                    ${scam.response ? `
+                        <div class="fair-response">
+                            <strong>💪 If it happens</strong>
+                            <p>
+                                ${escapeHtml(scam.response)}
+                            </p>
+                        </div>
+                    ` : ""}
+
+                    ${scam.phrase ? `
+                        <div class="fair-phrase">
+                            <span>🗣 Say this:</span>
+                            <em>
+                                "${escapeHtml(scam.phrase)}"
+                            </em>
+                        </div>
+                    ` : ""}
+
+                </div>
+            `;
+
+        })
+        .join("");
+
+    if (phrases.length > 0) {
+
+        html += `
+            <div class="fair-phrasebox">
+
+                <h3>
+                    🗣 Survival phrases
+                </h3>
+
+                <div class="fair-grid">
+                    ${phrases.map(function(phrase) {
+
+                        return `
+                            <div class="fair-card fair-phrase-card">
+                                <h3>
+                                    ${escapeHtml(phrase.context)}
+                                </h3>
+                                <em class="fair-phrase-np">
+                                    "${escapeHtml(phrase.nepali)}"
+                                </em>
+                                <p class="fair-note">
+                                    ${escapeHtml(phrase.english)}
+                                </p>
+                            </div>
+                        `;
+
+                    }).join("")}
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    el.innerHTML = html;
+
+}
+
+
+function populateFairRouteSelect(destination) {
+
+    const select =
+        document.getElementById(
+            "fairRouteSelect"
+        );
+
+    if (!select) {
+
+        return;
+
+    }
+
+    const routes =
+        destination.taxiRoutes || [];
+
+    select.innerHTML =
+        routes
+        .map(function(route, index) {
+
+            return `
+                <option value="${index}">
+                    ${escapeHtml(route.route)}
+                </option>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function checkFairFare() {
+
+    const destination =
+        fairPricesData &&
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    const select =
+        document.getElementById(
+            "fairRouteSelect"
+        );
+
+    const input =
+        document.getElementById(
+            "fairQuoteInput"
+        );
+
+    const verdictEl =
+        document.getElementById(
+            "fairVerdict"
+        );
+
+    const cardEl =
+        document.getElementById(
+            "fairShareCard"
+        );
+
+    if (
+        !destination ||
+        !select ||
+        !input ||
+        !verdictEl ||
+        !cardEl
+    ) {
+
+        return;
+
+    }
+
+    const quoted =
+        Number(input.value);
+
+    const routeIndex =
+        Number(select.value);
+
+    const route =
+        destination.taxiRoutes &&
+        destination.taxiRoutes[routeIndex];
+
+    if (!route || !quoted || isNaN(quoted)) {
+
+        showToast(
+            "Pick a route and enter the quoted price in NPR."
+        );
+
+        return;
+
+    }
+
+    const fairRange =
+        parseNprRange(route.fair);
+
+    if (!fairRange) {
+
+        showToast(
+            "No fair-price reference for this route yet."
+        );
+
+        return;
+    }
+
+    const fairMid =
+        Math.round(
+            (fairRange.min + fairRange.max) / 2
+        );
+
+    const inCurrency =
+        formatCost(fairMid);
+
+    const quotedInCurrency =
+        formatCost(quoted);
+
+    let verdictText = "";
+    let verdictHint = "";
+    let cls = "";
+    let emoji = "";
+
+    if (quoted <= fairRange.max) {
+
+        cls = "fair-ok";
+        emoji = "✅";
+        verdictText =
+            "That is a fair price.";
+        verdictHint =
+            "Pay it and move on — this matches the going rate.";
+
+    } else if (quoted <= fairRange.max * 1.5) {
+
+        cls = "fair-warn";
+        emoji = "⚠️";
+        verdictText =
+            "Slightly high — negotiate.";
+        verdictHint =
+            "Offer " +
+            inCurrency +
+            " and expect to settle around the fair range.";
+
+    } else {
+
+        cls = "fair-bad";
+        emoji = "🚨";
+        verdictText =
+            "Overpriced — walk away.";
+        verdictHint =
+            "The fair range is " +
+            inCurrency +
+            ". Say no and find another driver.";
+
+    }
+
+    verdictEl.className =
+        "fair-verdict " +
+        cls;
+
+    verdictEl.innerHTML = `
+        <div class="fair-verdict-emoji">
+            ${emoji}
+        </div>
+        <div class="fair-verdict-text">
+            <h3>
+                ${verdictText}
+            </h3>
+            <p>
+                ${verdictHint}
+            </p>
+            <p class="fair-verdict-detail">
+                You were quoted
+                <strong>${quotedInCurrency}</strong> —
+                fair is
+                <strong>${escapeHtml(route.fair)}</strong>
+                (≈ ${inCurrency}).
+            </p>
+        </div>
+    `;
+
+    verdictEl.classList.remove(
+        "hidden"
+    );
+
+    cardEl.innerHTML = `
+        <div class="fair-card fair-fare-card">
+
+            <div class="fair-icon">
+                🚕
+            </div>
+
+            <h3>
+                ${escapeHtml(destination.title)}
+            </h3>
+
+            <p class="fair-fare-route">
+                ${escapeHtml(route.route)}
+            </p>
+
+            <div class="fair-price-row">
+                <span class="fair-label">
+                    Quoted
+                </span>
+                <span class="fair-value">
+                    ${quotedInCurrency}
+                </span>
+            </div>
+
+            <div class="fair-price-row fair-row-highlight">
+                <span class="fair-label">
+                    Fair
+                </span>
+                <span class="fair-value">
+                    ${escapeHtml(route.fair)}
+                </span>
+            </div>
+
+            <div class="fair-share-actions">
+                <button
+                    class="report-btn"
+                    onclick="copyFairShare()"
+                >
+                    📋 Copy share text
+                </button>
+                <button
+                    class="report-cancel"
+                    onclick="downloadFairCard()"
+                >
+                    🖼 Save as image
+                </button>
+            </div>
+
+        </div>
+    `;
+
+    cardEl.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function fairShareText() {
+
+    const destination =
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    const select =
+        document.getElementById(
+            "fairRouteSelect"
+        );
+
+    const input =
+        document.getElementById(
+            "fairQuoteInput"
+        );
+
+    const route =
+        destination.taxiRoutes[
+            Number(select.value)
+        ];
+
+    const quoted =
+        Number(input.value);
+
+    const fairMid =
+        fairRangeMid(route.fair);
+
+    return (
+        "🚕 " +
+        destination.title +
+        " · " +
+        route.route +
+        " — quoted " +
+        formatCost(quoted) +
+        ", fair is " +
+        formatCost(fairMid) +
+        ". Checked with YatraKhoj Fair Price Nepal."
+    );
+
+}
+
+
+function copyFairShare() {
+
+    const text =
+        fairShareText();
+
+    const done = function() {
+
+        showToast(
+            "Share text copied to clipboard."
+        );
+
+    };
+
+    if (navigator.clipboard) {
+
+        navigator.clipboard
+            .writeText(text)
+            .then(done)
+            .catch(function() {
+
+                fallbackCopy(text);
+
+                done();
+
+            });
+
+        return;
+
+    }
+
+    fallbackCopy(text);
+
+    done();
+
+}
+
+
+function fallbackCopy(text) {
+
+    const textarea =
+        document.createElement(
+            "textarea"
+        );
+
+    textarea.value = text;
+
+    textarea.style.position =
+        "fixed";
+
+    textarea.style.opacity =
+        "0";
+
+    document.body.appendChild(
+        textarea
+    );
+
+    textarea.select();
+
+    try {
+
+        document.execCommand(
+            "copy"
+        );
+
+    } catch (err) {
+
+        /* ignore */
+
+    }
+
+    document.body.removeChild(
+        textarea
+    );
+
+}
+
+
+function downloadFairCard() {
+
+    const destination =
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    const route =
+        destination.taxiRoutes[
+            Number(
+                document
+                .getElementById("fairRouteSelect")
+                .value
+            )
+        ];
+
+    const quoted =
+        Number(
+            document
+            .getElementById("fairQuoteInput")
+            .value
+        );
+
+    const fairRange =
+        parseNprRange(route.fair);
+
+    const width = 640;
+
+    const height = 400;
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+    canvas.width = width;
+
+    canvas.height = height;
+
+    const ctx =
+        canvas.getContext("2d");
+
+    const grad =
+        ctx.createLinearGradient(
+            0, 0, 0, height
+        );
+
+    grad.addColorStop(0, "#0a1128");
+
+    grad.addColorStop(1, "#05081a");
+
+    ctx.fillStyle = grad;
+
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.fillStyle =
+        "rgba(255, 215, 0, 0.92)";
+
+    ctx.font =
+        "700 15px sans-serif";
+
+    ctx.fillText(
+        "YATRAKHOJ · FAIR PRICE NEPAL",
+        36, 48
+    );
+
+    ctx.fillStyle =
+        "#ffffff";
+
+    ctx.font =
+        "700 26px sans-serif";
+
+    ctx.fillText(
+        destination.title,
+        36, 100
+    );
+
+    ctx.font =
+        "500 20px sans-serif";
+
+    ctx.fillText(
+        route.route,
+        36, 136
+    );
+
+    ctx.fillStyle =
+        "#9fb0d8";
+
+    ctx.font =
+        "400 16px sans-serif";
+
+    ctx.fillText(
+        "Quoted",
+        36, 200
+    );
+
+    ctx.fillStyle =
+        "#ff7b7b";
+
+    ctx.font =
+        "700 28px sans-serif";
+
+    ctx.fillText(
+        formatCost(quoted),
+        36, 236
+    );
+
+    ctx.fillStyle =
+        "#9fb0d8";
+
+    ctx.font =
+        "400 16px sans-serif";
+
+    ctx.fillText(
+        "Fair price",
+        36, 288
+    );
+
+    ctx.fillStyle =
+        "#2ecc71";
+
+    ctx.font =
+        "700 28px sans-serif";
+
+    ctx.fillText(
+        formatCost(
+            fairRangeMid(route.fair)
+        ),
+        36, 324
+    );
+
+    ctx.strokeStyle =
+        "rgba(255, 215, 0, 0.5)";
+
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+
+    ctx.moveTo(36, 348);
+
+    ctx.lineTo(
+        width - 36, 348
+    );
+
+    ctx.stroke();
+
+    ctx.fillStyle =
+        "#c5cfe8";
+
+    ctx.font =
+        "400 13px sans-serif";
+
+    ctx.fillText(
+        "Verdict: " +
+        (
+            quoted <= fairRange.max
+                ? "Fair"
+                : quoted <= fairRange.max * 1.5
+                    ? "Slightly high"
+                    : "Overpriced"
+        ),
+        36, 376
+    );
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.download =
+        "fair-price-" +
+        fairSelected +
+        ".png";
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+    link.click();
+
+    showToast(
+        "Fair-fare card image downloaded."
+    );
+
+}
+
+
+function loadFairReports() {
+
+    apiGet(
+        "/api/reports",
+        { success: false, reports: [] }
+    )
+    .then(function(data) {
+
+        const reports =
+            data &&
+            data.success &&
+            Array.isArray(data.reports)
+            ? data.reports
+            : [];
+
+        renderFairReportMap(
+            reports
+        );
+
+        renderFairReportFeed(
+            reports
+        );
+
+    });
+
+}
+
+
+function renderFairReportMap(reports) {
+
+    const el =
+        document.getElementById(
+            "priceReportMap"
+        );
+
+    if (!el || typeof L === "undefined") {
+
+        return;
+
+    }
+
+    if (!fairPriceMap) {
+
+        fairPriceMap =
+            L.map(el).setView(
+                [27.9, 84.1],
+                7
+            );
+
+        L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            {
+                attribution:
+                    "&copy; OpenStreetMap &copy; CARTO",
+                subdomains: "abcd",
+                maxZoom: 18
+            }
+        ).addTo(fairPriceMap);
+
+    }
+
+    fairPriceMarkers.forEach(
+        function(marker) {
+
+            fairPriceMap.removeLayer(
+                marker
+            );
+
+        }
+    );
+
+    fairPriceMarkers = [];
+
+    const iconColors = {
+        scam: "#C8102E",
+        harassment: "#F2B632",
+        theft: "#8E44AD",
+        price: "#2ECC71",
+        info: "#2E86DE"
+    };
+
+    reports.forEach(function(report) {
+
+        const coords =
+            getReportCoords(report);
+
+        if (!coords) {
+
+            return;
+
+        }
+
+        const color =
+            iconColors[report.category] ||
+            "#2E86DE";
+
+        const icon =
+            L.divIcon({
+                className:
+                    "report-marker",
+                html:
+                    '<div style="background:' +
+                    color +
+                    '">⚠</div>',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+        const marker =
+            L.marker(coords, {
+                icon: icon
+            })
+            .addTo(fairPriceMap)
+            .bindPopup(
+                "<strong>" +
+                escapeHtml(report.title) +
+                "</strong><br>" +
+                escapeHtml(destinationName(report.place)) +
+                "<br>" +
+                escapeHtml(
+                    report.description || ""
+                )
+            );
+
+        fairPriceMarkers.push(
+            marker
+        );
+
+    });
+
+}
+
+
+function renderFairReportFeed(reports) {
+
+    const feed =
+        document.getElementById(
+            "priceReportsFeed"
+        );
+
+    if (!feed) {
+
+        return;
+
+    }
+
+    const priceReports =
+        reports.filter(
+            function(report) {
+
+                return (
+                    report.category ===
+                    "price"
+                );
+
+            }
+        );
+
+    if (priceReports.length === 0) {
+
+        feed.innerHTML =
+            '<div class="reports-empty">' +
+            "No price checks yet — be the first to share one." +
+            "</div>";
+
+        return;
+
+    }
+
+    feed.innerHTML =
+        priceReports
+        .slice(0, 10)
+        .map(function(report) {
+
+            return `
+
+                <div class="report-item cat-price">
+
+                    <div class="report-head">
+
+                        <span class="report-cat">
+                            ${escapeHtml(reportCategoryName(report.category))}
+                        </span>
+
+                        <span class="report-time">
+                            ${escapeHtml(prettyTime(report.time))}
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        ${escapeHtml(report.title)}
+                    </h4>
+
+                    <p>
+                        ${escapeHtml(report.description || "")}
+                    </p>
+
+                    <span class="report-place">
+                        📍 ${escapeHtml(destinationName(report.place))}
+                    </span>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function openFairReportForm() {
+
+    const form =
+        document.getElementById(
+            "fairReportForm"
+        );
+
+    if (!form) {
+
+        return;
+
+    }
+
+    const placeSelect =
+        document.getElementById(
+            "fairReportPlace"
+        );
+
+    if (placeSelect && fairSelected) {
+
+        placeSelect.value =
+            fairSelected;
+
+    }
+
+    form.classList.remove(
+        "hidden"
+    );
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+function closeFairReportForm() {
+
+    const form =
+        document.getElementById(
+            "fairReportForm"
+        );
+
+    if (form) {
+
+        form.classList.add(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+function submitFairReport() {
+
+    const place =
+        document
+        .getElementById("fairReportPlace")
+        .value;
+
+    const category =
+        document
+        .getElementById("fairReportCategory")
+        .value;
+
+    const severity =
+        document
+        .getElementById("fairReportSeverity")
+        .value;
+
+    const title =
+        document
+        .getElementById("fairReportTitle")
+        .value
+        .trim();
+
+    const description =
+        document
+        .getElementById("fairReportDescription")
+        .value
+        .trim();
+
+    if (!title) {
+
+        showToast(
+            "Please add a short title for your price check."
+        );
+
+        return;
+
+    }
+
+    const placeData =
+        destinations[place];
+
+    const lat =
+        placeData &&
+        placeData.coords &&
+        placeData.coords.lat
+        ? Number(placeData.coords.lat)
+        : null;
+
+    const lng =
+        placeData &&
+        placeData.coords &&
+        placeData.coords.lng
+        ? Number(placeData.coords.lng)
+        : null;
+
+    apiPost(
+        "/api/reports",
+        {
+            place: place,
+            lat: lat,
+            lng: lng,
+            category: category,
+            severity: severity,
+            title: title,
+            description: description
+        }
+    )
+    .then(function(data) {
+
+        if (data && data.success) {
+
+            document
+                .getElementById("fairReportForm")
+                .classList.add("hidden");
+
+            document
+                .getElementById("fairReportTitle")
+                .value = "";
+
+            document
+                .getElementById("fairReportDescription")
+                .value = "";
+
+            showToast(
+                "Price check submitted. Thank you for helping other travelers."
+            );
+
+            loadFairReports();
+
+            loadReports();
+
+        } else {
+
+            showToast(
+                data && data.message
+                ? data.message
+                : "Could not submit price check."
+            );
+
+        }
+
+    });
+
+}
+
+
+function buildFairPrintHTML() {
+
+    const destination =
+        fairPricesData &&
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    if (!destination) {
+
+        return "";
+
+    }
+
+    return `
+        <h1>
+            Fair price sheet — ${escapeHtml(destination.title)}
+        </h1>
+        <p class="print-sub">
+            Updated ${escapeHtml(fairPricesData.updated)} · NPR ·
+            YatraKhoj Fair Price Nepal
+        </p>
+
+        <h2>Taxis</h2>
+        <ul>
+            ${(destination.taxiRoutes || []).map(function(route) {
+                return `
+                    <li>
+                        <strong>${escapeHtml(route.route)}</strong>
+                        — meter ${escapeHtml(route.meter)},
+                        fair ${escapeHtml(route.fair)}
+                        ${route.note ? " (" + escapeHtml(route.note) + ")" : ""}
+                    </li>
+                `;
+            }).join("")}
+        </ul>
+
+        ${destination.entryFees && destination.entryFees.length
+            ? `
+                <h2>Entry fees</h2>
+                <ul>
+                    ${destination.entryFees.map(function(fee) {
+                        return `
+                            <li>
+                                <strong>${escapeHtml(fee.site)}</strong>
+                                — foreigner ${escapeHtml(fee.foreign)},
+                                SAARC ${escapeHtml(fee.saarc || "—")},
+                                Nepali ${escapeHtml(fee.nepali || "—")}
+                            </li>
+                        `;
+                    }).join("")}
+                </ul>
+            `
+            : ""}
+
+        ${destination.mealBands
+            ? `
+                <h2>Meals</h2>
+                <ul>
+                    <li>Budget: ${escapeHtml(destination.mealBands.budget)}</li>
+                    <li>Standard: ${escapeHtml(destination.mealBands.standard)}</li>
+                    <li>Tourist: ${escapeHtml(destination.mealBands.tourist)}</li>
+                </ul>
+            `
+            : ""}
+
+        ${destination.guidePorter
+            ? `
+                <h2>Guide & porter</h2>
+                <ul>
+                    <li>Guide: ${formatCost(destination.guidePorter.guidePerDay)}/day</li>
+                    <li>Porter: ${formatCost(destination.guidePorter.porterPerDay)}/day
+                        (up to ${escapeHtml(String(destination.guidePorter.porterLoadKg || 25))} kg)</li>
+                </ul>
+            `
+            : ""}
+
+        <h2>Know the scams</h2>
+        <ul>
+            ${(destination.scamCards || []).concat(fairPricesData.universal.scams || []).map(function(scam) {
+                return `
+                    <li>
+                        <strong>${escapeHtml(scam.title)}</strong>
+                        — ${escapeHtml(scam.script)}
+                    </li>
+                `;
+            }).join("")}
+        </ul>
+    `;
+
+}
+
+
+function printFairSheet() {
+
+    const destination =
+        fairPricesData &&
+        fairPricesData.destinations[
+            fairSelected
+        ];
+
+    if (!destination) {
+
+        showToast(
+            "Load the price page first."
+        );
+
+        return;
+    }
+
+    const printRoot =
+        document.getElementById(
+            "fairPrintRoot"
+        );
+
+    if (!printRoot) {
+
+        showToast(
+            "Print area not available."
+        );
+
+        return;
+    }
+
+    printRoot.innerHTML =
+        buildFairPrintHTML();
+
+    printRoot.classList.remove(
+        "hidden"
+    );
+
+    window.print();
+
+    printRoot.classList.add(
+        "hidden"
+    );
+
+    printRoot.innerHTML = "";
+
+}
 
 
 /* =========================================================

@@ -1,0 +1,337 @@
+{
+    "updated": "2026-08",
+    "currency": "NPR",
+    "disclaimer": "Fair-price ranges are estimates compiled from metered fares, official entry-fee schedules, TAAN/porter-welfare guidance and recent traveler reports. Ranges move with seasons and negotiation — use them as a sanity check, not a fixed rate.",
+    "universal": {
+        "taxiNotes": "Metered taxis in Kathmandu run around Rs 80 per km; most drivers refuse the meter for tourists. Always agree the price before getting in. Night rides (10 pm–6 am) run ~50% higher. In Pokhara, Pathao/InDrive show the fare in advance and are the safest option.",
+        "busNotes": "Local green buses are cheapest but crowded; tourist coaches (Greenline, Mountain Overland) cost more and are safer. Avoid riding on roofs and travelling after dark.",
+        "entryNote": "Most heritage sites charge a lower 'SAARC' or 'Nepali' rate and a higher foreign-tourist rate. Ask for the official ticket booth and keep your ticket for spot checks.",
+        "scams": [
+            {
+                "title": "Taxi 'broken meter' overcharge",
+                "script": "Driver claims the meter is broken and quotes 2–4× the fair rate (e.g. Rs 1,000 for a ride that should cost Rs 300).",
+                "redFlags": [
+                    "Meter hidden under a cloth",
+                    "Quote far above what you expect",
+                    "Driver insists on a 'friendly detour' or 'no change' at the end"
+                ],
+                "response": "Politely refuse, step out, and use Pathao/InDrive, or walk 100 m to the next taxi. Agree the price in writing before boarding.",
+                "phrase": "कृपया मिटर अन गर्नुहोस् — Please turn on the meter"
+            },
+            {
+                "title": "'Free' guide who expects payment",
+                "script": "A friendly local 'guides' you around a durbar square or temple for free, then demands a large tip or steers you to commission shops.",
+                "redFlags": [
+                    "Approaches you unsolicited",
+                    "Insists on 'helping' without being asked",
+                    "Leads you to gem, thangka or carpet shops"
+                ],
+                "response": "Smile, say 'no thank you' firmly and walk away. If you want a guide, hire a licensed one from the official desk.",
+                "phrase": "धन्यवाद, मलाई गाइड चाहिँदैन — Thanks, I don't need a guide"
+            },
+            {
+                "title": "Fake trekking agency or unlicensed guide",
+                "script": "Hired via Facebook, TripAdvisor or a street tout. No registered agency, no insurance, sometimes no real permit. Linked to several 2025 missing-trekker cases.",
+                "redFlags": [
+                    "No TAAN/NMA registration or license number",
+                    "Won't put the itinerary and cost in writing",
+                    "Guide can't show insurance or TIMS permit"
+                ],
+                "response": "Book only through a TAAN-registered agency and verify the guide's license. If it's already too late, report it and switch agencies.",
+                "phrase": "तपाईंको दर्ता नम्बर के हो? — What is your registration number?"
+            },
+            {
+                "title": "Helicopter 'rescue' scam",
+                "script": "A guide/operator pressures a mildly-altitude-sick trekker into a costly helicopter medevac, then splits the inflated bill with the hospital.",
+                "redFlags": [
+                    "Pressure to evacuate before medical confirmation",
+                    "Asking you to hand over your insurance documents",
+                    "Inflated bills to bill insurers"
+                ],
+                "response": "Rest a day first and call your insurer directly before approving any evacuation. Only use TAAN-registered agencies.",
+                "phrase": "म पहिले मेरो बीमा कम्पनीलाई सम्पर्क गर्छु — I'll contact my insurance company first"
+            },
+            {
+                "title": "Shop pressure & fake souvenirs",
+                "script": "'Yak wool' that is acrylic, fake pashmina, mass-printed 'antique' thangkas, and commission-loaded 'friend's shop' stops.",
+                "redFlags": [
+                    "No price tag or a 'special price for you'",
+                    "Salesperson won't let you leave",
+                    "Tour guide earns commission from your purchase"
+                ],
+                "response": "Buy from fixed-price stores or cooperatives, look for the 'Chyangra Pashmina' label, and compare 3 shops before buying.",
+                "phrase": "यो महँगो छ, घटाउनुहोस् — This is expensive, reduce it"
+            },
+            {
+                "title": "Begging & 'orphanage' milk-powder con",
+                "script": "Vendors or people ask tourists to buy overpriced milk powder 'for orphans', which is returned to the shop for cash. Fake charities collect 'donations'.",
+                "redFlags": [
+                    "Pressure to buy a specific product for 'charity'",
+                    "Charity has no registration you can verify"
+                ],
+                "response": "Donate only to registered NGOs with verifiable records, never to street collectors.",
+                "phrase": "क्षमा गर्नुहोस्, होइन — Sorry, no"
+            },
+            {
+                "title": "Bar & club hidden fees",
+                "script": "No menu or a menu with no prices; 'service fees' and 'entertainment fees' appear on the bill.",
+                "redFlags": [
+                    "No written menu prices",
+                    "Extra fees added without warning"
+                ],
+                "response": "Ask to see prices before ordering and check the bill line by line.",
+                "phrase": "मेनुमा मूल्य देखाउनुहोस् — Show me the prices on the menu"
+            },
+            {
+                "title": "Money-changer counterfeit switch",
+                "script": "A 'helpful' exchanger swaps your notes and hands back counterfeit or short-changed currency.",
+                "redFlags": [
+                    "Unofficial street exchanger",
+                    "Handling your money out of sight"
+                ],
+                "response": "Use banks or licensed exchange counters only, and count notes before leaving.",
+                "phrase": "म बैंकमा गर्छु — I'll do it at the bank"
+            },
+            {
+                "title": "Bus ticket double-charge",
+                "script": "On some routes (e.g. Besishahar–Pokhara) a second operator demands payment again, claiming the fare didn't cover their leg.",
+                "redFlags": [
+                    "Second driver asks you to pay the same amount twice",
+                    "No printed ticket"
+                ],
+                "response": "Insist on a printed ticket for the whole journey and refuse to pay twice; call tourist police if threatened.",
+                "phrase": "मैले पहिले नै तिरिसकेको छु — I have already paid"
+            }
+        ],
+        "phrases": [
+            { "en": "How much?", "ne": "कति भयो?", "use": "Before buying anything" },
+            { "en": "That's too expensive.", "ne": "त्यो धेरै महँगो छ।", "use": "When bargaining" },
+            { "en": "I know the fair price.", "ne": "मलाई सही मूल्य थाहा छ।", "use": "Taxi & shops" },
+            { "en": "Please turn on the meter.", "ne": "कृपया मिटर अन गर्नुहोस्।", "use": "Taxis" },
+            { "en": "No thank you.", "ne": "होइन, धन्यवाद।", "use": "Touts & shop pressure" },
+            { "en": "Where is the tourist police?", "ne": "पर्यटक प्रहरी कहाँ छ?", "use": "Emergencies" },
+            { "en": "Please call an ambulance.", "ne": "कृपया एम्बुलेन्स बोलाउनुहोस्।", "use": "Emergencies" },
+            { "en": "I need help.", "ne": "मलाई मद्दत चाहियो।", "use": "Emergencies" }
+        ]
+    },
+    "destinations": {
+        "kathmandu": {
+            "title": "Kathmandu Valley",
+            "taxiRoutes": [
+                { "route": "Thamel → Tribhuvan Airport", "meter": "Rs 350–450", "fair": "Rs 500–700", "note": "Night +50%; luggage may add Rs 50–100" },
+                { "route": "Thamel → Boudhanath", "meter": "Rs 350–450", "fair": "Rs 400–600", "note": "12–15 min" },
+                { "route": "Thamel → Swayambhunath", "meter": "Rs 200–300", "fair": "Rs 300–400", "note": "Short ride" },
+                { "route": "Thamel → Pashupatinath", "meter": "Rs 350–450", "fair": "Rs 450–600", "note": "Near airport" },
+                { "route": "Thamel → Patan Durbar Square", "meter": "Rs 400–500", "fair": "Rs 500–700", "note": "" },
+                { "route": "Thamel → Bhaktapur", "meter": "Rs 1,100–1,300", "fair": "Rs 1,300–1,700", "note": "Full-day hire Rs 3,500–5,000" },
+                { "route": "Thamel → Budhanilkantha", "meter": "Rs 550–650", "fair": "Rs 650–850", "note": "" }
+            ],
+            "entryFees": [
+                { "site": "Kathmandu Durbar Square", "foreign": "Rs 1,000", "saarc": "Rs 150", "nepali": "Rs 25", "note": "" },
+                { "site": "Patan Durbar Square", "foreign": "Rs 500", "saarc": "Rs 100", "nepali": "Rs 25", "note": "" },
+                { "site": "Bhaktapur Durbar Square", "foreign": "Rs 1,500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "Valid for a multi-day visit" },
+                { "site": "Swayambhunath", "foreign": "Rs 200", "saarc": "Rs 50", "nepali": "Rs 10", "note": "" },
+                { "site": "Boudhanath", "foreign": "Rs 400", "saarc": "Rs 100", "nepali": "Rs 20", "note": "" },
+                { "site": "Pashupatinath", "foreign": "Rs 1,000", "saarc": "Rs 1,000", "nepali": "Rs 500", "note": "Non-Hindus can view from the far bank" }
+            ],
+            "shoppingSanity": [
+                { "item": "Pashmina scarf (real Chyangra)", "fair": "Rs 1,500–5,000", "check": "Look for the 'Chyangra Pashmina' label" },
+                { "item": "Small thangka painting", "fair": "Rs 3,000–12,000", "check": "Fixed-price galleries vs street copies" },
+                { "item": "Singing bowl (small)", "fair": "Rs 1,500–4,000", "check": "Test the tone before buying" },
+                { "item": "Bottle of water", "fair": "Rs 30–50", "check": "Never above Rs 60 in the city" }
+            ],
+            "scamCards": [
+                { "title": "Airport taxi overcharge", "script": "Exit-arrivals touts quote Rs 1,500+ for the Rs 500–700 airport–Thamel ride.", "redFlags": ["'Meter is broken'", "Pre-paid counter missed"], "response": "Walk to the road and use a metered taxi or Pathao.", "phrase": "कृपया मिटर अन गर्नुहोस्" },
+                { "title": "Pashupatinath 'free' guide", "script": "Pushy 'guides' ambush visitors at the main gate and demand money after the tour.", "redFlags": ["Joins you without asking", "Asks for 'donation' at the end"], "response": "Say no at the gate and walk in.", "phrase": "होइन, धन्यवाद" }
+            ],
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 600–900", "tourist": "Rs 1,000–2,500" },
+            "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "pokhara": {
+            "title": "Pokhara",
+            "taxiRoutes": [
+                { "route": "Airport → Lakeside", "meter": "Rs 200–300", "fair": "Rs 300–400", "note": "Tourists are routinely quoted Rs 1,000+" },
+                { "route": "Lakeside in-city rides", "meter": "Rs 150–250", "fair": "Rs 200–300", "note": "" },
+                { "route": "Lakeside → Sarangkot", "meter": "Rs 500–700", "fair": "Rs 700–1,000", "note": "" },
+                { "route": "Lakeside → Devi's Fall", "meter": "Rs 200–300", "fair": "Rs 250–400", "note": "" }
+            ],
+            "entryFees": [
+                { "site": "Davis Falls", "foreign": "Rs 100", "saarc": "Rs 100", "nepali": "Rs 20", "note": "" },
+                { "site": "World Peace Pagoda", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Donation box" },
+                { "site": "Sarangkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "" }
+            ],
+            "shoppingSanity": [
+                { "item": "Lakeside coffee", "fair": "Rs 200–400", "check": "" },
+                { "item": "Thangka / craft items", "fair": "Compare 3 shops", "check": "Lakeside prices are inflated for tourists" }
+            ],
+            "scamCards": [
+                { "title": "Airport 'broken meter' taxi", "script": "The classic: 'meter is broken, Rs 1,000 to Lakeside'. Real fare is Rs 300–400.", "redFlags": ["Meter covered", "Quote ≥ 3× fair"], "response": "Book via your guesthouse or use InDrive/Pathao; walk past the kerbside cluster.", "phrase": "मलाई सही मूल्य थाहा छ" },
+                { "title": "Paragliding 'special' upsell", "script": "Operators quote high 'peak season' prices; official drop zone rates are published.", "redFlags": ["No written rate card", "Pressure to pay cash upfront"], "response": "Ask for the published rate and book through a licensed operator.", "phrase": "आधिकारिक दर के हो?" }
+            ],
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 600–900", "tourist": "Rs 900–2,000" },
+            "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "chitwan": {
+            "title": "Chitwan",
+            "entryFees": [
+                { "site": "Chitwan National Park", "foreign": "Rs 1,500/day", "saarc": "Rs 750/day", "nepali": "Rs 150/day", "note": "Valid 24h; camera fees extra" },
+                { "site": "Jungle safari (jeep)", "foreign": "Rs 3,000–5,000", "saarc": "Rs 2,500–4,000", "nepali": "Rs 1,500–3,000", "note": "Per group; price varies by season" }
+            ],
+            "scamCards": [
+                { "title": "Bogus 'safari package' agencies", "script": "Unaffiliated agents sell 'guaranteed tiger sighting' packages at inflated prices.", "redFlags": ["No registered lodge name", "Upfront full payment"], "response": "Book through the lodge you stay at or a TAAN-registered agency.", "phrase": "दर्ता भएको एजेन्सी हो?" }
+            ],
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 600–900", "tourist": "Rs 800–1,800" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "lumbini": {
+            "title": "Lumbini",
+            "entryFees": [
+                { "site": "Mayadevi Temple & Sacred Garden", "foreign": "Rs 200", "saarc": "Rs 200", "nepali": "Rs 50", "note": "Free entry to garden area" }
+            ],
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–700", "tourist": "Rs 600–1,200" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "mustang": {
+            "title": "Mustang",
+            "entryFees": [
+                { "site": "Upper Mustang Restricted Area Permit", "foreign": "$500/10 days", "saarc": "$40", "nepali": "n/a", "note": "Requires an approved trekking agency; extra $50 per extra day" },
+                { "site": "Lo Manthang walled city", "foreign": "Rs 500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "Guest fee" }
+            ],
+            "mealBands": { "budget": "Rs 400–600", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Prices rise with altitude" },
+            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 },
+            "scamCards": [
+                { "title": "Restricted-area permit confusion", "script": "Touts sell 'fast-track' permits for Upper Mustang at inflated fees.", "redFlags": ["Permit cost far above the official $500/10-day rate", "No agency paperwork"], "response": "Permits must go through an approved agency; verify the official fee.", "phrase": "आधिकारिक शुल्क कति हो?" }
+            ]
+        },
+        "everest": {
+            "title": "Everest Region",
+            "entryFees": [
+                { "site": "Sagarmatha National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Plus TIMS card Rs 2,000 (1–4 weeks)" },
+                { "site": "Lukla–Kathmandu flight", "foreign": "Rs 15,000–25,000", "saarc": "—", "nepali": "—", "note": "One-way; book early in peak season" }
+            ],
+            "mealBands": { "budget": "Rs 500–800", "standard": "Rs 700–1,100", "tourist": "Rs 800–1,500", "note": "Tea-house dal bhat is the value option" },
+            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 },
+            "scamCards": [
+                { "title": "Helicopter 'evacuation' scare", "script": "Pressure to take a medevac heli for mild AMS, then inflated bills billed to insurers.", "redFlags": ["No rest day offered first", "They take your insurance docs"], "response": "Rest, hydrate, call your insurer directly before deciding.", "phrase": "म पहिले बीमालाई सम्पर्क गर्छु" },
+                { "title": "Unlicensed guide at Lukla", "script": "Directly hired guides at Lukla often have no registered agency — linked to missing-trekker cases.", "redFlags": ["No TAAN registration", "No written contract"], "response": "Book through a registered agency in Kathmandu.", "phrase": "दर्ता नम्बर देखाउनुहोस्" }
+            ]
+        },
+        "annapurna": {
+            "title": "Annapurna Region",
+            "entryFees": [
+                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 200", "note": "Plus TIMS card" },
+                { "site": "TIMS card", "foreign": "Rs 2,000", "saarc": "Rs 2,000", "nepali": "Rs 1,000", "note": "1–4 weeks; issued through agencies" }
+            ],
+            "mealBands": { "budget": "Rs 400–700", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Tea-house food gets pricier with altitude" },
+            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+        },
+        "langtang": {
+            "title": "Langtang",
+            "entryFees": [
+                { "site": "Langtang National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Plus TIMS card" }
+            ],
+            "mealBands": { "budget": "Rs 400–650", "standard": "Rs 550–850", "tourist": "Rs 650–1,100" },
+            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+        },
+        "manang": {
+            "title": "Manang",
+            "entryFees": [
+                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 200", "note": "Plus TIMS card" }
+            ],
+            "mealBands": { "budget": "Rs 400–650", "standard": "Rs 550–900", "tourist": "Rs 650–1,100" },
+            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 }
+        },
+        "rara": {
+            "title": "Rara",
+            "entryFees": [
+                { "site": "Rara National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Remote; limited ATMs — carry cash" }
+            ],
+            "mealBands": { "budget": "Rs 350–550", "standard": "Rs 500–800", "tourist": "Rs 600–1,000" },
+            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+        },
+        "bardia": {
+            "title": "Bardia",
+            "entryFees": [
+                { "site": "Bardia National Park", "foreign": "Rs 1,500/day", "saarc": "Rs 750/day", "nepali": "Rs 150/day", "note": "Plus jeep/canoe fees" }
+            ],
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 450–750", "tourist": "Rs 600–1,200" },
+            "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "dolpo": {
+            "title": "Dolpo",
+            "entryFees": [
+                { "site": "Restricted-area permits", "foreign": "$500/10 days", "saarc": "$40", "nepali": "n/a", "note": "Lower Dolpo cheaper; requires agency" }
+            ],
+            "mealBands": { "budget": "Rs 450–700", "standard": "Rs 600–900", "tourist": "Rs 700–1,200" },
+            "guidePorter": { "guidePerDay": 5500, "porterPerDay": 3200, "porterLoadKg": 25 }
+        },
+        "khaptad": {
+            "title": "Khaptad",
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 450–750", "tourist": "Rs 550–1,000" },
+            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+        },
+        "janakpur": {
+            "title": "Janakpur",
+            "entryFees": [
+                { "site": "Janaki Mandir", "foreign": "Rs 100", "saarc": "Rs 100", "nepali": "Rs 25", "note": "Modest dress required" }
+            ],
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "bandipur": {
+            "title": "Bandipur",
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 500–800", "tourist": "Rs 600–1,200" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "nagarkot": {
+            "title": "Nagarkot",
+            "entryFees": [
+                { "site": "Nagarkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "Best sunrise/sunset vantage" }
+            ],
+            "taxiRoutes": [
+                { "route": "Kathmandu → Nagarkot", "meter": "Rs 2,500–3,000", "fair": "Rs 3,000–4,000", "note": "1.5 hr; consider a share jeep" }
+            ],
+            "mealBands": { "budget": "Rs 300–500", "standard": "Rs 500–800", "tourist": "Rs 600–1,200" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "gorkha": {
+            "title": "Gorkha",
+            "entryFees": [
+                { "site": "Gorkha Durbar", "foreign": "Rs 500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "" }
+            ],
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "palpa": {
+            "title": "Palpa",
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "ilam": {
+            "title": "Ilam",
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "shoppingSanity": [
+                { "item": "Ilam tea (loose, 250g)", "fair": "Rs 300–700", "check": "Buy from tea gardens or cooperatives" }
+            ],
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "tehrathum": {
+            "title": "Tehrathum",
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        },
+        "taplejung": {
+            "title": "Taplejung",
+            "entryFees": [
+                { "site": "Kanchenjunga Conservation Area", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Restricted areas need permits via agencies" }
+            ],
+            "mealBands": { "budget": "Rs 350–550", "standard": "Rs 500–800", "tourist": "Rs 600–1,000" },
+            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 }
+        },
+        "dharan": {
+            "title": "Dharan",
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
+        }
+    }
+}

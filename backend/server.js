@@ -22,6 +22,7 @@ const FRONTEND_DIR = path.join(__dirname, "..", "frontend");
 const DATA_DIR = path.join(__dirname, "data");
 const REPORTS_FILE = path.join(DATA_DIR, "reports.json");
 const TRENDS_FILE = path.join(DATA_DIR, "trends.json");
+const FAIRPRICES_FILE = path.join(DATA_DIR, "fairprices.json");
 const SESSION_COOKIE = "yk_session";
 const STATE_COOKIE = "yk_oauth_state";
 
@@ -404,7 +405,7 @@ function saveReports(reports) {
     );
 }
 
-const REPORT_CATEGORIES = ["scam", "harassment", "theft", "info"];
+const REPORT_CATEGORIES = ["scam", "harassment", "theft", "info", "price"];
 const REPORT_SEVERITIES = ["low", "medium", "high"];
 
 function validateReport(body) {
@@ -432,6 +433,18 @@ function validateReport(body) {
 function loadTrends() {
     try {
         return JSON.parse(fs.readFileSync(TRENDS_FILE, "utf8"));
+    } catch (err) {
+        return null;
+    }
+}
+
+// ---------------------------------------------------------
+// Fair prices
+// ---------------------------------------------------------
+
+function loadFairPrices() {
+    try {
+        return JSON.parse(fs.readFileSync(FAIRPRICES_FILE, "utf8"));
     } catch (err) {
         return null;
     }
@@ -648,6 +661,22 @@ const server = http.createServer(async function(req, res) {
                 return sendError(res, 500, "Trends data unavailable", "internal");
             }
             sendJSON(res, 200, { success: true, trends: trends });
+            return logRequest(req, 200);
+        }
+
+        // -------------------------------------------------
+        // FAIR PRICES
+        // -------------------------------------------------
+
+        if (req.method === "GET" && pathname === "/api/fairprices") {
+            if (!rateLimit(req, 60, 60 * 1000)) {
+                return sendError(res, 429, "Too many requests", "rate_limited");
+            }
+            const fairprices = loadFairPrices();
+            if (!fairprices) {
+                return sendError(res, 500, "Fair-prices data unavailable", "internal");
+            }
+            sendJSON(res, 200, { success: true, fairprices: fairprices });
             return logRequest(req, 200);
         }
 

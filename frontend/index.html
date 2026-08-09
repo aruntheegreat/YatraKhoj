@@ -108,6 +108,15 @@
 
             <button
                 class="nav-btn"
+                onclick="showPage('fairprices', this)"
+                data-i18n="navFairPrices"
+            >
+                💵 Fair Price Nepal
+            </button>
+
+
+            <button
+                class="nav-btn"
                 onclick="showPage('insights', this)"
                 data-i18n="navInsights"
             >
@@ -1462,6 +1471,7 @@
                             <span class="legend-dot scam"></span> Scam
                             <span class="legend-dot harassment"></span> Harassment
                             <span class="legend-dot theft"></span> Theft
+                            <span class="legend-dot price"></span> Price
                             <span class="legend-dot info"></span> Info
                         </div>
 
@@ -1530,6 +1540,7 @@
                                 <label>Category</label>
                                 <select id="reportCategory">
                                     <option value="scam">Scam / overcharging</option>
+                                    <option value="price">Price / fare check</option>
                                     <option value="harassment">Harassment</option>
                                     <option value="theft">Theft</option>
                                     <option value="info">Safety info / alert</option>
@@ -1989,6 +2000,531 @@
 
 
         <!-- =================================================
+             FAIR PRICE NEPAL
+        ================================================== -->
+
+        <section
+            id="fairprices"
+            class="page"
+        >
+
+            <div class="page-header page-hero">
+
+                <span class="mini-title">
+                    KNOW THE FAIR PRICE
+                </span>
+
+                <h1>
+                    Fair Price Nepal
+                </h1>
+
+                <p>
+                    Street-level prices for taxis, entry fees, guides, food and
+                    souvenirs — so you know when a quote is fair and when to
+                    walk away.
+                </p>
+
+            </div>
+
+
+            <div class="page-container">
+
+
+                <div class="safety-selector">
+
+                    <div>
+
+                        <span class="mini-title">
+                            SELECT PLACE
+                        </span>
+
+                        <h2>
+                            Where are you travelling?
+                        </h2>
+
+                    </div>
+
+
+                    <select
+                        id="fairDestination"
+                        onchange="loadFairPrices()"
+                    >
+
+                        <option value="kathmandu">
+                            Kathmandu
+                        </option>
+
+                        <option value="pokhara">
+                            Pokhara
+                        </option>
+
+                        <option value="chitwan">
+                            Chitwan
+                        </option>
+
+                        <option value="lumbini">
+                            Lumbini
+                        </option>
+
+                        <option value="mustang">
+                            Mustang
+                        </option>
+
+                        <option value="everest">
+                            Everest Region
+                        </option>
+
+                        <option value="annapurna">
+                            Annapurna Region
+                        </option>
+
+                        <option value="langtang">
+                            Langtang Valley
+                        </option>
+
+                        <option value="manang">
+                            Manang Valley
+                        </option>
+
+                        <option value="rara">
+                            Rara Lake
+                        </option>
+
+                        <option value="bardia">
+                            Bardia National Park
+                        </option>
+
+                        <option value="dolpo">
+                            Dolpo & Shey Phoksundo
+                        </option>
+
+                        <option value="khaptad">
+                            Khaptad
+                        </option>
+
+                        <option value="janakpur">
+                            Janakpur
+                        </option>
+
+                        <option value="bandipur">
+                            Bandipur
+                        </option>
+
+                        <option value="nagarkot">
+                            Nagarkot
+                        </option>
+
+                        <option value="gorkha">
+                            Gorkha
+                        </option>
+
+                        <option value="palpa">
+                            Palpa (Tansen)
+                        </option>
+
+                        <option value="ilam">
+                            Ilam
+                        </option>
+
+                        <option value="tehrathum">
+                            Tehrathum
+                        </option>
+
+                        <option value="taplejung">
+                            Taplejung
+                        </option>
+
+                        <option value="dharan">
+                            Dharan
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="content-heading">
+
+                    <h2 id="fairTitle">
+                    </h2>
+
+                    <p id="fairSubtitle">
+                    </p>
+
+                </div>
+
+
+                <div class="fair-tabs" id="fairTabs">
+
+                    <button
+                        class="fair-tab active"
+                        data-tab="taxis"
+                        onclick="switchFairTab('taxis', this)"
+                    >
+                        🚕 Taxis & Buses
+                    </button>
+
+                    <button
+                        class="fair-tab"
+                        data-tab="entry"
+                        onclick="switchFairTab('entry', this)"
+                    >
+                        🎟 Entry & Guides
+                    </button>
+
+                    <button
+                        class="fair-tab"
+                        data-tab="food"
+                        onclick="switchFairTab('food', this)"
+                    >
+                        🍜 Food & Shopping
+                    </button>
+
+                    <button
+                        class="fair-tab"
+                        data-tab="scams"
+                        onclick="switchFairTab('scams', this)"
+                    >
+                        ⚠ Scam Alerts
+                    </button>
+
+                </div>
+
+
+                <div class="fair-panels" id="fairPanels">
+
+                    <div
+                        class="fair-panel active"
+                        id="fair-taxis"
+                    >
+
+                        <div
+                            id="fairTaxiNotes"
+                            class="fair-notes"
+                        >
+                        </div>
+
+                        <div
+                            id="fairTaxiList"
+                            class="fair-grid"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="fair-panel"
+                        id="fair-entry"
+                    >
+
+                        <div
+                            id="fairEntryContent"
+                            class="fair-entry"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="fair-panel"
+                        id="fair-food"
+                    >
+
+                        <div
+                            id="fairFoodContent"
+                            class="fair-food"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="fair-panel"
+                        id="fair-scams"
+                    >
+
+                        <div
+                            id="fairScamContent"
+                            class="fair-scams"
+                        >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     AM I OVERPAYING? ESTIMATOR
+                ========================================== -->
+
+                <div class="fair-estimator">
+
+                    <span class="mini-title">
+                        AM I OVERPAYING?
+                    </span>
+
+                    <h2>
+                        Check your fare in seconds
+                    </h2>
+
+                    <p>
+                        Pick a taxi route, type the price you were quoted, and
+                        get an instant verdict — converted to your currency.
+                    </p>
+
+
+                    <div class="estimator-row">
+
+                        <div class="field">
+
+                            <label>Route</label>
+
+                            <select id="fairRouteSelect">
+                                <option value="">
+                                    Select a route…
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>Quoted price (NPR)</label>
+
+                            <input
+                                id="fairQuoteInput"
+                                type="number"
+                                min="1"
+                                placeholder="e.g. 2000"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-actions">
+
+                        <button
+                            class="report-btn"
+                            onclick="checkFairFare()"
+                        >
+                            💡 Check my fare
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="fairVerdict"
+                        class="fair-verdict hidden"
+                    >
+                    </div>
+
+
+                    <div
+                        id="fairShareCard"
+                        class="fair-share-card hidden"
+                    >
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     LIVE PRICE CHECK REPORTS
+                ========================================== -->
+
+                <div class="community-reports">
+
+                    <div class="content-heading">
+
+                        <span class="mini-title">
+                            LIVE + CROWDSOURCED
+                        </span>
+
+                        <h2>
+                            Live price checks
+                        </h2>
+
+                        <p>
+                            Fares and prices other travelers checked this trip —
+                            pinned on a live map. Spot a wrong quote?
+                            Report it so the next traveler knows.
+                        </p>
+
+                    </div>
+
+
+                    <div class="reports-toolbar">
+
+                        <div class="reports-legend">
+                            <span class="legend-dot price"></span> Price
+                            <span class="legend-dot scam"></span> Scam
+                            <span class="legend-dot info"></span> Info
+                        </div>
+
+
+                        <button
+                            class="report-btn"
+                            onclick="openFairReportForm()"
+                        >
+                            + Report a price
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="priceReportMap"
+                        class="report-map"
+                    >
+                    </div>
+
+
+                    <div class="reports-layout">
+
+                        <div class="reports-feed">
+
+                            <h3>
+                                Recent price checks
+                            </h3>
+
+                            <div
+                                id="priceReportsFeed"
+                                class="reports-list"
+                            >
+                                <div class="reports-empty">
+                                    Loading reports…
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="fairReportForm"
+                            class="report-form hidden"
+                        >
+
+                            <h3>
+                                Share the price you were quoted
+                            </h3>
+
+                            <div class="field">
+                                <label>Place</label>
+                                <select id="fairReportPlace">
+                                    <option value="kathmandu">Kathmandu</option>
+                                    <option value="pokhara">Pokhara</option>
+                                    <option value="chitwan">Chitwan</option>
+                                    <option value="lumbini">Lumbini</option>
+                                    <option value="mustang">Mustang</option>
+                                    <option value="everest">Everest Region</option>
+                                    <option value="annapurna">Annapurna Region</option>
+                                    <option value="langtang">Langtang Valley</option>
+                                    <option value="manang">Manang Valley</option>
+                                    <option value="rara">Rara Lake</option>
+                                    <option value="bardia">Bardia National Park</option>
+                                    <option value="dolpo">Dolpo & Shey Phoksundo</option>
+                                    <option value="khaptad">Khaptad</option>
+                                    <option value="janakpur">Janakpur</option>
+                                    <option value="bandipur">Bandipur</option>
+                                    <option value="nagarkot">Nagarkot</option>
+                                    <option value="gorkha">Gorkha</option>
+                                    <option value="palpa">Palpa (Tansen)</option>
+                                    <option value="ilam">Ilam</option>
+                                    <option value="tehrathum">Tehrathum</option>
+                                    <option value="taplejung">Taplejung</option>
+                                    <option value="dharan">Dharan</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>What is this about?</label>
+                                <select id="fairReportCategory">
+                                    <option value="price" selected>Price / fare check</option>
+                                    <option value="scam">Scam / overcharging</option>
+                                    <option value="info">Info / alert</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Severity</label>
+                                <select id="fairReportSeverity">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Short title</label>
+                                <input id="fairReportTitle" type="text"
+                                    maxlength="120"
+                                    placeholder="e.g. Airport taxi quoted Rs 1,000">
+                            </div>
+
+                            <div class="field">
+                                <label>Description</label>
+                                <textarea id="fairReportDescription"
+                                    maxlength="800" rows="3"
+                                    placeholder="What was quoted, for what, and where?"></textarea>
+                            </div>
+
+                            <div class="report-actions">
+                                <button
+                                    class="report-btn"
+                                    onclick="submitFairReport()"
+                                >
+                                    Submit price check
+                                </button>
+                                <button
+                                    class="report-cancel"
+                                    onclick="closeFairReportForm()"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     PRINT / OFFLINE SHEET
+                ========================================== -->
+
+                <div class="fair-print-actions">
+
+                    <button
+                        class="report-btn"
+                        onclick="printFairSheet()"
+                    >
+                        🖨 Save / print offline price sheet
+                    </button>
+
+                    <p>
+                        Prints the whole fair-price sheet for this destination —
+                        handy when you are off the grid with no signal.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
              SETTINGS MODAL
         ================================================== -->
 
@@ -2217,6 +2753,13 @@
 
     </main>
 
+</div>
+
+
+<div
+    id="fairPrintRoot"
+    class="fair-print-root hidden"
+>
 </div>
 
 

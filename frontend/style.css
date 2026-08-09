@@ -4369,3 +4369,656 @@ footer {
 
     border-left: 3px solid var(--flag-gold);
 }
+
+
+
+/* =========================================================
+   FAIR PRICE NEPAL
+========================================================= */
+
+.legend-dot.price {
+    background: #2ecc71;
+}
+
+
+.cat-price .report-cat {
+    background: rgba(46, 204, 113, 0.2);
+    color: #7fe3b0;
+}
+
+
+.fair-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-bottom: 26px;
+}
+
+
+.fair-tab {
+    padding: 11px 18px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 999px;
+
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.fair-tab:hover {
+    border-color: var(--flag-gold);
+    color: var(--text);
+}
+
+
+.fair-tab.active {
+    background: var(--grad-crimson);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(200, 16, 46, 0.3);
+}
+
+
+.fair-panel {
+    display: none;
+}
+
+
+.fair-panel.active {
+    display: block;
+    animation: fadeIn 0.25s ease;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.fair-notes {
+    padding: 14px 18px;
+
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px dashed var(--border-gold);
+    border-radius: var(--radius);
+
+    margin-bottom: 22px;
+}
+
+
+.fair-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+
+.fair-card {
+    padding: 18px;
+
+    background:
+        linear-gradient(160deg, rgba(46, 204, 113, 0.06), rgba(11, 30, 91, 0.2)),
+        var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+
+    transition: all 0.2s ease;
+}
+
+
+.fair-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+    border-color: rgba(46, 204, 113, 0.45);
+}
+
+
+.fair-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.fair-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 7px 0;
+
+    font-size: 13px;
+
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+}
+
+
+.fair-price-row:last-child {
+    border-bottom: none;
+}
+
+
+.fair-label {
+    color: var(--muted);
+}
+
+
+.fair-value {
+    font-weight: 700;
+    color: var(--text);
+}
+
+
+.fair-row-highlight .fair-value {
+    color: #7fe3b0;
+}
+
+
+.fair-note {
+    margin-top: 10px;
+
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+
+.fair-bus-card {
+    background:
+        linear-gradient(160deg, rgba(46, 134, 222, 0.07), rgba(11, 30, 91, 0.2)),
+        var(--card);
+}
+
+
+.fair-entry-heading {
+    margin-bottom: 14px;
+}
+
+
+.fair-entry-heading h3 {
+    font-size: 16px;
+}
+
+
+.fair-guide-box {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+
+    padding: 22px;
+
+    background:
+        linear-gradient(160deg, rgba(242, 182, 50, 0.1), rgba(11, 30, 91, 0.2)),
+        var(--card);
+    border: 1px solid rgba(242, 182, 50, 0.35);
+    border-radius: var(--radius);
+}
+
+
+.fair-guide-box h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+
+.fair-guide-box .fair-price-row {
+    max-width: 340px;
+}
+
+
+.fair-meals {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+
+    margin-bottom: 28px;
+}
+
+
+.fair-meal-card {
+    padding: 20px;
+
+    border-radius: var(--radius);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.fair-meal-budget {
+    background: linear-gradient(160deg, rgba(46, 204, 113, 0.12), rgba(11, 30, 91, 0.25));
+    border-color: rgba(46, 204, 113, 0.4);
+}
+
+
+.fair-meal-standard {
+    background: linear-gradient(160deg, rgba(242, 182, 50, 0.12), rgba(11, 30, 91, 0.25));
+    border-color: rgba(242, 182, 50, 0.4);
+}
+
+
+.fair-meal-tourist {
+    background: linear-gradient(160deg, rgba(200, 16, 46, 0.15), rgba(11, 30, 91, 0.25));
+    border-color: rgba(200, 16, 46, 0.45);
+}
+
+
+.fair-meal-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-top: 6px;
+}
+
+
+.fair-meal-price {
+    margin-top: 10px;
+
+    font-size: 24px;
+    font-weight: 800;
+    font-family: var(--font-display);
+}
+
+
+.fair-shopping h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+
+.fair-scam-card {
+    padding: 22px;
+
+    background: linear-gradient(160deg, rgba(200, 16, 46, 0.08), rgba(11, 30, 91, 0.2));
+    border: 1px solid rgba(200, 16, 46, 0.3);
+    border-radius: var(--radius);
+
+    margin-bottom: 16px;
+}
+
+
+.fair-scam-head {
+    margin-bottom: 10px;
+}
+
+
+.fair-scam-badge {
+    display: inline-block;
+
+    margin-bottom: 6px;
+
+    padding: 3px 10px;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+
+    color: var(--flag-gold-soft);
+    background: rgba(200, 16, 46, 0.2);
+    border-radius: 999px;
+}
+
+
+.fair-scam-head h3 {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+.fair-scam-script {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #c5cfe8;
+
+    margin-bottom: 14px;
+}
+
+
+.fair-redflags,
+.fair-response {
+    margin-top: 12px;
+    padding: 14px 16px;
+
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+}
+
+
+.fair-redflags strong {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--flag-crimson-bright);
+}
+
+
+.fair-redflags ul {
+    margin: 0;
+    padding-left: 18px;
+
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+
+.fair-response strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--flag-gold);
+}
+
+
+.fair-response p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c5cfe8;
+}
+
+
+.fair-phrase {
+    margin-top: 12px;
+    padding: 12px 16px;
+
+    font-size: 13px;
+
+    background: rgba(46, 204, 113, 0.08);
+    border-left: 3px solid #2ecc71;
+    border-radius: 8px;
+}
+
+
+.fair-phrase em {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    color: #7fe3b0;
+}
+
+
+.fair-phrasebox {
+    margin-top: 26px;
+}
+
+
+.fair-phrasebox h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+
+.fair-phrase-card {
+    background:
+        linear-gradient(160deg, rgba(46, 204, 113, 0.05), rgba(11, 30, 91, 0.2)),
+        var(--card);
+}
+
+
+.fair-phrase-np {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #7fe3b0;
+
+    margin-bottom: 6px;
+}
+
+
+.fair-estimator {
+    margin-top: 34px;
+    padding: 26px;
+
+    background:
+        linear-gradient(160deg, rgba(46, 204, 113, 0.07), rgba(11, 30, 91, 0.22)),
+        var(--card);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    border-radius: var(--radius);
+}
+
+
+.fair-estimator h2 {
+    font-size: 22px;
+    font-weight: 700;
+
+    margin: 8px 0 6px;
+}
+
+
+.fair-estimator > p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+
+    margin-bottom: 20px;
+}
+
+
+.estimator-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+.fair-verdict {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+
+    margin-top: 20px;
+    padding: 20px;
+
+    border-radius: var(--radius);
+
+    animation: fadeIn 0.25s ease;
+}
+
+
+.fair-verdict.fair-ok {
+    background: rgba(46, 204, 113, 0.12);
+    border: 1px solid rgba(46, 204, 113, 0.45);
+}
+
+
+.fair-verdict.fair-warn {
+    background: rgba(242, 182, 50, 0.12);
+    border: 1px solid rgba(242, 182, 50, 0.45);
+}
+
+
+.fair-verdict.fair-bad {
+    background: rgba(200, 16, 46, 0.14);
+    border: 1px solid rgba(200, 16, 46, 0.55);
+}
+
+
+.fair-verdict-emoji {
+    font-size: 32px;
+    line-height: 1;
+}
+
+
+.fair-verdict-text h3 {
+    font-size: 18px;
+    font-weight: 700;
+
+    margin-bottom: 4px;
+}
+
+
+.fair-verdict-text p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+
+.fair-verdict-detail {
+    margin-top: 10px;
+}
+
+
+.fair-verdict-detail strong {
+    color: var(--text);
+}
+
+
+.fair-share-card {
+    margin-top: 16px;
+}
+
+
+.fair-fare-card {
+    max-width: 460px;
+
+    background:
+        linear-gradient(160deg, rgba(255, 215, 0, 0.08), rgba(11, 30, 91, 0.25)),
+        var(--card);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+
+.fair-fare-route {
+    font-size: 13px;
+    color: var(--muted);
+
+    margin-bottom: 10px;
+}
+
+
+.fair-share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+
+.fair-print-actions {
+    margin-top: 30px;
+    padding-top: 24px;
+
+    border-top: 1px dashed rgba(255, 255, 255, 0.12);
+}
+
+
+.fair-print-actions p {
+    margin-top: 12px;
+
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   FAIR PRICE — PRINT SHEET
+========================================================= */
+
+.fair-print-root {
+    font-family: var(--font-display);
+    color: #111;
+}
+
+
+@media print {
+
+    @page {
+        margin: 14mm;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .fair-print-root,
+    .fair-print-root * {
+        visibility: visible;
+    }
+
+    .fair-print-root {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        display: block !important;
+    }
+
+    .fair-print-root h1 {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+
+    .fair-print-root .print-sub {
+        font-size: 12px;
+        color: #555;
+        margin-bottom: 18px;
+    }
+
+    .fair-print-root h2 {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+
+        margin: 18px 0 6px;
+
+        border-bottom: 1px solid #333;
+        padding-bottom: 3px;
+    }
+
+    .fair-print-root ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+    .fair-print-root li {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+}
+
+
+@media (max-width: 620px) {
+
+    .estimator-row {
+        grid-template-columns: 1fr;
+    }
+
+    .fair-guide-box {
+        flex-direction: column;
+    }
+}
+

@@ -13,6 +13,42 @@
             "source": "user"
         },
         {
+            "id": "seed-price-1",
+            "place": "pokhara",
+            "lat": 28.2096,
+            "lng": 83.9856,
+            "category": "price",
+            "severity": "medium",
+            "title": "Airport taxi quoted Rs 1,000 to Lakeside",
+            "description": "Meter would have been ~Rs 300. InDrive showed Rs 350. Walk past the kerbside cluster or pre-book via your guesthouse.",
+            "time": "2026-08-08T14:00:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-price-2",
+            "place": "kathmandu",
+            "lat": 27.7164,
+            "lng": 85.3181,
+            "category": "price",
+            "severity": "medium",
+            "title": "Thamel to Bhaktapur taxi fare check",
+            "description": "Driver wanted Rs 2,800 for a one-way trip; fair range is Rs 1,300–1,700. Agree the price before boarding.",
+            "time": "2026-08-08T08:20:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-price-3",
+            "place": "chitwan",
+            "lat": 27.5291,
+            "lng": 84.3542,
+            "category": "price",
+            "severity": "low",
+            "title": "Park entry fee confirmation",
+            "description": "Foreigner day pass confirmed at Rs 1,500 at the gate; keep the ticket for jeep bookings.",
+            "time": "2026-08-07T09:10:00.000Z",
+            "source": "seed"
+        },
+        {
             "id": "seed-1",
             "place": "kathmandu",
             "lat": 27.7164,
