@@ -4,12 +4,9 @@ This is repository
 
 1. Project Title 
 YatraKhoj
-2. Team Name & All Member Names 
-(Jarvis)
-Arpit Rai
-Aalok Bhattarai 
-Anish Dhungana 
-Pratik Karki
+2. Team Name & Member Names 
+(Yatrakhoj)
+Arun Adhikari
 3. Problem Statement
 Travelers often struggle to find destinations that match their interests, budget, available time, experience level, and safety requirements. Information about trekking routes, lakes, cultural places, transportation costs, accommodation, local attractions, and safety is usually scattered across different websites and social media platforms.
 4. Solution Description
