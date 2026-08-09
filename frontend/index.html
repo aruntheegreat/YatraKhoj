@@ -126,6 +126,15 @@
 
             <button
                 class="nav-btn"
+                onclick="showPage('crowds', this)"
+                data-i18n="navCrowds"
+            >
+                👥 Beat the Crowds
+            </button>
+
+
+            <button
+                class="nav-btn"
                 onclick="showPage('insights', this)"
                 data-i18n="navInsights"
             >
@@ -1482,6 +1491,7 @@
                             <span class="legend-dot theft"></span> Theft
                             <span class="legend-dot price"></span> Price
                             <span class="legend-dot guide"></span> Guide
+                            <span class="legend-dot crowd"></span> Crowd
                             <span class="legend-dot info"></span> Info
                         </div>
 
@@ -1554,6 +1564,7 @@
                                     <option value="harassment">Harassment</option>
                                     <option value="theft">Theft</option>
                                     <option value="guide">Bad / fake guide</option>
+                                    <option value="crowd">Crowd / busyness</option>
                                     <option value="info">Safety info / alert</option>
                                 </select>
                             </div>
@@ -2931,6 +2942,290 @@
 
                     </div>
 
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BEAT THE CROWDS
+        ================================================== -->
+
+        <section
+            id="crowds"
+            class="page"
+        >
+
+            <div class="page-header page-hero">
+
+                <span class="mini-title">
+                    TRAVEL QUIET, NOT BUSY
+                </span>
+
+                <h1>
+                    Beat the Crowds
+                </h1>
+
+                <p>
+                    Live crowd check-ins from the trail, the seasonal risk and
+                    festival calendar, and smart alternative routes — so you
+                    can plan around the rush.
+                </p>
+
+            </div>
+
+
+            <div class="page-container">
+
+
+                <!-- =========================================
+                     LIVE CROWD CHECK-INS
+                ========================================== -->
+
+                <div class="community-reports">
+
+                    <div class="content-heading">
+
+                        <span class="mini-title">
+                            LIVE + CROWDSOURCED
+                        </span>
+
+                        <h2>
+                            Crowd check-ins
+                        </h2>
+
+                        <p>
+                            Travelers checking in right now: how busy is it,
+                            really? Check the map before you leave your
+                            guesthouse, then return the favour when you arrive.
+                        </p>
+
+                    </div>
+
+
+                    <div class="reports-toolbar">
+
+                        <div class="reports-legend">
+                            <span class="legend-dot crowd"></span> Crowd
+                            <span class="legend-dot price"></span> Price
+                            <span class="legend-dot info"></span> Info
+                        </div>
+
+
+                        <button
+                            class="report-btn"
+                            onclick="openCrowdForm()"
+                        >
+                            + Check in with your crowd level
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="crowdReportMap"
+                        class="report-map"
+                    >
+                    </div>
+
+
+                    <div class="reports-layout">
+
+                        <div class="reports-feed">
+
+                            <h3>
+                                Recent crowd check-ins
+                            </h3>
+
+                            <div
+                                id="crowdReportsFeed"
+                                class="reports-list"
+                            >
+                                <div class="reports-empty">
+                                    Loading check-ins…
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="crowdReportForm"
+                            class="report-form hidden"
+                        >
+
+                            <h3>
+                                How busy is it where you are?
+                            </h3>
+
+                            <div class="field">
+                                <label>Place</label>
+                                <select id="crowdReportPlace">
+                                    <option value="kathmandu">Kathmandu</option>
+                                    <option value="pokhara">Pokhara</option>
+                                    <option value="chitwan">Chitwan</option>
+                                    <option value="lumbini">Lumbini</option>
+                                    <option value="mustang">Mustang</option>
+                                    <option value="everest">Everest Region</option>
+                                    <option value="annapurna">Annapurna Region</option>
+                                    <option value="langtang">Langtang Valley</option>
+                                    <option value="manang">Manang Valley</option>
+                                    <option value="rara">Rara Lake</option>
+                                    <option value="bardia">Bardia National Park</option>
+                                    <option value="dolpo">Dolpo & Shey Phoksundo</option>
+                                    <option value="khaptad">Khaptad</option>
+                                    <option value="janakpur">Janakpur</option>
+                                    <option value="bandipur">Bandipur</option>
+                                    <option value="nagarkot">Nagarkot</option>
+                                    <option value="gorkha">Gorkha</option>
+                                    <option value="palpa">Palpa (Tansen)</option>
+                                    <option value="ilam">Ilam</option>
+                                    <option value="tehrathum">Tehrathum</option>
+                                    <option value="taplejung">Taplejung</option>
+                                    <option value="dharan">Dharan</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Busyness right now</label>
+                                <select id="crowdReportBusyness">
+                                    <option value="low">😌 Quiet — easy going</option>
+                                    <option value="medium" selected>🙂 Moderate</option>
+                                    <option value="high">😰 Busy — packed</option>
+                                </select>
+                            </div>
+
+                            <div class="field">
+                                <label>Short note</label>
+                                <input id="crowdReportTitle" type="text"
+                                    maxlength="120"
+                                    placeholder="e.g. Trail busy until 4pm">
+                            </div>
+
+                            <div class="field">
+                                <label>Details</label>
+                                <textarea id="crowdReportDescription"
+                                    maxlength="800" rows="3"
+                                    placeholder="Where exactly, and any advice for the next traveler?"></textarea>
+                            </div>
+
+                            <div class="report-actions">
+                                <button
+                                    class="report-btn"
+                                    onclick="submitCrowdReport()"
+                                >
+                                    Submit check-in
+                                </button>
+                                <button
+                                    class="report-cancel"
+                                    onclick="closeCrowdForm()"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     SEASONAL CALENDAR
+                ========================================== -->
+
+                <div class="content-heading crowd-heading">
+
+                    <span class="mini-title">
+                        WHEN TO GO
+                    </span>
+
+                    <h2>
+                        Seasonal calendar
+                    </h2>
+
+                    <p>
+                        Nepal runs on two clear trekking seasons. Know the
+                        crowd level, weather risk and festivals for every month.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="crowdCalendar"
+                    class="crowd-calendar"
+                >
+                    Loading calendar…
+                </div>
+
+
+                <!-- =========================================
+                     BUFFER DAYS
+                ========================================== -->
+
+                <div class="crowd-buffer">
+
+                    <div class="smart-icon">
+                        ⏱
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Add buffer days
+                        </h2>
+
+                        <p>
+                            Tight itineraries break. Luggage flights to Lukla
+                            cancel on ~half the days in cloud season, landslides
+                            close mountain roads, and altitude never waits for
+                            your schedule. Build slack into every plan.
+                        </p>
+
+                        <div
+                            id="bufferList"
+                            class="buffer-list"
+                        >
+                            Loading buffer guidance…
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     ALTERNATIVE ROUTES
+                ========================================== -->
+
+                <div class="content-heading crowd-heading">
+
+                    <span class="mini-title">
+                            WISER ROUTES
+                    </span>
+
+                    <h2>
+                        Smart alternatives
+                    </h2>
+
+                    <p>
+                        Love the mountains but hate the queue? These routes give
+                        you similar scenery with a fraction of the crowds.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="crowdAlternatives"
+                    class="crowd-alternatives"
+                >
+                    Loading alternatives…
                 </div>
 
 

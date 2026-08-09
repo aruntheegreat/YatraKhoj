@@ -5635,6 +5635,20 @@ function showPage(pageName, button) {
 
         loadSmartPage();
 
+    } else if (pageName === "crowds") {
+
+        loadCrowdPage();
+
+        setTimeout(function() {
+
+            if (crowdReportMap) {
+
+                crowdReportMap.invalidateSize();
+
+            }
+
+        }, 150);
+
     } else if (pageName === "insights") {
 
         loadTrends();
@@ -8707,6 +8721,7 @@ const uiDict = {
         navSafety: "🛡 Safety Info",
         navFairPrices: "💵 Fair Price Nepal",
         navSmart: "🧠 Travel Smart",
+        navCrowds: "👥 Beat the Crowds",
         navInsights: "📊 Nepal in Numbers",
         navCurrency: "₨ Currency Converter",
         navAbout: "◎ About Us",
@@ -8720,6 +8735,7 @@ const uiDict = {
         navSafety: "🛡 सुरक्षा जानकारी",
         navFairPrices: "💵 उचित मूल्य नेपाल",
         navSmart: "🧠 स्मार्ट यात्रा",
+        navCrowds: "👥 भीडबाट बच्नुहोस्",
         navInsights: "📊 नेपाल संख्यामा",
         navCurrency: "₨ मुद्रा परिवर्तक",
         navAbout: "◎ हाम्रो बारेमा",
@@ -9902,6 +9918,11 @@ const reportCategoryNames = {
         ne: "गाइड"
     },
 
+    crowd: {
+        en: "Crowd",
+        ne: "भीड"
+    },
+
     info: {
         en: "Info",
         ne: "जानकारी"
@@ -10042,6 +10063,7 @@ function renderReportMap(reports) {
         theft: "#8E44AD",
         price: "#2ECC71",
         guide: "#F39C12",
+        crowd: "#00CEC9",
         info: "#2E86DE"
     };
 
@@ -11720,6 +11742,7 @@ function renderFairReportMap(reports) {
         theft: "#8E44AD",
         price: "#2ECC71",
         guide: "#F39C12",
+        crowd: "#00CEC9",
         info: "#2E86DE"
     };
 
@@ -12904,6 +12927,722 @@ function printSmartPack() {
     );
 
     printRoot.innerHTML = "";
+
+}
+
+
+/* =========================================================
+   BEAT THE CROWDS
+
+   Live crowd check-ins (crowd report category), the seasonal
+   risk & festival calendar, buffer-day guidance and smart
+   alternative routes for crowded hot spots.
+========================================================= */
+
+let crowdReportMap = null;
+
+let crowdReportMarkers = [];
+
+
+const crowdCalendar = [
+
+    {
+        month: "January",
+        season: "Winter",
+        crowd: "quiet",
+        crowdLabel: "Quiet",
+        risk: "Cold, high passes snowed in — lowland treks, Chitwan and the valleys are best.",
+        festivals: ["Maghe Sankranti"]
+    },
+    {
+        month: "February",
+        season: "Late winter",
+        crowd: "quiet",
+        crowdLabel: "Quiet",
+        risk: "Still cold and clear. Rara, Khaptad and the Terai shine now.",
+        festivals: ["Losar (Tibetan New Year)"]
+    },
+    {
+        month: "March",
+        season: "Spring",
+        crowd: "shoulder",
+        crowdLabel: "Shoulder",
+        risk: "Warming up; rhododendrons bloom. First big trekking wave begins.",
+        festivals: ["Holi", "Maha Shivaratri"]
+    },
+    {
+        month: "April",
+        season: "Spring peak",
+        crowd: "shoulder",
+        crowdLabel: "Busy",
+        risk: "Best spring visibility — Everest and Annapurna trails fill up.",
+        festivals: ["Nepali New Year", "Bisket Jatra"]
+    },
+    {
+        month: "May",
+        season: "Late spring",
+        crowd: "shoulder",
+        crowdLabel: "Shoulder",
+        risk: "Clear early, storms late in the month; monsoon clouds gather.",
+        festivals: ["Buddha Jayanti"]
+    },
+    {
+        month: "June",
+        season: "Monsoon",
+        crowd: "quiet",
+        crowdLabel: "Quiet",
+        risk: "Heavy rain, leeches and hidden peaks — but lush valleys and empty trails.",
+        festivals: []
+    },
+    {
+        month: "July",
+        season: "Monsoon",
+        crowd: "quiet",
+        crowdLabel: "Quiet",
+        risk: "Wettest month. Landslides close mountain roads; travel by valley or fly.",
+        festivals: ["Janai Purnima", "Gai Jatra"]
+    },
+    {
+        month: "August",
+        season: "Monsoon tail",
+        crowd: "quiet",
+        crowdLabel: "Quiet",
+        risk: "Rains ease late month; trails still slippery, views returning.",
+        festivals: ["Teej"]
+    },
+    {
+        month: "September",
+        season: "Autumn opens",
+        crowd: "shoulder",
+        crowdLabel: "Shoulder",
+        risk: "Skies clear by late Sep — the most reliable window opens.",
+        festivals: ["Indra Jatra", "Dashain begins"]
+    },
+    {
+        month: "October",
+        season: "Autumn peak",
+        crowd: "peak",
+        crowdLabel: "Peak",
+        risk: "The driest, clearest month — and the busiest on EBC, ABC and ACAP.",
+        festivals: ["Dashain", "Tihar begins"]
+    },
+    {
+        month: "November",
+        season: "Autumn peak",
+        crowd: "peak",
+        crowdLabel: "Peak",
+        risk: "Still clear and dry; crowds thin a little after mid-month.",
+        festivals: ["Tihar", "Chhath"]
+    },
+    {
+        month: "December",
+        season: "Early winter",
+        crowd: "shoulder",
+        crowdLabel: "Shoulder",
+        risk: "Cold and clear; great for lower treks, high passes start snowing.",
+        festivals: []
+    }
+
+];
+
+
+const crowdAlternatives = [
+
+    {
+        peak: "Everest Base Camp",
+        when: "Oct–Nov & Apr–May",
+        swap: "Langtang Valley — similar alpine drama and glacier views with a fraction of the trekkers, easy permits."
+    },
+    {
+        peak: "Annapurna Base Camp",
+        when: "Oct–Nov",
+        swap: "Khaptad or the Gorkha–Manaslu side — quiet ridges, teahouses and no conga lines."
+    },
+    {
+        peak: "Pokhara Lakeside",
+        when: "Oct–Nov & festival weeks",
+        swap: "Bandipur or Palpa (Tansen) — the same mountain backdrop over far fewer shoulders."
+    },
+    {
+        peak: "Chitwan safari",
+        when: "Oct–Mar",
+        swap: "Bardia National Park — wilder, fewer jeeps, same rhinos and tigers, bigger silence."
+    },
+    {
+        peak: "Lukla flight queues",
+        when: "Cloud season",
+        swap: "Fly to Phaplu or bus to Jiri and trek the classic route in — no airport lottery."
+    },
+    {
+        peak: "Kathmandu durbar squares",
+        when: "Dec–Feb & festival days",
+        swap: "Nagarkot sunrise plus Bhaktapur on a weekday — go early or at dusk."
+    }
+
+];
+
+
+const crowdBufferDays = [
+
+    "Flights (Lukla / Phaplu / Jomsom): cloud cancels 30–50% of departures in bad seasons — add 2 days.",
+    "Mountain roads: monsoon landslides and festival exodus can each add a full day.",
+    "Altitude: build in +1 rest day per ~1,000 m above 3,000 m — never skip it.",
+    "Festivals (Dashain/Tihar): buses and teahouses book out — add 1–2 days and book ahead.",
+    "Rule of thumb: any trek over 7 days gets at least one buffer day at the end."
+
+];
+
+
+function loadCrowdPage() {
+
+    renderCrowdCalendar();
+
+    renderBufferList();
+
+    renderCrowdAlternatives();
+
+    loadCrowdReports();
+
+}
+
+
+function renderCrowdCalendar() {
+
+    const el =
+        document.getElementById(
+            "crowdCalendar"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        crowdCalendar
+        .map(function(month) {
+
+            return `
+
+                <div class="crowd-month crowd-${escapeHtml(month.crowd)}">
+
+                    <div class="crowd-month-head">
+
+                        <span class="crowd-month-name">
+                            ${escapeHtml(month.month)}
+                        </span>
+
+                        <span class="crowd-tag crowd-tag-${escapeHtml(month.crowd)}">
+                            ${escapeHtml(month.crowdLabel)}
+                        </span>
+
+                    </div>
+
+                    <p class="crowd-month-season">
+                        ${escapeHtml(month.season)}
+                    </p>
+
+                    <p class="crowd-month-risk">
+                        ${escapeHtml(month.risk)}
+                    </p>
+
+                    ${month.festivals.length ? `
+                        <div class="crowd-festivals">
+                            ${month.festivals.map(function(festival) {
+                                return `
+                                    <span class="festival-chip">
+                                        🎉 ${escapeHtml(festival)}
+                                    </span>
+                                `;
+                            }).join("")}
+                        </div>
+                    ` : ""}
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderBufferList() {
+
+    const el =
+        document.getElementById(
+            "bufferList"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        crowdBufferDays
+        .map(function(item) {
+
+            return `
+                <li>
+                    <span class="check-dot">✓</span>
+                    <span>${escapeHtml(item)}</span>
+                </li>
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function renderCrowdAlternatives() {
+
+    const el =
+        document.getElementById(
+            "crowdAlternatives"
+        );
+
+    if (!el) {
+
+        return;
+
+    }
+
+    el.innerHTML =
+        crowdAlternatives
+        .map(function(item) {
+
+            return `
+
+                <div class="alt-card">
+
+                    <div class="alt-head">
+
+                        <span class="alt-badge">
+                            BUSY
+                        </span>
+
+                        <h3>
+                            ${escapeHtml(item.peak)}
+                        </h3>
+
+                        <span class="alt-when">
+                            ${escapeHtml(item.when)}
+                        </span>
+
+                    </div>
+
+                    <div class="alt-swap">
+
+                        <span class="alt-swap-icon">
+                            →
+                        </span>
+
+                        <div>
+
+                            <span class="alt-swap-label">
+                                SMARTER SWAP
+                            </span>
+
+                            <p>
+                                ${escapeHtml(item.swap)}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function busynessLabel(severity) {
+
+    if (severity === "high") {
+
+        return "Busy";
+
+    }
+
+    if (severity === "medium") {
+
+        return "Moderate";
+
+    }
+
+    return "Quiet";
+
+}
+
+
+function loadCrowdReports() {
+
+    apiGet(
+        "/api/reports",
+        { success: false, reports: [] }
+    )
+    .then(function(data) {
+
+        const reports =
+            data &&
+            data.success &&
+            Array.isArray(data.reports)
+            ? data.reports
+            : [];
+
+        renderCrowdReportMap(
+            reports
+        );
+
+        renderCrowdReportFeed(
+            reports
+        );
+
+    });
+
+}
+
+
+function renderCrowdReportMap(reports) {
+
+    const el =
+        document.getElementById(
+            "crowdReportMap"
+        );
+
+    if (!el || typeof L === "undefined") {
+
+        return;
+
+    }
+
+    if (!crowdReportMap) {
+
+        crowdReportMap =
+            L.map(el).setView(
+                [27.9, 84.1],
+                7
+            );
+
+        L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            {
+                attribution:
+                    "&copy; OpenStreetMap &copy; CARTO",
+                subdomains: "abcd",
+                maxZoom: 18
+            }
+        ).addTo(crowdReportMap);
+
+    }
+
+    crowdReportMarkers.forEach(
+        function(marker) {
+
+            crowdReportMap.removeLayer(
+                marker
+            );
+
+        }
+    );
+
+    crowdReportMarkers = [];
+
+    const iconColors = {
+        crowd: "#00CEC9",
+        price: "#2ECC71",
+        guide: "#F39C12",
+        scam: "#C8102E",
+        harassment: "#F2B632",
+        theft: "#8E44AD",
+        info: "#2E86DE"
+    };
+
+    reports.forEach(function(report) {
+
+        const coords =
+            getReportCoords(report);
+
+        if (!coords) {
+
+            return;
+
+        }
+
+        const color =
+            iconColors[report.category] ||
+            "#2E86DE";
+
+        const icon =
+            L.divIcon({
+                className:
+                    "report-marker",
+                html:
+                    '<div style="background:' +
+                    color +
+                    '">⚠</div>',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+        const marker =
+            L.marker(coords, {
+                icon: icon
+            })
+            .addTo(crowdReportMap)
+            .bindPopup(
+                "<strong>" +
+                escapeHtml(report.title) +
+                "</strong><br>" +
+                escapeHtml(destinationName(report.place)) +
+                "<br>" +
+                escapeHtml(
+                    report.description || ""
+                )
+            );
+
+        crowdReportMarkers.push(
+            marker
+        );
+
+    });
+
+}
+
+
+function renderCrowdReportFeed(reports) {
+
+    const feed =
+        document.getElementById(
+            "crowdReportsFeed"
+        );
+
+    if (!feed) {
+
+        return;
+
+    }
+
+    const crowdReports =
+        reports.filter(
+            function(report) {
+
+                return (
+                    report.category ===
+                    "crowd"
+                );
+
+            }
+        );
+
+    if (crowdReports.length === 0) {
+
+        feed.innerHTML =
+            '<div class="reports-empty">' +
+            "No crowd check-ins yet — be the first to share." +
+            "</div>";
+
+        return;
+
+    }
+
+    feed.innerHTML =
+        crowdReports
+        .slice(0, 10)
+        .map(function(report) {
+
+            return `
+
+                <div class="report-item cat-crowd">
+
+                    <div class="report-head">
+
+                        <span class="report-cat">
+                            ${escapeHtml(reportCategoryName(report.category))}
+                        </span>
+
+                        <span class="crowd-busyness busy-${escapeHtml(report.severity || "low")}">
+                            ${escapeHtml(busynessLabel(report.severity))}
+                        </span>
+
+                        <span class="report-time">
+                            ${escapeHtml(prettyTime(report.time))}
+                        </span>
+
+                    </div>
+
+                    <h4>
+                        ${escapeHtml(report.title)}
+                    </h4>
+
+                    <p>
+                        ${escapeHtml(report.description || "")}
+                    </p>
+
+                    <span class="report-place">
+                        📍 ${escapeHtml(destinationName(report.place))}
+                    </span>
+
+                </div>
+
+            `;
+
+        })
+        .join("");
+
+}
+
+
+function openCrowdForm() {
+
+    const form =
+        document.getElementById(
+            "crowdReportForm"
+        );
+
+    if (!form) {
+
+        return;
+
+    }
+
+    form.classList.remove(
+        "hidden"
+    );
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+
+function closeCrowdForm() {
+
+    const form =
+        document.getElementById(
+            "crowdReportForm"
+        );
+
+    if (form) {
+
+        form.classList.add(
+            "hidden"
+        );
+
+    }
+
+}
+
+
+function submitCrowdReport() {
+
+    const place =
+        document
+        .getElementById("crowdReportPlace")
+        .value;
+
+    const severity =
+        document
+        .getElementById("crowdReportBusyness")
+        .value;
+
+    const title =
+        document
+        .getElementById("crowdReportTitle")
+        .value
+        .trim();
+
+    const description =
+        document
+        .getElementById("crowdReportDescription")
+        .value
+        .trim();
+
+    if (!title) {
+
+        showToast(
+            "Please add a short note about the crowd."
+        );
+
+        return;
+    }
+
+    const placeData =
+        destinations[place];
+
+    const lat =
+        placeData &&
+        placeData.coords &&
+        placeData.coords.lat
+        ? Number(placeData.coords.lat)
+        : null;
+
+    const lng =
+        placeData &&
+        placeData.coords &&
+        placeData.coords.lng
+        ? Number(placeData.coords.lng)
+        : null;
+
+    apiPost(
+        "/api/reports",
+        {
+            place: place,
+            lat: lat,
+            lng: lng,
+            category: "crowd",
+            severity: severity,
+            title: title,
+            description: description
+        }
+    )
+    .then(function(data) {
+
+        if (data && data.success) {
+
+            document
+                .getElementById("crowdReportForm")
+                .classList.add("hidden");
+
+            document
+                .getElementById("crowdReportTitle")
+                .value = "";
+
+            document
+                .getElementById("crowdReportDescription")
+                .value = "";
+
+            showToast(
+                "Check-in submitted. Thanks for helping other travelers."
+            );
+
+            loadCrowdReports();
+
+            loadReports();
+
+        } else {
+
+            showToast(
+                data && data.message
+                ? data.message
+                : "Could not submit check-in."
+            );
+
+        }
+
+    });
 
 }
 

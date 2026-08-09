@@ -1,18 +1,6 @@
 {
     "reports": [
         {
-            "id": "r-1786289016004-ed813b7e",
-            "place": "kathmandu",
-            "lat": 27.72,
-            "lng": 85.32,
-            "category": "price",
-            "severity": "medium",
-            "title": "QA price check test",
-            "description": "Auto QA submitted price report.",
-            "time": "2026-08-09T15:23:36.005Z",
-            "source": "user"
-        },
-        {
             "id": "r-1786237495993-dd710dfc",
             "place": "kathmandu",
             "lat": 27.72,
@@ -82,6 +70,30 @@
             "title": "Unlicensed 'mountain guide' at airport",
             "description": "Offered a cheap EBC package but refused to show any certification. Use a registered trekking agency only.",
             "time": "2026-08-05T10:15:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-crowd-1",
+            "place": "everest",
+            "lat": 27.8687,
+            "lng": 86.7512,
+            "category": "crowd",
+            "severity": "high",
+            "title": "Lukla to Namche very crowded",
+            "description": "Trail packed all day with porter trains; teahouses full by 4pm. Go slow and book ahead.",
+            "time": "2026-08-08T05:30:00.000Z",
+            "source": "seed"
+        },
+        {
+            "id": "seed-crowd-2",
+            "place": "pokhara",
+            "lat": 28.2096,
+            "lng": 83.9856,
+            "category": "crowd",
+            "severity": "medium",
+            "title": "Lakeside moderate today",
+            "description": "Crowded around the lakeside promenade at dusk but day tours felt easy. Expect peak traffic in Oct-Nov.",
+            "time": "2026-08-07T12:00:00.000Z",
             "source": "seed"
         },
         {
