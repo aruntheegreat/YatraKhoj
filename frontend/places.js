@@ -30,7 +30,7 @@ const nepalPlaces = [
     { n: "Solukhumbu", p: "Koshi", hq: "Salleri", known: "The Everest region — Namche Bazaar, Tengboche and the road to Base Camp.", spots: ["Namche Bazaar", "Tengboche"], lat: 27.58, lng: 86.71, dest: "everest" },
     { n: "Sunsari", p: "Koshi", hq: "Inaruwa", known: "Home of Dharan and the sacred Baraha Kshetra confluence.", spots: ["Dharan", "Baraha Kshetra"], lat: 26.63, lng: 87.16, dest: "dharan" },
     { n: "Taplejung", p: "Koshi", hq: "Phungling", known: "Kanchenjunga country — the world's third-highest peak and pristine trekking.", spots: ["Kanchenjunga", "Ghunsa"], lat: 27.43, lng: 87.8, dest: "taplejung" },
-    { n: "Terhathum", p: "Koshi", hq: "Myanglung", known: "Rhododendron forests of Tinjure-Milke and a slower eastern-hills Nepal.", spots: ["Tinjure", "Basantapur"], lat: 27.12, lng: 87.55, dest: "tehrathum" },
+    { n: "Terhathum", p: "Koshi", hq: "Myanglung", known: "Rhododendron forests of Tinjure-Milke and a slower eastern-hills Nepal.", spots: ["Tinjure", "Basantapur"], lat: 27.12, lng: 87.55, dest: "tehrathum", wiki: "Tehrathum District" },
     { n: "Udayapur", p: "Koshi", hq: "Gaighat", known: "The fertile Triyuga valley and a rising river-rafting scene.", spots: ["Gaighat", "Katari"], lat: 26.93, lng: 86.56 },
 
     /* ---------------- Madhesh (Province 2) ---------------- */
@@ -56,7 +56,7 @@ const nepalPlaces = [
     { n: "Lalitpur", p: "Bagmati", hq: "Patan", known: "Patan Durbar Square and a living tradition of metal and wood craft.", spots: ["Patan Durbar Square", "Hiranya Varna"], lat: 27.66, lng: 85.33 },
     { n: "Nuwakot", p: "Bagmati", hq: "Bidur", known: "The ornate Nuwakot palace and the doorstep to the Langtang region.", spots: ["Nuwakot palace"], lat: 27.91, lng: 85.15 },
     { n: "Rasuwa", p: "Bagmati", hq: "Dhunche", known: "The Langtang Valley — glaciers, yak herders and the Tibet border.", spots: ["Langtang Valley", "Dhunche"], lat: 28.11, lng: 85.3, dest: "langtang" },
-    { n: "Sindhupalchok", p: "Bagmati", hq: "Chautara", known: "Gosaikunda's sacred lakes and the Helambu hills along the Araniko highway.", spots: ["Gosaikunda", "Helambu"], lat: 27.78, lng: 85.72 },
+    { n: "Sindhupalchok", p: "Bagmati", hq: "Chautara", known: "Gosaikunda's sacred lakes and the Helambu hills along the Araniko highway.", spots: ["Gosaikunda", "Helambu"], lat: 27.78, lng: 85.72, wiki: "Sindhupalchowk District" },
     { n: "Chitwan", p: "Bagmati", hq: "Bharatpur", known: "Nepal's most famous safari — rhinos, tigers and the Sauraha riverfront.", spots: ["Chitwan NP", "Sauraha"], lat: 27.68, lng: 84.43, dest: "chitwan" },
     { n: "Makwanpur", p: "Bagmati", hq: "Hetauda", known: "Manakamana's cable car to the goddess temple on the ridge.", spots: ["Manakamana"], lat: 27.42, lng: 85.04 },
 
@@ -66,7 +66,7 @@ const nepalPlaces = [
     { n: "Gorkha", p: "Gandaki", hq: "Gorkha", known: "Birthplace of the kingdom — Gorkha Durbar on its high ridge.", spots: ["Gorkha Durbar"], lat: 28.0, lng: 84.63, dest: "gorkha" },
     { n: "Kaski", p: "Gandaki", hq: "Pokhara", known: "Pokhara's Phewa lake, Sarangkot paragliding and the Annapurna gateway.", spots: ["Lakeside", "Sarangkot"], lat: 28.21, lng: 83.99, dest: "pokhara" },
     { n: "Lamjung", p: "Gandaki", hq: "Besisahar", known: "Besisahar — where the classic Annapurna Circuit begins.", spots: ["Besisahar"], lat: 28.23, lng: 84.37 },
-    { n: "Manang", p: "Gandaki", hq: "Chame", known: "The high Manang valley and the Thorong La crossing.", spots: ["Manang village", "Thorong La"], lat: 28.67, lng: 84.02, dest: "manang" },
+    { n: "Manang", p: "Gandaki", hq: "Chame", known: "The high Manang valley and the Thorong La crossing.", spots: ["Manang village", "Thorong La"], lat: 28.67, lng: 84.02, dest: "manang", wiki: "Manang District, Nepal" },
     { n: "Mustang", p: "Gandaki", hq: "Jomsom", known: "Muktinath's holy fire, Jomsom's apple orchards and walled Upper Mustang.", spots: ["Muktinath", "Lo Manthang"], lat: 28.78, lng: 83.73, dest: "mustang" },
     { n: "Myagdi", p: "Gandaki", hq: "Beni", known: "Poon Hill sunrises, the Dhaulagiri massif and Ghorepani's forest trails.", spots: ["Poon Hill", "Dhaulagiri"], lat: 28.35, lng: 83.57, dest: "annapurna" },
     { n: "Nawalpur", p: "Gandaki", hq: "Kawasoti", known: "The Devchuli hills watching over the Chitwan buffer zone.", spots: ["Devchuli"], lat: 27.69, lng: 84.11 },
@@ -77,12 +77,12 @@ const nepalPlaces = [
     /* ---------------- Lumbini (Province 5) ---------------- */
 
     { n: "Kapilvastu", p: "Lumbini", hq: "Taulihawa", known: "The ancient Shakya capital and Lord Buddha's childhood home.", spots: ["Kapilavastu ruins"], lat: 27.56, lng: 83.06 },
-    { n: "Parasi", p: "Lumbini", hq: "Ramgram", known: "Ramgram's ancient stupa and the western Terai flatlands.", spots: ["Ramgram Stupa"], lat: 27.53, lng: 83.67 },
+    { n: "Parasi", p: "Lumbini", hq: "Ramgram", known: "Ramgram's ancient stupa and the western Terai flatlands.", spots: ["Ramgram Stupa"], lat: 27.53, lng: 83.67, wiki: "Nawalparasi (West of Bardaghat Susta) district" },
     { n: "Rupandehi", p: "Lumbini", hq: "Siddharthanagar", known: "Lumbini — the birthplace of the Buddha — plus Bhairahawa's international airport.", spots: ["Lumbini", "Bhairahawa"], lat: 27.51, lng: 83.45, dest: "lumbini" },
     { n: "Arghakhanchi", p: "Lumbini", hq: "Sandhikharka", known: "Sridaicha's viewpoints over the west-central ridges.", spots: ["Sandhikharka"], lat: 27.93, lng: 83.19 },
     { n: "Gulmi", p: "Lumbini", hq: "Tamghas", known: "Darbar Danda and the plum-and-prune orchards of the hills.", spots: ["Darbar Danda", "Tamghas"], lat: 28.09, lng: 83.25 },
     { n: "Palpa", p: "Lumbini", hq: "Tansen", known: "Tansen's steep old bazaar and the riverside Rani Mahal palace.", spots: ["Tansen", "Rani Mahal"], lat: 27.87, lng: 83.55, dest: "palpa" },
-    { n: "Dang", p: "Lumbini", hq: "Ghorahi", known: "The wide Dang valley towns of Ghorahi and Tulsipur.", spots: ["Ghorahi", "Tulsipur"], lat: 28.0, lng: 82.29 },
+    { n: "Dang", p: "Lumbini", hq: "Ghorahi", known: "The wide Dang valley towns of Ghorahi and Tulsipur.", spots: ["Ghorahi", "Tulsipur"], lat: 28.0, lng: 82.29, wiki: "Dang District, Nepal" },
     { n: "Pyuthan", p: "Lumbini", hq: "Pyuthan", known: "Little-visited middle hills between the Terai and Karnali.", spots: ["Pyuthan"], lat: 28.09, lng: 82.87 },
     { n: "Rolpa", p: "Lumbini", hq: "Liwang", known: "Deep hill valleys with an old Magar heartland.", spots: ["Liwang"], lat: 28.28, lng: 82.65 },
     { n: "Rukum East", p: "Lumbini", hq: "Rukumkot", known: "Western hills feeding the wider Rukum range.", spots: ["Rukumkot"], lat: 28.64, lng: 82.48 },
@@ -92,7 +92,7 @@ const nepalPlaces = [
     /* ---------------- Karnali (Province 6) ---------------- */
 
     { n: "Rukum West", p: "Karnali", hq: "Musikot", known: "The fold of western hills joining Karnali province.", spots: ["Musikot"], lat: 28.63, lng: 82.29 },
-    { n: "Salyan", p: "Karnali", hq: "Salyan", known: "Quiet middle hills on the road to the far west.", spots: ["Khalanga"], lat: 28.38, lng: 82.17 },
+    { n: "Salyan", p: "Karnali", hq: "Salyan", known: "Quiet middle hills on the road to the far west.", spots: ["Khalanga"], lat: 28.38, lng: 82.17, wiki: "Salyan District, Nepal" },
     { n: "Dolpa", p: "Karnali", hq: "Dunai", known: "Shey Phoksundo's turquoise lake and mystical Upper Dolpo.", spots: ["Phoksundo Lake"], lat: 28.96, lng: 82.82, dest: "dolpo" },
     { n: "Humla", p: "Karnali", hq: "Simikot", known: "Simikot's high airstrip and the Limi valley on the Tibetan edge.", spots: ["Simikot", "Limi Valley"], lat: 29.97, lng: 81.82 },
     { n: "Jumla", p: "Karnali", hq: "Jumla", known: "Nepal's apple country and the door to Rara lake.", spots: ["Jumla apples"], lat: 29.28, lng: 82.18 },

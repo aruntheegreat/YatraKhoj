@@ -5450,25 +5450,6 @@ const hotelImages = [
 
 
 /* =========================================================
-   STARTING POINTS
-========================================================= */
-
-const startingPoints = {
-
-    Itahari:    { lat: 26.66, lng: 87.27 },
-    Biratnagar: { lat: 26.45, lng: 87.27 },
-    Dharan:     { lat: 26.82, lng: 87.28 },
-    Birtamod:   { lat: 26.63, lng: 87.98 },
-    Kathmandu:  { lat: 27.72, lng: 85.32 },
-    Pokhara:    { lat: 28.21, lng: 83.99 },
-    Birgunj:    { lat: 27.00, lng: 84.87 },
-    Bhairahawa: { lat: 27.51, lng: 83.45 }
-
-};
-
-
-
-/* =========================================================
    NATIONAL EMERGENCY NUMBERS
 ========================================================= */
 
@@ -5597,6 +5578,8 @@ function showPage(pageName, button) {
 
         applyPrefsToTripFinder();
 
+        renderCountryTreks();
+
     } else if (pageName === "discover") {
 
         renderUnderrated();
@@ -5682,12 +5665,360 @@ function toggleInterest(button) {
 
 
 /* =========================================================
-   CURRENT DESTINATION
+   TREKKING BY COUNTRY
+
+   Country-based recommendation rows on the trip finder so
+   tourists quickly see the trek that fits travellers from
+   their home country. "Match my trip" pre-fills the finder.
 ========================================================= */
 
-let currentDestination = "";
+const countryTreks = [
+    {
+        country: "India",
+        flag: "🇮🇳",
+        trek: "Everest Base Camp",
+        route: "Sagarmatha National Park",
+        altitude: "5,364 m",
+        days: "12–14 days",
+        best: "Mar–May · Oct–Nov",
+        difficulty: "challenging",
+        budgetPerDay: 4000,
+        dest: "everest",
+        why: "The closest Himalaya gateway — Delhi to Kathmandu is barely an hour by air, and EBC is the trek Indian travellers ask about most."
+    },
+    {
+        country: "United States",
+        flag: "🇺🇸",
+        trek: "Everest Base Camp",
+        route: "Sagarmatha National Park",
+        altitude: "5,364 m",
+        days: "12–14 days",
+        best: "Oct–Nov",
+        difficulty: "challenging",
+        budgetPerDay: 4500,
+        dest: "everest",
+        why: "The ultimate bucket-list trek for US hikers — big mountain days, teahouses and the Sherpa culture of Khumbu."
+    },
+    {
+        country: "United Kingdom",
+        flag: "🇬🇧",
+        trek: "Annapurna Circuit",
+        route: "Thorong La pass",
+        altitude: "5,416 m",
+        days: "12–15 days",
+        best: "Sep–Nov",
+        difficulty: "challenging",
+        budgetPerDay: 3800,
+        dest: "annapurna",
+        why: "A classic variety trek — jungle to alpine desert — beloved by British trekkers for the Thorong La crossing."
+    },
+    {
+        country: "China",
+        flag: "🇨🇳",
+        trek: "Langtang Valley",
+        route: "Kyanjin Gompa",
+        altitude: "3,870 m",
+        days: "6–8 days",
+        best: "Mar–May · Sep–Nov",
+        difficulty: "moderate",
+        budgetPerDay: 3000,
+        dest: "langtang",
+        why: "Close to the Tibet border and short enough for a working week off — big Himalayan views without a long commitment."
+    },
+    {
+        country: "Japan",
+        flag: "🇯🇵",
+        trek: "Annapurna Base Camp",
+        route: "Fish-tail Sanctuary",
+        altitude: "4,130 m",
+        days: "7–8 days",
+        best: "Mar–May",
+        difficulty: "moderate",
+        budgetPerDay: 3500,
+        dest: "annapurna",
+        why: "Comfortable teahouses and mountain huts that feel like Japan's alpine lodges — a warm welcome all the way to the amphitheatre."
+    },
+    {
+        country: "Australia",
+        flag: "🇦🇺",
+        trek: "Annapurna Base Camp",
+        route: "Fish-tail Sanctuary",
+        altitude: "4,130 m",
+        days: "7–8 days",
+        best: "Oct–Nov",
+        difficulty: "moderate",
+        budgetPerDay: 3500,
+        dest: "annapurna",
+        why: "Gentler altitude and short trail days suit travellers used to warm weather — brilliant sunrise views over Machhapuchhre."
+    },
+    {
+        country: "Germany",
+        flag: "🇩🇪",
+        trek: "Langtang Valley",
+        route: "Kyanjin Gompa",
+        altitude: "3,870 m",
+        days: "7 days",
+        best: "May · Sep–Oct",
+        difficulty: "moderate",
+        budgetPerDay: 3000,
+        dest: "langtang",
+        why: "Fits neatly into a two-week Nepal holiday — a compact, rewarding trek with yaks, glaciers and alpine cheese."
+    },
+    {
+        country: "France",
+        flag: "🇫🇷",
+        trek: "Upper Dolpo",
+        route: "Shey Phoksundo",
+        altitude: "5,110 m",
+        days: "14–16 days",
+        best: "Jun–Sep",
+        difficulty: "challenging",
+        budgetPerDay: 5500,
+        dest: "dolpo",
+        why: "Wild, remote high-Himalaya trekking on the Tibetan plateau edge — Nepal's least-crowded classic for adventurous souls."
+    },
+    {
+        country: "South Korea",
+        flag: "🇰🇷",
+        trek: "Annapurna Base Camp",
+        route: "Fish-tail Sanctuary",
+        altitude: "4,130 m",
+        days: "7–8 days",
+        best: "Apr–May",
+        difficulty: "moderate",
+        budgetPerDay: 3500,
+        dest: "annapurna",
+        why: "A firm favourite with Korean trekkers — well-run lodges, clear trails and the stunning Machhapuchhre amphitheatre."
+    },
+    {
+        country: "Canada",
+        flag: "🇨🇦",
+        trek: "Upper Mustang",
+        route: "Lo Manthang",
+        altitude: "3,810 m",
+        days: "10–12 days",
+        best: "Mar–May · Sep–Nov",
+        difficulty: "moderate",
+        budgetPerDay: 5000,
+        dest: "mustang",
+        why: "High-desert canyons and ancient walled cities — a cultural trek that feels like Nepal's own Rockies adventure."
+    },
+    {
+        country: "Singapore",
+        flag: "🇸🇬",
+        trek: "Langtang Valley",
+        route: "Kyanjin Gompa",
+        altitude: "3,870 m",
+        days: "5–7 days",
+        best: "Mar–May",
+        difficulty: "moderate",
+        budgetPerDay: 3000,
+        dest: "langtang",
+        why: "Perfect for a short tropical-escape break — a long weekend of mountain air a day's drive from Kathmandu."
+    },
+    {
+        country: "United Arab Emirates",
+        flag: "🇦🇪",
+        trek: "Khaptad Meadows",
+        route: "Khaptad National Park",
+        altitude: "3,200 m",
+        days: "4–6 days",
+        best: "Apr–May · Sep–Oct",
+        difficulty: "easy",
+        budgetPerDay: 2500,
+        dest: "khaptad",
+        why: "A gentle, family-friendly hike through flower meadows and forest — low altitude, cool air and very few crowds."
+    }
+];
 
-let lastTripPlan = null;
+
+function durationOptionText(days) {
+
+    if (days >= 7) return "7 Days";
+
+    if (days >= 5) return "5 Days";
+
+    if (days >= 3) return "3 Days";
+
+    return "1 Day";
+
+}
+
+
+function renderCountryTreks() {
+
+    const list =
+        document.getElementById(
+            "countryTrekList"
+        );
+
+    if (!list) return;
+
+    list.innerHTML =
+        countryTreks
+        .map(function(entry) {
+
+            const guide = entry.dest
+                ? '<button class="country-trek-guide" onclick="openTrekGuide(\'' +
+                    entry.dest + '\')">' +
+                    'Open ' +
+                    escapeHtml(entry.trek.split(" ")[0]) +
+                    ' guide →' +
+                  '</button>'
+                : "";
+
+            return (
+                '<div class="country-trek-row" data-country="' +
+                    entry.country.toLowerCase() + '">' +
+
+                    '<div class="country-trek-flag">' +
+                        '<span>' + entry.flag + '</span>' +
+                        '<strong>' + escapeHtml(entry.country) + '</strong>' +
+                    '</div>' +
+
+                    '<div class="country-trek-main">' +
+                        '<h3>🥾 ' + escapeHtml(entry.trek) + '</h3>' +
+                        '<p class="country-trek-why">' +
+                            escapeHtml(entry.why) +
+                        '</p>' +
+                        '<div class="country-trek-chips">' +
+                            '<span>⛰ ' + escapeHtml(entry.route) + '</span>' +
+                            '<span>↕ ' + escapeHtml(entry.altitude) + '</span>' +
+                            '<span>🕒 ' + escapeHtml(entry.days) + '</span>' +
+                            '<span>📅 ' + escapeHtml(entry.best) + '</span>' +
+                            '<span>💪 ' +
+                                difficultyLabel(entry.difficulty) +
+                            '</span>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="country-trek-actions">' +
+                        '<button class="country-trek-match" onclick="matchCountryTrek(\'' +
+                            entry.country + '\')">' +
+                            'Match my trip →' +
+                        '</button>' +
+                        guide +
+                    '</div>' +
+
+                '</div>'
+            );
+
+        })
+        .join("");
+
+}
+
+
+function matchCountryTrek(countryName) {
+
+    const entry =
+        countryTreks.filter(function(t) {
+            return t.country === countryName;
+        })[0];
+
+    if (!entry) return;
+
+
+    document
+        .querySelectorAll(
+            ".interest"
+        )
+        .forEach(function(btn) {
+
+            const active =
+                btn.getAttribute("data-interest") === "trekking";
+
+            btn.classList.toggle(
+                "selected",
+                active
+            );
+
+        });
+
+
+    const duration =
+        document.getElementById("duration");
+
+    if (duration) {
+
+        duration.value =
+            durationOptionText(
+                parseInt(entry.days, 10)
+            );
+
+    }
+
+
+    const starting =
+        document.getElementById("starting");
+
+    if (starting) {
+
+        starting.value = "Kathmandu";
+
+    }
+
+
+    const difficulty =
+        document.getElementById("difficulty");
+
+    if (difficulty) {
+
+        difficulty.value =
+            entry.difficulty;
+
+    }
+
+
+    const budget =
+        document.getElementById("budget");
+
+    if (budget) {
+
+        budget.value =
+            entry.budgetPerDay;
+
+    }
+
+
+    const traveler =
+        document.getElementById("travelerType");
+
+    if (traveler) {
+
+        traveler.value = "any";
+
+    }
+
+
+    document
+        .getElementById("tripFinder")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+
+    setTimeout(function() {
+
+        findTrip(true);
+
+    }, 250);
+
+}
+
+
+function openTrekGuide(key) {
+
+    showPage("home");
+
+    setTimeout(function() {
+
+        openDestination(key);
+
+    }, 60);
+
+}
 
 
 
@@ -5699,6 +6030,8 @@ let lastTripPlan = null;
    - budget fit (30%)
    - duration fit (10%)
 ========================================================= */
+
+let lastTripPlan = null;
 
 function getSelectedInterests() {
 
@@ -5925,7 +6258,7 @@ function scoreDestination(key, plan) {
 
 
 
-function findTrip() {
+function findTrip(skipSave) {
 
     const interests =
         getSelectedInterests();
@@ -6026,10 +6359,14 @@ function findTrip() {
         });
 
 
-    saveTrip(
-        plan,
-        scored[0].key
-    );
+    if (!skipSave) {
+
+        saveTrip(
+            plan,
+            scored[0].key
+        );
+
+    }
 
 
     updateShareUrl(
@@ -6383,8 +6720,6 @@ function renderResults(results, plan) {
 
 function openDestination(key) {
 
-    currentDestination = key;
-
     const place =
         destinations[key];
 
@@ -6466,6 +6801,12 @@ function openDestination(key) {
         .scrollIntoView({
             behavior: "smooth"
         });
+
+    if (currentLang === "ne") {
+
+        translateContent();
+
+    }
 
 }
 
@@ -7418,10 +7759,15 @@ function buildItinerary(place, days, starting) {
     const middleDays =
         totalDays - 2;
 
+    // Never let the cycle divisor reach zero (a destination with a single
+    // place would otherwise crash on `i % 0`).
+    const cycle =
+        Math.max(1, places.length - 1);
+
     for (let i = 0; i < middleDays; i += 1) {
 
         const placeIndex =
-            1 + (i % (places.length - 1));
+            1 + (i % cycle);
 
         const target =
             places[placeIndex];
@@ -8934,7 +9280,7 @@ function renderPlacesDirectory() {
                     districts.map(function(place) {
 
                         const guide = place.dest
-                            ? '<button class="places-guide-btn" onclick="goToDestination(\'' +
+                            ? '<button class="places-guide-btn" onclick="event.stopPropagation();goToDestination(\'' +
                                 place.dest + '\')">' +
                                 'Open travel guide →' +
                               '</button>'
@@ -8946,14 +9292,23 @@ function renderPlacesDirectory() {
                                 (place.n + " " + place.hq + " " +
                                  (place.known || "") + " " +
                                  (place.spots || []).join(" ")).toLowerCase() +
-                                '">' +
+                                '" onclick="openPlaceModal(\'' + place.n +
+                                '\')" role="button" tabindex="0" ' +
+                                'onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openPlaceModal(\'' +
+                                place.n + '\')}">' +
+
+                                '<div class="places-photo" data-wiki="' +
+                                    place.n + '">' +
+                                    '<span class="places-photo-fallback">📷</span>' +
+                                '</div>' +
 
                                 '<div class="places-card-head">' +
                                     '<h3>' + place.n + '</h3>' +
                                     '<span>HQ ' + place.hq + '</span>' +
                                 '</div>' +
 
-                                '<p>' + place.known + '</p>' +
+                                '<p class="places-known" data-known="' +
+                                    place.n + '">' + place.known + '</p>' +
 
                                 (place.spots && place.spots.length
                                     ? '<div class="places-spots">' +
@@ -8981,6 +9336,9 @@ function renderPlacesDirectory() {
 
 
     filterPlaces();
+
+
+    loadPlacesWikiMeta();
 
 }
 
@@ -9115,6 +9473,467 @@ function goToDestination(key) {
 }
 
 
+/* =========================================================
+   PLACE WIKI META (photo + description)
+   Fetched in batches from the Wikipedia MediaWiki API and
+   cached in localStorage so repeat visits never re-fetch.
+========================================================= */
+
+const placeWikiCacheKey = "yatra_place_wiki_v1";
+
+let placeWikiMeta = null;
+
+let placeWikiLoading = false;
+
+
+function placeWikiTitle(place) {
+
+    return (
+        place.wiki ||
+        place.n + " District"
+    );
+
+}
+
+
+function placeWikiChunk(titles) {
+
+    const params =
+        "action=query" +
+        "&format=json" +
+        "&origin=*" +
+        "&redirects=1" +
+        "&prop=pageimages|extracts" +
+        "&piprop=thumbnail" +
+        "&pithumbsize=720" +
+        "&exintro=1" +
+        "&explaintext=1" +
+        "&exchars=420" +
+        "&titles=" +
+        encodeURIComponent(titles.join("|"));
+
+
+    return fetch(
+        "https://en.wikipedia.org/w/api.php?" + params
+    )
+    .then(function(res) {
+
+        if (!res.ok) throw new Error("wiki " + res.status);
+
+        return res.json();
+
+    });
+
+}
+
+
+function placeWikiKeyFromTitle(title) {
+
+    const places = nepalPlaces;
+
+    for (let i = 0; i < places.length; i++) {
+
+        const place = places[i];
+
+        if (
+            placeWikiTitle(place).toLowerCase() ===
+            title.toLowerCase()
+        ) {
+
+            return place.n;
+
+        }
+
+    }
+
+    return null;
+
+}
+
+
+function loadPlacesWikiMeta() {
+
+    if (
+        placeWikiLoading ||
+        (placeWikiMeta && placeWikiMeta.loaded)
+    ) {
+
+        return;
+
+    }
+
+    try {
+
+        const cached =
+            localStorage.getItem(placeWikiCacheKey);
+
+        if (cached) {
+
+            const parsed =
+                JSON.parse(cached);
+
+            if (parsed && parsed.fetched) {
+
+                const ageDays =
+                    (Date.now() - parsed.fetched) / 86400000;
+
+                if (ageDays < 30) {
+
+                    placeWikiMeta = parsed;
+
+                    applyPlaceWikiMeta();
+
+                    return;
+
+                }
+
+            }
+
+        }
+
+    } catch (e) {}
+
+
+    placeWikiLoading = true;
+
+
+    const titles =
+        nepalPlaces
+        .map(placeWikiTitle)
+        .filter(function(title, index, self) {
+            return self.indexOf(title) === index;
+        });
+
+
+    const chunks = [];
+
+    for (let i = 0; i < titles.length; i += 39) {
+
+        chunks.push(titles.slice(i, i + 39));
+
+    }
+
+
+    placeWikiMeta = { loaded: false, fetched: Date.now(), places: {} };
+
+
+    Promise
+    .all(
+        chunks.map(placeWikiChunk)
+    )
+    .then(function(results) {
+
+        results.forEach(function(result) {
+
+            if (!result || !result.query || !result.query.pages) {
+
+                return;
+
+            }
+
+            Object.values(result.query.pages).forEach(function(page) {
+
+                if (page.missing) return;
+
+                const key =
+                    placeWikiKeyFromTitle(page.title);
+
+                if (!key) return;
+
+                const thumb =
+                    page.thumbnail &&
+                    page.thumbnail.source;
+
+                const extract =
+                    page.extract &&
+                    page.extract.split("\n")[0].trim();
+
+                if (!thumb && !extract) return;
+
+                placeWikiMeta.places[key] = {
+                    img: thumb || "",
+                    desc: extract || ""
+                };
+
+            });
+
+        });
+
+        placeWikiMeta.loaded = true;
+
+        try {
+
+            localStorage.setItem(
+                placeWikiCacheKey,
+                JSON.stringify(placeWikiMeta)
+            );
+
+        } catch (e) {}
+
+        applyPlaceWikiMeta();
+
+    })
+    .catch(function() {
+
+        placeWikiMeta.loaded = true;
+
+    });
+
+}
+
+
+function applyPlaceWikiMeta() {
+
+    if (!placeWikiMeta) return;
+
+    const meta = placeWikiMeta;
+
+    nepalPlaces.forEach(function(place) {
+
+        const info =
+            meta.places[place.n];
+
+        if (!info) return;
+
+
+        const photo =
+            document.querySelector(
+                '.places-photo[data-wiki="' +
+                place.n + '"]'
+            );
+
+        if (photo && info.img) {
+
+            photo.innerHTML =
+                '<img loading="lazy" src="' +
+                escapeHtml(info.img) +
+                '" alt="' +
+                escapeHtml(place.n) +
+                '" onerror="this.remove()">';
+
+            if (!photo.querySelector("img")) {
+
+                photo.innerHTML =
+                    '<span class="places-photo-fallback">📷</span>';
+
+            }
+
+        }
+
+
+        const known =
+            document.querySelector(
+                '.places-known[data-known="' +
+                place.n + '"]'
+            );
+
+        if (known && info.desc && info.desc.length > 40) {
+
+            known.textContent = info.desc;
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   PLACE MODAL — map + description + photo
+========================================================= */
+
+let placeModalMap = null;
+
+
+function openPlaceModal(name) {
+
+    const place =
+        nepalPlaces.filter(function(p) {
+            return p.n === name;
+        })[0];
+
+    if (!place) return;
+
+    const province =
+        nepalProvinces.filter(function(prov) {
+            return prov.id === place.p;
+        })[0];
+
+    const info =
+        placeWikiMeta &&
+        placeWikiMeta.places[place.n];
+
+    const photoUrl =
+        info && info.img
+            ? info.img
+            : "";
+
+    const description =
+        info && info.desc && info.desc.length > 40
+            ? info.desc
+            : place.known;
+
+
+    const overlay =
+        document.getElementById("placeModalOverlay");
+
+    if (!overlay) return;
+
+
+    document.getElementById("placeModalPhoto").innerHTML =
+        photoUrl
+            ? '<img src="' + escapeHtml(photoUrl) +
+              '" alt="' + escapeHtml(place.n) +
+              '" onerror="this.style.display=\'none\'">'
+            : '<div class="places-modal-photo-fallback">📷</div>';
+
+
+    document.getElementById("placeModalName").textContent =
+        place.n;
+
+    document.getElementById("placeModalProvince").textContent =
+        province ? province.name : place.p;
+
+    document.getElementById("placeModalHq").textContent =
+        "HQ " + place.hq;
+
+    document.getElementById("placeModalDesc").textContent =
+        description;
+
+    document.getElementById("placeModalSpots").innerHTML =
+        (place.spots && place.spots.length)
+            ? place.spots.map(function(spot) {
+                  return "<span>" + escapeHtml(spot) + "</span>";
+              }).join("")
+            : "";
+
+    const guideBtn =
+        document.getElementById("placeModalGuide");
+
+    if (place.dest) {
+
+        guideBtn.classList.remove("hidden");
+
+        guideBtn.onclick = function() {
+
+            closePlaceModal();
+
+            showPage("home");
+
+            setTimeout(function() {
+
+                openDestination(place.dest);
+
+            }, 60);
+
+        };
+
+    } else {
+
+        guideBtn.classList.add("hidden");
+
+        guideBtn.onclick = null;
+
+    }
+
+
+    document.getElementById("placeModalWikiLink").href =
+        "https://en.wikipedia.org/wiki/" +
+        encodeURIComponent(placeWikiTitle(place).replace(/ /g, "_"));
+
+
+    overlay.classList.remove("hidden");
+
+    document.body.style.overflow = "hidden";
+
+
+    setTimeout(function() {
+
+        const mapEl =
+            document.getElementById("placeMap");
+
+        if (!mapEl || typeof L === "undefined") return;
+
+        if (!placeModalMap) {
+
+            placeModalMap =
+                L.map(mapEl).setView(
+                    [place.lat, place.lng],
+                    10
+                );
+
+            L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+                    attribution:
+                        "&copy; OpenStreetMap &copy; CARTO",
+                    subdomains: "abcd",
+                    maxZoom: 18
+                }
+            ).addTo(placeModalMap);
+
+        } else {
+
+            placeModalMap
+            .eachLayer(function(layer) {
+
+                if (layer instanceof L.Marker) {
+
+                    placeModalMap.removeLayer(layer);
+
+                }
+
+            });
+
+            placeModalMap.setView(
+                [place.lat, place.lng],
+                10
+            );
+
+        }
+
+        const marker =
+            L.marker([place.lat, place.lng])
+            .addTo(placeModalMap);
+
+        marker.bindPopup(
+            "<strong>" +
+            escapeHtml(place.n) +
+            "</strong><br>" +
+            escapeHtml(place.known)
+        ).openPopup();
+
+        placeModalMap.invalidateSize();
+
+    }, 80);
+
+}
+
+
+function closePlaceModal(event) {
+
+    if (
+        event &&
+        event.target &&
+        event.target.id !== "placeModalOverlay"
+    ) {
+
+        return;
+
+    }
+
+    const overlay =
+        document.getElementById("placeModalOverlay");
+
+    if (!overlay) return;
+
+    overlay.classList.add("hidden");
+
+    document.body.style.overflow = "";
+
+}
+
+
 
 /* =========================================================
    LANGUAGE TOGGLE
@@ -9168,6 +9987,8 @@ function setLanguage(lang) {
         "yk-lang",
         lang
     );
+
+    document.documentElement.lang = lang;
 
 
     const dict =
@@ -9540,10 +10361,10 @@ function renderTrips() {
                     <button
                         class="open-btn"
                         onclick="restoreTrip(
-                            '${trip.key}',
-                            '${trip.starting}',
-                            '${trip.days}',
-                            '${trip.budget}'
+                            '${escapeHtml(trip.key)}',
+                            '${escapeHtml(trip.starting)}',
+                            '${escapeHtml(String(trip.days))}',
+                            '${escapeHtml(String(trip.budget))}'
                         )"
                     >
                         Open Trip →
@@ -9729,7 +10550,10 @@ function restoreFromUrl() {
 
     if (result && destinations[result]) {
 
-        findTrip();
+        // Restoring a shared plan should not silently write a trip to the
+        // viewer's saved trips — that is a data-modifying side effect caused
+        // simply by opening a link.
+        findTrip(true);
 
     }
 
@@ -10296,11 +11120,49 @@ function applyPrefsToTripFinder() {
    COMMUNITY SAFETY REPORTS
 ========================================================= */
 
+// Prevents duplicate submissions while a report request is in flight.
+const submitLocks = { report: false, fair: false, crowd: false };
+
+function lockSubmit(name, button) {
+
+    if (submitLocks[name]) {
+
+        return false;
+
+    }
+
+    submitLocks[name] = true;
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.classList.add("btn-busy");
+
+    }
+
+    return true;
+
+}
+
+
+function unlockSubmit(name, button) {
+
+    submitLocks[name] = false;
+
+    if (button) {
+
+        button.disabled = false;
+
+        button.classList.remove("btn-busy");
+
+    }
+
+}
+
 let reportMap = null;
 
 let reportMarkers = [];
-
-let reportsLoaded = [];
 
 
 const reportCategoryNames = {
@@ -10405,9 +11267,6 @@ function loadReports() {
             Array.isArray(data.reports)
             ? data.reports
             : [];
-
-        reportsLoaded =
-            reports;
 
         renderReportMap(
             reports
@@ -10741,6 +11600,18 @@ function submitReport() {
         : null;
 
 
+    const submitBtn =
+        document.querySelector(
+            "#reportForm .report-btn"
+        );
+
+    if (!lockSubmit("report", submitBtn)) {
+
+        return;
+
+    }
+
+
     apiPost(
         "/api/reports",
         {
@@ -10754,6 +11625,8 @@ function submitReport() {
         }
     )
     .then(function(data) {
+
+        unlockSubmit("report", submitBtn);
 
         if (data && data.success) {
 
@@ -11061,11 +11934,17 @@ function renderFairTaxiTab(destination) {
         routes
         .map(function(route) {
 
+            const icon =
+                /flight/i.test(route.route) ? "✈️" :
+                /bus|coach/i.test(route.route) ? "🚌" :
+                /jeep|suv|taxi/i.test(route.route) ? "🚙" :
+                "🚕";
+
             return `
                 <div class="fair-card">
 
                     <div class="fair-icon">
-                        🚕
+                        ${icon}
                     </div>
 
                     <h3>
@@ -11074,7 +11953,7 @@ function renderFairTaxiTab(destination) {
 
                     <div class="fair-price-row">
                         <span class="fair-label">
-                            Meter
+                            ${/flight/i.test(route.route) ? "Posted" : "Meter"}
                         </span>
                         <span class="fair-value">
                             ${escapeHtml(route.meter)}
@@ -11086,7 +11965,7 @@ function renderFairTaxiTab(destination) {
                             Fair
                         </span>
                         <span class="fair-value">
-                            ${escapeHtml(formatCost(fairRangeMid(route.fair)))}
+                            ${escapeHtml(fairRangeDisplay(route.fair))}
                         </span>
                     </div>
 
@@ -11120,6 +11999,43 @@ function renderFairTaxiTab(destination) {
                 </div>
             `
             : "");
+
+}
+
+
+function fairRangeDisplay(str) {
+
+    const range =
+        parseNprRange(str);
+
+    if (!range) {
+
+        return fairRangeText(str);
+
+    }
+
+    const prefs =
+        getPrefs();
+
+    const currency =
+        prefs.currency || "USD";
+
+    if (currency === "NPR") {
+
+        return (
+            "Rs " +
+            range.min.toLocaleString() +
+            "–" +
+            range.max.toLocaleString()
+        );
+
+    }
+
+    return (
+        formatCost(range.min) +
+        "–" +
+        formatCost(range.max)
+    );
 
 }
 
@@ -11647,7 +12563,19 @@ function checkFairFare() {
     let cls = "";
     let emoji = "";
 
-    if (quoted <= fairRange.max) {
+    if (quoted < fairRange.min * 0.6) {
+
+        cls = "fair-low";
+        emoji = "🤨";
+        verdictText =
+            "Suspiciously low — double-check.";
+        verdictHint =
+            "Below the going rate of " +
+            inCurrency +
+            ". Make sure the quote is really in NPR — " +
+            "prices this low often hide a catch.";
+
+    } else if (quoted <= fairRange.max) {
 
         cls = "fair-ok";
         emoji = "✅";
@@ -12400,6 +13328,17 @@ function submitFairReport() {
         ? Number(placeData.coords.lng)
         : null;
 
+    const submitBtn =
+        document.querySelector(
+            "#fairReportForm .report-btn"
+        );
+
+    if (!lockSubmit("fair", submitBtn)) {
+
+        return;
+
+    }
+
     apiPost(
         "/api/reports",
         {
@@ -12413,6 +13352,8 @@ function submitFairReport() {
         }
     )
     .then(function(data) {
+
+        unlockSubmit("fair", submitBtn);
 
         if (data && data.success) {
 
@@ -14008,6 +14949,17 @@ function submitCrowdReport() {
         ? Number(placeData.coords.lng)
         : null;
 
+    const submitBtn =
+        document.querySelector(
+            "#crowdReportForm .report-btn"
+        );
+
+    if (!lockSubmit("crowd", submitBtn)) {
+
+        return;
+
+    }
+
     apiPost(
         "/api/reports",
         {
@@ -14021,6 +14973,8 @@ function submitCrowdReport() {
         }
     )
     .then(function(data) {
+
+        unlockSubmit("crowd", submitBtn);
 
         if (data && data.success) {
 
@@ -14706,11 +15660,19 @@ function startWebsite() {
 
     bindPrefsControls();
 
+    renderCountryTreks();
+
     renderUnderrated();
 
     loadTrends();
 
     registerServiceWorker();
+
+    if (currentLang === "ne") {
+
+        translateContent();
+
+    }
 
 }
 
@@ -14737,6 +15699,51 @@ function registerServiceWorker() {
         });
 
 }
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key !== "Escape") {
+
+        return;
+
+    }
+
+    const settingsOverlay =
+        document.getElementById(
+            "settingsOverlay"
+        );
+
+    if (
+        settingsOverlay &&
+        !settingsOverlay.classList.contains(
+            "hidden"
+        )
+    ) {
+
+        closeSettings();
+
+        return;
+
+    }
+
+    const placeModal =
+        document.getElementById(
+            "placeModalOverlay"
+        );
+
+    if (
+        placeModal &&
+        !placeModal.classList.contains(
+            "hidden"
+        )
+    ) {
+
+        closePlaceModal();
+
+    }
+
+});
 
 
 startWebsite();

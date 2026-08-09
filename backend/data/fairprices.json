@@ -1,11 +1,11 @@
 {
     "updated": "2026-08",
     "currency": "NPR",
-    "disclaimer": "Fair-price ranges are estimates compiled from metered fares, official entry-fee schedules, TAAN/porter-welfare guidance and recent traveler reports. Ranges move with seasons and negotiation — use them as a sanity check, not a fixed rate.",
+    "disclaimer": "Fair-price ranges are estimates compiled from metered fares, official entry-fee and permit schedules (Nepal Tourism Board, Department of Immigration), TAAN/porter-welfare guidance and recent traveler reports. Ranges move with seasons and negotiation — use them as a sanity check, not a fixed rate. USD figures assume ~NPR 133/US$.",
     "universal": {
-        "taxiNotes": "Metered taxis in Kathmandu run around Rs 80 per km; most drivers refuse the meter for tourists. Always agree the price before getting in. Night rides (10 pm–6 am) run ~50% higher. In Pokhara, Pathao/InDrive show the fare in advance and are the safest option.",
-        "busNotes": "Local green buses are cheapest but crowded; tourist coaches (Greenline, Mountain Overland) cost more and are safer. Avoid riding on roofs and travelling after dark.",
-        "entryNote": "Most heritage sites charge a lower 'SAARC' or 'Nepali' rate and a higher foreign-tourist rate. Ask for the official ticket booth and keep your ticket for spot checks.",
+        "taxiNotes": "In cities, metered taxis run roughly Rs 60–80 per km — most drivers refuse the meter for tourists, so agree the price before getting in. Night rides (10 pm–6 am) run ~50% higher. For trek regions, the taxi section below lists the going rate for shared jeeps, tourist buses and mountain flights. Pathao/InDrive show the fare in advance and are the safest option in Kathmandu and Pokhara.",
+        "busNotes": "Local green buses are cheapest but crowded; tourist coaches (Greenline, Mountain Overland) cost more and are safer. Shared jeeps (jitney) are the standard on trek roads. Avoid riding on roofs, travelling after dark, and never pay a second driver the same fare twice.",
+        "entryNote": "Since 2023 a licensed guide is required for trekking in national parks and conservation areas, and permits are issued through registered agencies. Heritage sites charge a lower 'SAARC' or 'Nepali' rate and a higher foreign-tourist rate — ask for the official ticket booth and keep your ticket for spot checks. Permits are paid in NPR cash on the trail.",
         "scams": [
             {
                 "title": "Taxi 'broken meter' overcharge",
@@ -31,7 +31,7 @@
             },
             {
                 "title": "Fake trekking agency or unlicensed guide",
-                "script": "Hired via Facebook, TripAdvisor or a street tout. No registered agency, no insurance, sometimes no real permit. Linked to several 2025 missing-trekker cases.",
+                "script": "Hired via Facebook, TripAdvisor or a street tout. No registered agency, no insurance, sometimes no real permit. Linked to several missing-trekker cases.",
                 "redFlags": [
                     "No TAAN/NMA registration or license number",
                     "Won't put the itinerary and cost in writing",
@@ -111,7 +111,9 @@
             { "en": "No thank you.", "ne": "होइन, धन्यवाद।", "use": "Touts & shop pressure" },
             { "en": "Where is the tourist police?", "ne": "पर्यटक प्रहरी कहाँ छ?", "use": "Emergencies" },
             { "en": "Please call an ambulance.", "ne": "कृपया एम्बुलेन्स बोलाउनुहोस्।", "use": "Emergencies" },
-            { "en": "I need help.", "ne": "मलाई मद्दत चाहियो।", "use": "Emergencies" }
+            { "en": "I need help.", "ne": "मलाई मद्दत चाहियो।", "use": "Emergencies" },
+            { "en": "A licensed guide is required.", "ne": "इजाजतपत्र प्राप्त गाइड चाहिन्छ।", "use": "Trekking permit offices" },
+            { "en": "Where can I buy the permit?", "ne": "अनुमति कहाँ किन्न सकिन्छ?", "use": "Trailheads & checkpoints" }
         ]
     },
     "destinations": {
@@ -127,12 +129,13 @@
                 { "route": "Thamel → Budhanilkantha", "meter": "Rs 550–650", "fair": "Rs 650–850", "note": "" }
             ],
             "entryFees": [
-                { "site": "Kathmandu Durbar Square", "foreign": "Rs 1,000", "saarc": "Rs 150", "nepali": "Rs 25", "note": "" },
+                { "site": "Kathmandu Durbar Square", "foreign": "Rs 1,000", "saarc": "Rs 150", "nepali": "Rs 25", "note": "Includes museum" },
                 { "site": "Patan Durbar Square", "foreign": "Rs 500", "saarc": "Rs 100", "nepali": "Rs 25", "note": "" },
                 { "site": "Bhaktapur Durbar Square", "foreign": "Rs 1,500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "Valid for a multi-day visit" },
                 { "site": "Swayambhunath", "foreign": "Rs 200", "saarc": "Rs 50", "nepali": "Rs 10", "note": "" },
                 { "site": "Boudhanath", "foreign": "Rs 400", "saarc": "Rs 100", "nepali": "Rs 20", "note": "" },
-                { "site": "Pashupatinath", "foreign": "Rs 1,000", "saarc": "Rs 1,000", "nepali": "Rs 500", "note": "Non-Hindus can view from the far bank" }
+                { "site": "Pashupatinath", "foreign": "Rs 1,000", "saarc": "Rs 1,000", "nepali": "Rs 500", "note": "Non-Hindus can view from the far bank" },
+                { "site": "Nepal visa on arrival (30 days)", "foreign": "US$50", "saarc": "Free", "nepali": "—", "note": "90 days US$125 · 150 days US$250, paid in USD cash" }
             ],
             "shoppingSanity": [
                 { "item": "Pashmina scarf (real Chyangra)", "fair": "Rs 1,500–5,000", "check": "Look for the 'Chyangra Pashmina' label" },
@@ -153,12 +156,14 @@
                 { "route": "Airport → Lakeside", "meter": "Rs 200–300", "fair": "Rs 300–400", "note": "Tourists are routinely quoted Rs 1,000+" },
                 { "route": "Lakeside in-city rides", "meter": "Rs 150–250", "fair": "Rs 200–300", "note": "" },
                 { "route": "Lakeside → Sarangkot", "meter": "Rs 500–700", "fair": "Rs 700–1,000", "note": "" },
-                { "route": "Lakeside → Devi's Fall", "meter": "Rs 200–300", "fair": "Rs 250–400", "note": "" }
+                { "route": "Lakeside → Devi's Fall", "meter": "Rs 200–300", "fair": "Rs 250–400", "note": "" },
+                { "route": "Kathmandu → Pokhara (tourist bus)", "meter": "Rs 1,200–2,000", "fair": "Rs 1,400–2,000", "note": "Greenline ~Rs 2,800 with meals; 6–8 hr" }
             ],
             "entryFees": [
                 { "site": "Davis Falls", "foreign": "Rs 100", "saarc": "Rs 100", "nepali": "Rs 20", "note": "" },
                 { "site": "World Peace Pagoda", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Donation box" },
-                { "site": "Sarangkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "" }
+                { "site": "Sarangkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "" },
+                { "site": "Paragliding tandem flight", "foreign": "Rs 15,000–20,000", "saarc": "Rs 13,000–17,000", "nepali": "—", "note": "15–30 min incl. photos; book licensed operators only" }
             ],
             "shoppingSanity": [
                 { "item": "Lakeside coffee", "fair": "Rs 200–400", "check": "" },
@@ -173,9 +178,14 @@
         },
         "chitwan": {
             "title": "Chitwan",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Sauraha (bus)", "meter": "Rs 800–1,200", "fair": "Rs 900–1,300", "note": "6–7 hr; tourist bus from Thamel" },
+                { "route": "Sauraha local rides", "meter": "Rs 300–500", "fair": "Rs 400–600", "note": "To the park gate & riverfront" }
+            ],
             "entryFees": [
-                { "site": "Chitwan National Park", "foreign": "Rs 1,500/day", "saarc": "Rs 750/day", "nepali": "Rs 150/day", "note": "Valid 24h; camera fees extra" },
-                { "site": "Jungle safari (jeep)", "foreign": "Rs 3,000–5,000", "saarc": "Rs 2,500–4,000", "nepali": "Rs 1,500–3,000", "note": "Per group; price varies by season" }
+                { "site": "Chitwan National Park", "foreign": "Rs 2,000/day", "saarc": "Rs 1,000/day", "nepali": "Rs 150/day", "note": "Official NTB 2026 rate; valid 24h, camera fees extra" },
+                { "site": "Jungle safari (jeep)", "foreign": "Rs 3,000–5,000", "saarc": "Rs 2,500–4,000", "nepali": "Rs 1,500–3,000", "note": "Per group; price varies by season" },
+                { "site": "Canoe ride", "foreign": "Rs 500–1,000", "saarc": "Rs 400–800", "nepali": "Rs 200–500", "note": "Elephant-breeding center nearby" }
             ],
             "scamCards": [
                 { "title": "Bogus 'safari package' agencies", "script": "Unaffiliated agents sell 'guaranteed tiger sighting' packages at inflated prices.", "redFlags": ["No registered lodge name", "Upfront full payment"], "response": "Book through the lodge you stay at or a TAAN-registered agency.", "phrase": "दर्ता भएको एजेन्सी हो?" }
@@ -185,32 +195,56 @@
         },
         "lumbini": {
             "title": "Lumbini",
+            "taxiRoutes": [
+                { "route": "Bhairahawa airport → Lumbini", "meter": "Rs 500–800", "fair": "Rs 600–900", "note": "30 min" },
+                { "route": "Kathmandu → Lumbini (bus)", "meter": "Rs 700–1,000", "fair": "Rs 800–1,100", "note": "8–10 hr via Bhairahawa" },
+                { "route": "Lumbini garden electric bus", "meter": "Rs 150–250", "fair": "Rs 150–250", "note": "Temple zone loop; tickets at the gate" }
+            ],
             "entryFees": [
-                { "site": "Mayadevi Temple & Sacred Garden", "foreign": "Rs 200", "saarc": "Rs 200", "nepali": "Rs 50", "note": "Free entry to garden area" }
+                { "site": "Mayadevi Temple & Sacred Garden", "foreign": "Rs 200", "saarc": "Rs 200", "nepali": "Rs 50", "note": "Garden itself is free to walk" },
+                { "site": "Museum & monastic zone", "foreign": "Rs 200–500", "saarc": "Rs 150", "nepali": "Rs 50", "note": "Combined tickets available" }
+            ],
+            "scamCards": [
+                { "title": "Rickshaw 'temple tour' overcharge", "script": "Rickshaw wallahs quote Rs 1,500+ for a loop that should cost Rs 400–600.", "redFlags": ["No fixed price agreed", "'Special holy blessing' detour"], "response": "Agree the fare and route before boarding; use the electric bus.", "phrase": "भाडा कति?" }
             ],
             "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–700", "tourist": "Rs 600–1,200" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "mustang": {
             "title": "Mustang",
+            "taxiRoutes": [
+                { "route": "Pokhara → Jomsom (flight)", "meter": "Rs 13,000–20,000", "fair": "Rs 13,000–20,000", "note": "One-way; weather-dependent" },
+                { "route": "Jomsom → Kagbeni (jeep)", "meter": "Rs 1,500–2,500", "fair": "Rs 1,500–2,500", "note": "Shared; dusty road" },
+                { "route": "Pokhara → Jomsom (jeep)", "meter": "Rs 2,500–4,000", "fair": "Rs 2,500–4,000", "note": "2 days via Beni; very rough" }
+            ],
             "entryFees": [
-                { "site": "Upper Mustang Restricted Area Permit", "foreign": "$500/10 days", "saarc": "$40", "nepali": "n/a", "note": "Requires an approved trekking agency; extra $50 per extra day" },
+                { "site": "Upper Mustang Restricted Area Permit", "foreign": "US$50/day", "saarc": "US$50/day", "nepali": "n/a", "note": "2026 rule — counted from Kagbeni; agency + 2 trekkers + licensed guide required" },
+                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,000", "nepali": "Rs 200", "note": "Required below the restricted zone" },
                 { "site": "Lo Manthang walled city", "foreign": "Rs 500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "Guest fee" }
             ],
-            "mealBands": { "budget": "Rs 400–600", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Prices rise with altitude" },
-            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 },
+            "mealBands": { "budget": "Rs 400–600", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Prices rise sharply with altitude; apple products are the local treat" },
+            "guidePorter": { "guidePerDay": 7000, "porterPerDay": 3800, "porterLoadKg": 25 },
             "scamCards": [
-                { "title": "Restricted-area permit confusion", "script": "Touts sell 'fast-track' permits for Upper Mustang at inflated fees.", "redFlags": ["Permit cost far above the official $500/10-day rate", "No agency paperwork"], "response": "Permits must go through an approved agency; verify the official fee.", "phrase": "आधिकारिक शुल्क कति हो?" }
+                { "title": "Restricted-area permit confusion", "script": "Touts sell 'fast-track' permits for Upper Mustang at inflated fees.", "redFlags": ["Permit cost far above the official US$50/day rate", "No agency paperwork"], "response": "Permits must go through an approved agency; verify the official fee.", "phrase": "आधिकारिक शुल्क कति हो?" }
             ]
         },
         "everest": {
             "title": "Everest Region",
-            "entryFees": [
-                { "site": "Sagarmatha National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Plus TIMS card Rs 2,000 (1–4 weeks)" },
-                { "site": "Lukla–Kathmandu flight", "foreign": "Rs 15,000–25,000", "saarc": "—", "nepali": "—", "note": "One-way; book early in peak season" }
+            "taxiRoutes": [
+                { "route": "Kathmandu → Lukla (flight)", "meter": "Rs 15,000–25,000", "fair": "Rs 15,000–25,000", "note": "One-way foreign rate; book early in peak season, expect delays" },
+                { "route": "Kathmandu → Manthali → Lukla (fly-bus)", "meter": "Rs 18,000–28,000", "fair": "Rs 18,000–28,000", "note": "Alternative routing when Lukla is clouded" },
+                { "route": "Lukla → Namche (jeep on new road)", "meter": "Rs 3,000–5,000", "fair": "Rs 3,000–5,000", "note": "Road reaches Namche; most still walk" }
             ],
-            "mealBands": { "budget": "Rs 500–800", "standard": "Rs 700–1,100", "tourist": "Rs 800–1,500", "note": "Tea-house dal bhat is the value option" },
-            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 },
+            "entryFees": [
+                { "site": "Sagarmatha National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Paid at Monjo checkpoint or NTB Kathmandu" },
+                { "site": "Khumbu Pasang Lhamu Rural Municipality", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "—", "note": "Since Sep 2024; paid at Lukla/Chheplung. No TIMS needed in Khumbu" }
+            ],
+            "shoppingSanity": [
+                { "item": "Dal bhat (Namche)", "fair": "Rs 600–900", "check": "Free refills — the value meal at altitude" },
+                { "item": "Bottled water (above 4,000 m)", "fair": "Rs 300–500", "check": "Filter/purify instead; see money tips" }
+            ],
+            "mealBands": { "budget": "Rs 500–800", "standard": "Rs 700–1,100", "tourist": "Rs 800–1,500", "note": "Tea-house dal bhat is the value option; Coke ~Rs 300–500 with altitude" },
+            "guidePorter": { "guidePerDay": 6000, "porterPerDay": 3300, "porterLoadKg": 25 },
             "scamCards": [
                 { "title": "Helicopter 'evacuation' scare", "script": "Pressure to take a medevac heli for mild AMS, then inflated bills billed to insurers.", "redFlags": ["No rest day offered first", "They take your insurance docs"], "response": "Rest, hydrate, call your insurer directly before deciding.", "phrase": "म पहिले बीमालाई सम्पर्क गर्छु" },
                 { "title": "Unlicensed guide at Lukla", "script": "Directly hired guides at Lukla often have no registered agency — linked to missing-trekker cases.", "redFlags": ["No TAAN registration", "No written contract"], "response": "Book through a registered agency in Kathmandu.", "phrase": "दर्ता नम्बर देखाउनुहोस्" }
@@ -218,31 +252,53 @@
         },
         "annapurna": {
             "title": "Annapurna Region",
-            "entryFees": [
-                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 200", "note": "Plus TIMS card" },
-                { "site": "TIMS card", "foreign": "Rs 2,000", "saarc": "Rs 2,000", "nepali": "Rs 1,000", "note": "1–4 weeks; issued through agencies" }
+            "taxiRoutes": [
+                { "route": "Kathmandu → Besisahar (bus/jeep)", "meter": "Rs 800–1,200", "fair": "Rs 800–1,200", "note": "Circuit trailhead; 6–7 hr" },
+                { "route": "Pokhara → Ghandruk/Nayapul (jeep)", "meter": "Rs 1,500–2,500", "fair": "Rs 1,500–2,500", "note": "Shared jeep to ABC/Poon Hill trailheads" },
+                { "route": "Jomsom → Pokhara (flight)", "meter": "Rs 13,000–20,000", "fair": "Rs 13,000–20,000", "note": "End-of-circuit option" }
             ],
-            "mealBands": { "budget": "Rs 400–700", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Tea-house food gets pricier with altitude" },
-            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+            "entryFees": [
+                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,000", "nepali": "Rs 200", "note": "Covers ABC, Poon Hill, Mardi Himal & the Circuit; buy at NTNC counters" },
+                { "site": "TIMS card (if applicable)", "foreign": "Rs 2,000", "saarc": "Rs 1,000", "nepali": "—", "note": "Issued via registered agencies; required in some checkpoints" }
+            ],
+            "mealBands": { "budget": "Rs 400–700", "standard": "Rs 600–900", "tourist": "Rs 700–1,200", "note": "Dal bhat Rs 350–700 lowland, up to Rs 950 above Thorong La; free refills" },
+            "guidePorter": { "guidePerDay": 5200, "porterPerDay": 3000, "porterLoadKg": 25 },
+            "scamCards": [
+                { "title": "Guide-required rules sold as extras", "script": "Agents charge you for a 'mandatory guide' on treks where hiring independently is fine, then add agency fees on top.", "redFlags": ["Fees added after a verbal quote", "No written breakdown"], "response": "Get a written quote itemising guide, permits and transport before paying.", "phrase": "लिखित कोटेशन दिनुहोस्" }
+            ]
         },
         "langtang": {
             "title": "Langtang",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Syabrubesi (bus/jeep)", "meter": "Rs 800–1,200", "fair": "Rs 800–1,200", "note": "7–8 hr; last road town before the trail" }
+            ],
             "entryFees": [
-                { "site": "Langtang National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Plus TIMS card" }
+                { "site": "Langtang National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Plus TIMS Rs 2,000; paid at Dhunche checkpoint" }
             ],
             "mealBands": { "budget": "Rs 400–650", "standard": "Rs 550–850", "tourist": "Rs 650–1,100" },
-            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
+            "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2600, "porterLoadKg": 25 },
+            "scamCards": [
+                { "title": "Checkpoint 'fee' double-charge", "script": "Some unofficial checkpoints ask for a second permit fee; official fees are fixed.", "redFlags": ["No NTB receipt", "Cash-only unofficial desk"], "response": "Ask for the official NTB receipt and report double charges.", "phrase": "आधिकारिक रसिद दिनुहोस्" }
+            ]
         },
         "manang": {
             "title": "Manang",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Besisahar (bus/jeep)", "meter": "Rs 800–1,200", "fair": "Rs 800–1,200", "note": "Circuit trailhead" },
+                { "route": "Besisahar → Chame (shared jeep)", "meter": "Rs 2,000–3,500", "fair": "Rs 2,000–3,500", "note": "New roads cut days off the circuit" }
+            ],
             "entryFees": [
-                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 200", "note": "Plus TIMS card" }
+                { "site": "ACAP permit", "foreign": "Rs 3,000", "saarc": "Rs 1,000", "nepali": "Rs 200", "note": "Required entering the conservation area" }
             ],
             "mealBands": { "budget": "Rs 400–650", "standard": "Rs 550–900", "tourist": "Rs 650–1,100" },
-            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 }
+            "guidePorter": { "guidePerDay": 5200, "porterPerDay": 3000, "porterLoadKg": 25 }
         },
         "rara": {
             "title": "Rara",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Nepalgunj (flight)", "meter": "Rs 8,000–12,000", "fair": "Rs 8,000–12,000", "note": "One-way" },
+                { "route": "Nepalgunj → Talcha (Rara) flight", "meter": "Rs 12,000–20,000", "fair": "Rs 12,000–20,000", "note": "Weather-dependent; or 3-day bus+jeep via Jumla" }
+            ],
             "entryFees": [
                 { "site": "Rara National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Remote; limited ATMs — carry cash" }
             ],
@@ -251,51 +307,86 @@
         },
         "bardia": {
             "title": "Bardia",
+            "taxiRoutes": [
+                { "route": "Nepalgunj → Bardia (jeep/bus)", "meter": "Rs 300–500", "fair": "Rs 300–500", "note": "45–60 min" },
+                { "route": "Kathmandu → Nepalgunj (flight)", "meter": "Rs 8,000–12,000", "fair": "Rs 8,000–12,000", "note": "One-way; or 12-hr overnight bus" }
+            ],
             "entryFees": [
-                { "site": "Bardia National Park", "foreign": "Rs 1,500/day", "saarc": "Rs 750/day", "nepali": "Rs 150/day", "note": "Plus jeep/canoe fees" }
+                { "site": "Bardia National Park", "foreign": "Rs 1,500/day", "saarc": "Rs 750/day", "nepali": "Rs 150/day", "note": "Plus jeep/canoe fees; rhino sightings more likely than Chitwan" }
             ],
             "mealBands": { "budget": "Rs 300–500", "standard": "Rs 450–750", "tourist": "Rs 600–1,200" },
             "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "dolpo": {
             "title": "Dolpo",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Nepalgunj (flight)", "meter": "Rs 8,000–12,000", "fair": "Rs 8,000–12,000", "note": "One-way" },
+                { "route": "Nepalgunj → Juphal/Dunai (flight)", "meter": "Rs 12,000–20,000", "fair": "Rs 12,000–20,000", "note": "Small-plane hop; plus jeep to Shey Phoksundo" }
+            ],
             "entryFees": [
-                { "site": "Restricted-area permits", "foreign": "$500/10 days", "saarc": "$40", "nepali": "n/a", "note": "Lower Dolpo cheaper; requires agency" }
+                { "site": "Upper Dolpo Restricted Area Permit", "foreign": "US$50/day", "saarc": "US$50/day", "nepali": "n/a", "note": "2026 rate; agency + guide required" },
+                { "site": "Lower Dolpo Restricted Area Permit", "foreign": "US$20/week", "saarc": "US$20/week", "nepali": "n/a", "note": "Beyond 1 week US$5/day extra" },
+                { "site": "Shey Phoksundo National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "In addition to restricted permit" }
             ],
             "mealBands": { "budget": "Rs 450–700", "standard": "Rs 600–900", "tourist": "Rs 700–1,200" },
-            "guidePorter": { "guidePerDay": 5500, "porterPerDay": 3200, "porterLoadKg": 25 }
+            "guidePorter": { "guidePerDay": 7000, "porterPerDay": 3800, "porterLoadKg": 25 }
         },
         "khaptad": {
             "title": "Khaptad",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Dhangadhi (flight)", "meter": "Rs 8,000–12,000", "fair": "Rs 8,000–12,000", "note": "One-way" },
+                { "route": "Dhangadhi → Silgadhi (jeep)", "meter": "Rs 1,500–2,500", "fair": "Rs 1,500–2,500", "note": "Then 2-day walk or jeep to Khaptad" }
+            ],
+            "entryFees": [
+                { "site": "Khaptad National Park", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "High meadows; limited ATMs — carry cash" }
+            ],
             "mealBands": { "budget": "Rs 300–500", "standard": "Rs 450–750", "tourist": "Rs 550–1,000" },
             "guidePorter": { "guidePerDay": 4500, "porterPerDay": 2800, "porterLoadKg": 25 }
         },
         "janakpur": {
             "title": "Janakpur",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Janakpur (bus)", "meter": "Rs 700–1,000", "fair": "Rs 700–1,000", "note": "9–10 hr; or flight to Janakpur" }
+            ],
             "entryFees": [
-                { "site": "Janaki Mandir", "foreign": "Rs 100", "saarc": "Rs 100", "nepali": "Rs 25", "note": "Modest dress required" }
+                { "site": "Janaki Mandir", "foreign": "Rs 100", "saarc": "Rs 100", "nepali": "Rs 25", "note": "Modest dress required" },
+                { "site": "Mithila art workshops", "foreign": "Rs 500–1,500", "saarc": "Rs 500–1,500", "nepali": "Rs 200–500", "note": "Guided painting sessions" }
+            ],
+            "shoppingSanity": [
+                { "item": "Mithila painting (small)", "fair": "Rs 500–2,000", "check": "Buy from the artists' cooperative, not the souvenir stall" }
             ],
             "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "bandipur": {
             "title": "Bandipur",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Bandipur (bus)", "meter": "Rs 700–1,000", "fair": "Rs 700–1,000", "note": "5–6 hr via Dumre" },
+                { "route": "Pokhara → Bandipur (bus)", "meter": "Rs 400–700", "fair": "Rs 400–700", "note": "3–4 hr" }
+            ],
+            "entryFees": [
+                { "site": "Bandipur heritage village", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Parking + some museums charge separately" }
+            ],
             "mealBands": { "budget": "Rs 300–500", "standard": "Rs 500–800", "tourist": "Rs 600–1,200" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "nagarkot": {
             "title": "Nagarkot",
-            "entryFees": [
-                { "site": "Nagarkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "Best sunrise/sunset vantage" }
-            ],
             "taxiRoutes": [
                 { "route": "Kathmandu → Nagarkot", "meter": "Rs 2,500–3,000", "fair": "Rs 3,000–4,000", "note": "1.5 hr; consider a share jeep" }
+            ],
+            "entryFees": [
+                { "site": "Nagarkot viewpoint", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "Best sunrise/sunset vantage" }
             ],
             "mealBands": { "budget": "Rs 300–500", "standard": "Rs 500–800", "tourist": "Rs 600–1,200" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "gorkha": {
             "title": "Gorkha",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Gorkha (bus)", "meter": "Rs 500–800", "fair": "Rs 500–800", "note": "5–6 hr" },
+                { "route": "Gorkha bazaar → Durbar (jeep/taxi)", "meter": "Rs 300–500", "fair": "Rs 300–500", "note": "Short steep climb" }
+            ],
             "entryFees": [
                 { "site": "Gorkha Durbar", "foreign": "Rs 500", "saarc": "Rs 500", "nepali": "Rs 50", "note": "" }
             ],
@@ -303,33 +394,70 @@
             "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "palpa": {
-            "title": "Palpa",
+            "title": "Palpa (Tansen)",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Tansen (bus)", "meter": "Rs 800–1,200", "fair": "Rs 800–1,200", "note": "8–9 hr via Sunauli road" },
+                { "route": "Bhairahawa → Tansen (jeep)", "meter": "Rs 1,000–1,500", "fair": "Rs 1,000–1,500", "note": "2 hr winding climb" }
+            ],
+            "entryFees": [
+                { "site": "Tansen Durbar (palace museum)", "foreign": "Rs 200", "saarc": "Rs 100", "nepali": "Rs 50", "note": "" },
+                { "site": "Rani Mahal (Ranimahal)", "foreign": "Rs 200", "saarc": "Rs 200", "nepali": "Rs 50", "note": "Riverside palace, 1-hr jeep from Tansen" }
+            ],
+            "shoppingSanity": [
+                { "item": "Dhaka cloth (handloom)", "fair": "Rs 500–2,000", "check": "The classic Tansen topi — buy at the weaver's shop" }
+            ],
             "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
             "guidePorter": { "guidePerDay": 4000, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "ilam": {
             "title": "Ilam",
-            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
+            "taxiRoutes": [
+                { "route": "Kathmandu → Birtamod (bus/flight)", "meter": "Rs 1,200–1,800", "fair": "Rs 1,200–1,800", "note": "Flight to Bhadrapur then 1-hr jeep" },
+                { "route": "Birtamod → Ilam bazaar (jeep)", "meter": "Rs 1,000–1,500", "fair": "Rs 1,000–1,500", "note": "2-hr winding climb through tea gardens" }
+            ],
+            "entryFees": [
+                { "site": "Kanyam tea garden", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Walk the gardens; tastings at the factory shop" },
+                { "site": "Mai Pokhari", "foreign": "Rs 200", "saarc": "Rs 100", "nepali": "Rs 50", "note": "Sacred lotus lake, ~40 min from Ilam" }
+            ],
             "shoppingSanity": [
                 { "item": "Ilam tea (loose, 250g)", "fair": "Rs 300–700", "check": "Buy from tea gardens or cooperatives" }
             ],
+            "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "tehrathum": {
             "title": "Tehrathum",
+            "taxiRoutes": [
+                { "route": "Itahari → Basantapur (bus/jeep)", "meter": "Rs 800–1,200", "fair": "Rs 800–1,200", "note": "Then short jeep to Tehrathum bazaar" }
+            ],
+            "entryFees": [
+                { "site": "Basantapur viewpoint", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Rhododendron forests of Tinjure-Milke" }
+            ],
             "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         },
         "taplejung": {
             "title": "Taplejung",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Suketar (flight)", "meter": "Rs 15,000–20,000", "fair": "Rs 15,000–20,000", "note": "Then 2-hr jeep to Taplejung bazaar" },
+                { "route": "Taplejung bazaar → Phungling (jeep)", "meter": "Rs 500–800", "fair": "Rs 500–800", "note": "Kanchenjunga trailhead" }
+            ],
             "entryFees": [
-                { "site": "Kanchenjunga Conservation Area", "foreign": "Rs 3,000", "saarc": "Rs 1,500", "nepali": "Rs 100", "note": "Restricted areas need permits via agencies" }
+                { "site": "Kanchenjunga Conservation Area", "foreign": "Rs 2,000", "saarc": "Rs 1,000", "nepali": "Rs 100", "note": "Restricted areas need permits via agencies (US$20/week)" }
             ],
             "mealBands": { "budget": "Rs 350–550", "standard": "Rs 500–800", "tourist": "Rs 600–1,000" },
-            "guidePorter": { "guidePerDay": 5000, "porterPerDay": 3000, "porterLoadKg": 25 }
+            "guidePorter": { "guidePerDay": 6000, "porterPerDay": 3300, "porterLoadKg": 25 }
         },
         "dharan": {
             "title": "Dharan",
+            "taxiRoutes": [
+                { "route": "Kathmandu → Dharan (bus/flight)", "meter": "Rs 1,000–1,500", "fair": "Rs 1,000–1,500", "note": "Flight to Biratnagar + 45-min jeep" },
+                { "route": "Dharan local rides", "meter": "Rs 200–400", "fair": "Rs 250–450", "note": "Bazaar to Budha Subba & Baraha Kshetra" }
+            ],
+            "entryFees": [
+                { "site": "Budha Subba temple", "foreign": "Free", "saarc": "Free", "nepali": "Free", "note": "Famous Tuesday fair" },
+                { "site": "Baraha Kshetra", "foreign": "Rs 100", "saarc": "Rs 50", "nepali": "Rs 20", "note": "Koshi confluence, 30-min drive" }
+            ],
             "mealBands": { "budget": "Rs 250–400", "standard": "Rs 400–650", "tourist": "Rs 500–1,000" },
             "guidePorter": { "guidePerDay": 3500, "porterPerDay": 2500, "porterLoadKg": 25 }
         }

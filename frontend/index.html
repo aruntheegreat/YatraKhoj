@@ -561,7 +561,7 @@
 
                         <div class="field">
 
-                            <label>
+                            <label for="duration">
                                 Duration
                             </label>
 
@@ -591,7 +591,7 @@
 
                         <div class="field">
 
-                            <label>
+                            <label for="starting">
                                 Starting From
                             </label>
 
@@ -637,7 +637,7 @@
 
                         <div class="field">
 
-                            <label>
+                            <label for="difficulty">
                                 Difficulty
                             </label>
 
@@ -667,7 +667,7 @@
 
                         <div class="field">
 
-                            <label>
+                            <label for="travelerType">
                                 Who's travelling?
                             </label>
 
@@ -705,7 +705,7 @@
 
                         <div class="field">
 
-                            <label>
+                            <label for="budget">
                                 Budget per day (NPR)
                             </label>
 
@@ -753,6 +753,49 @@
 
                     </div>
 
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TREKKING BY COUNTRY
+
+                 Country-based trek recommendation rows so tourists
+                 see the trek that fits travellers from their home.
+            ================================================== -->
+
+            <div
+                class="home-container"
+                id="countryTrekSection"
+            >
+
+                <div class="section-heading">
+
+                    <span class="mini-title">
+                        TREKKING BY COUNTRY
+                    </span>
+
+                    <h2>
+                        Where your country treks best
+                    </h2>
+
+                    <p>
+                        Trek suggestions built around where travellers
+                        really come from. Tap <strong>Match my trip</strong>
+                        to load the finder with that trek's plan, or open
+                        the full travel guide.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="countryTrekList"
+                    class="country-trek-list"
+                >
+                    Loading…
                 </div>
 
             </div>
@@ -1194,6 +1237,7 @@
                         placeholder="Search destinations…"
                         oninput="applyDiscoverFilters()"
                         class="search-input"
+                        aria-label="Search destinations"
                     >
 
                     <div
@@ -1561,7 +1605,7 @@
                             </h3>
 
                             <div class="field">
-                                <label>Place</label>
+                                <label for="reportPlace">Place</label>
                                 <select id="reportPlace">
                                     <option value="kathmandu">Kathmandu</option>
                                     <option value="pokhara">Pokhara</option>
@@ -1575,7 +1619,7 @@
                             </div>
 
                             <div class="field">
-                                <label>Category</label>
+                                <label for="reportCategory">Category</label>
                                 <select id="reportCategory">
                                     <option value="scam">Scam / overcharging</option>
                                     <option value="price">Price / fare check</option>
@@ -1588,7 +1632,7 @@
                             </div>
 
                             <div class="field">
-                                <label>Severity</label>
+                                <label for="reportSeverity">Severity</label>
                                 <select id="reportSeverity">
                                     <option value="low">Low</option>
                                     <option value="medium" selected>Medium</option>
@@ -1597,13 +1641,13 @@
                             </div>
 
                             <div class="field">
-                                <label>Short title</label>
+                                <label for="reportTitle">Short title</label>
                                 <input id="reportTitle" type="text"
                                     maxlength="120" placeholder="e.g. Taxi overcharge">
                             </div>
 
                             <div class="field">
-                                <label>Description</label>
+                                <label for="reportDescription">Description</label>
                                 <textarea id="reportDescription"
                                     maxlength="800" rows="3"
                                     placeholder="What happened and how to avoid it…"></textarea>
@@ -2457,7 +2501,7 @@
                             </h3>
 
                             <div class="field">
-                                <label>Place</label>
+                                <label for="fairReportPlace">Place</label>
                                 <select id="fairReportPlace">
                                     <option value="kathmandu">Kathmandu</option>
                                     <option value="pokhara">Pokhara</option>
@@ -2485,7 +2529,7 @@
                             </div>
 
                             <div class="field">
-                                <label>What is this about?</label>
+                                <label for="fairReportCategory">What is this about?</label>
                                 <select id="fairReportCategory">
                                     <option value="price" selected>Price / fare check</option>
                                     <option value="scam">Scam / overcharging</option>
@@ -2494,7 +2538,7 @@
                             </div>
 
                             <div class="field">
-                                <label>Severity</label>
+                                <label for="fairReportSeverity">Severity</label>
                                 <select id="fairReportSeverity">
                                     <option value="low">Low</option>
                                     <option value="medium" selected>Medium</option>
@@ -2503,14 +2547,14 @@
                             </div>
 
                             <div class="field">
-                                <label>Short title</label>
+                                <label for="fairReportTitle">Short title</label>
                                 <input id="fairReportTitle" type="text"
                                     maxlength="120"
                                     placeholder="e.g. Airport taxi quoted Rs 1,000">
                             </div>
 
                             <div class="field">
-                                <label>Description</label>
+                                <label for="fairReportDescription">Description</label>
                                 <textarea id="fairReportDescription"
                                     maxlength="800" rows="3"
                                     placeholder="What was quoted, for what, and where?"></textarea>
@@ -3080,7 +3124,7 @@
                             </h3>
 
                             <div class="field">
-                                <label>Place</label>
+                                <label for="crowdReportPlace">Place</label>
                                 <select id="crowdReportPlace">
                                     <option value="kathmandu">Kathmandu</option>
                                     <option value="pokhara">Pokhara</option>
@@ -3108,7 +3152,7 @@
                             </div>
 
                             <div class="field">
-                                <label>Busyness right now</label>
+                                <label for="crowdReportBusyness">Busyness right now</label>
                                 <select id="crowdReportBusyness">
                                     <option value="low">😌 Quiet — easy going</option>
                                     <option value="medium" selected>🙂 Moderate</option>
@@ -3117,14 +3161,14 @@
                             </div>
 
                             <div class="field">
-                                <label>Short note</label>
+                                <label for="crowdReportTitle">Short note</label>
                                 <input id="crowdReportTitle" type="text"
                                     maxlength="120"
                                     placeholder="e.g. Trail busy until 4pm">
                             </div>
 
                             <div class="field">
-                                <label>Details</label>
+                                <label for="crowdReportDescription">Details</label>
                                 <textarea id="crowdReportDescription"
                                     maxlength="800" rows="3"
                                     placeholder="Where exactly, and any advice for the next traveler?"></textarea>
@@ -3695,6 +3739,7 @@
                         type="text"
                         placeholder="Search a district… (e.g. Pokhara, Mustang, Ilam)"
                         oninput="filterPlaces()"
+                        aria-label="Search districts of Nepal"
                     >
 
                     <div
@@ -3726,6 +3771,88 @@
 
 
         <!-- =================================================
+             PLACE DETAIL MODAL (photo + map + description)
+        ================================================== -->
+
+        <div
+            id="placeModalOverlay"
+            class="place-modal-overlay hidden"
+            onclick="closePlaceModal(event)"
+        >
+
+            <div
+                class="place-modal"
+                role="dialog"
+                aria-label="Place details"
+            >
+
+                <button
+                    class="place-modal-close"
+                    onclick="closePlaceModal()"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+                <div
+                    id="placeModalPhoto"
+                    class="place-modal-photo"
+                >
+                    <div class="places-modal-photo-fallback">
+                        📷
+                    </div>
+                </div>
+
+                <div class="place-modal-body">
+
+                    <div class="place-modal-head">
+                        <h2 id="placeModalName"></h2>
+                        <div class="place-modal-chips">
+                            <span id="placeModalProvince"></span>
+                            <span id="placeModalHq"></span>
+                        </div>
+                    </div>
+
+                    <p
+                        id="placeModalDesc"
+                        class="place-modal-desc"
+                    ></p>
+
+                    <div
+                        id="placeModalSpots"
+                        class="place-modal-spots"
+                    ></div>
+
+                    <div
+                        id="placeMap"
+                        class="place-modal-map"
+                    ></div>
+
+                    <div class="place-modal-actions">
+                        <a
+                            id="placeModalWikiLink"
+                            class="places-guide-btn place-modal-wiki"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Wikipedia article →
+                        </a>
+                        <button
+                            id="placeModalGuide"
+                            class="places-guide-btn hidden"
+                        >
+                            Open full travel guide →
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
              SETTINGS MODAL
         ================================================== -->
 
@@ -3733,6 +3860,9 @@
             id="settingsOverlay"
             class="settings-overlay hidden"
             onclick="closeSettings(event)"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Settings"
         >
 
             <div
@@ -3806,7 +3936,6 @@
                             id="profilePic"
                             class="profile-pic"
                             alt="Profile"
-                            src=""
                         >
 
                         <div>

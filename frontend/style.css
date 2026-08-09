@@ -2687,6 +2687,16 @@ nav {
 }
 
 
+.report-btn:disabled,
+.report-btn.btn-busy {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+    box-shadow: none;
+}
+
+
 .report-cancel {
     padding: 10px 18px;
 
@@ -4851,6 +4861,12 @@ footer {
 }
 
 
+.fair-verdict.fair-low {
+    background: rgba(52, 152, 219, 0.12);
+    border: 1px solid rgba(52, 152, 219, 0.5);
+}
+
+
 .fair-verdict.fair-warn {
     background: rgba(242, 182, 50, 0.12);
     border: 1px solid rgba(242, 182, 50, 0.45);
@@ -6313,6 +6329,443 @@ footer {
     font-size: 11px;
 
     color: #8b93a7;
+}
+
+
+/* ---------------- Place card photos ---------------- */
+
+
+.places-card {
+    cursor: pointer;
+}
+
+
+.places-photo {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 16 / 8;
+
+    overflow: hidden;
+
+    background: linear-gradient(135deg, rgba(0, 206, 201, 0.14), rgba(46, 134, 222, 0.16));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+
+.places-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.places-photo-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 26px;
+}
+
+
+/* ---------------- Place detail modal ---------------- */
+
+
+.place-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(2, 8, 26, 0.82);
+    backdrop-filter: blur(4px);
+
+    animation: fadeIn 0.18s ease;
+}
+
+
+.place-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 560px;
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #0a142e;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+
+.place-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    line-height: 1;
+
+    color: #fff;
+    background: rgba(2, 8, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.place-modal-close:hover {
+    background: rgba(243, 156, 18, 0.85);
+}
+
+
+.place-modal-photo {
+    width: 100%;
+    height: 210px;
+
+    overflow: hidden;
+
+    background: linear-gradient(135deg, rgba(0, 206, 201, 0.2), rgba(46, 134, 222, 0.24));
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.place-modal-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.places-modal-photo-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 44px;
+}
+
+
+.place-modal-body {
+    padding: 18px 20px 22px;
+}
+
+
+.place-modal-head {
+    margin-bottom: 10px;
+}
+
+
+.place-modal-head h2 {
+    font-size: 22px;
+    font-weight: 800;
+    font-family: var(--font-display);
+
+    color: #fff;
+
+    margin: 0 0 8px;
+}
+
+
+.place-modal-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.place-modal-chips span {
+    padding: 3px 11px;
+
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    color: #f8c471;
+    background: rgba(243, 156, 18, 0.12);
+    border: 1px solid rgba(243, 156, 18, 0.25);
+    border-radius: 999px;
+}
+
+
+.place-modal-desc {
+    font-size: 13.5px;
+    line-height: 1.7;
+
+    color: #c6cedd;
+
+    margin: 0 0 12px;
+}
+
+
+.place-modal-spots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-bottom: 14px;
+}
+
+
+.place-modal-spots span {
+    padding: 4px 10px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    color: #7fb6ec;
+    background: rgba(46, 134, 222, 0.12);
+    border-radius: 999px;
+}
+
+
+.place-modal-map {
+    width: 100%;
+    height: 270px;
+
+    margin-bottom: 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+.place-modal-map .leaflet-container {
+    background: #dfe6ef;
+}
+
+
+.place-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.place-modal-wiki {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: rgba(243, 156, 18, 0.14);
+    border-color: rgba(243, 156, 18, 0.45);
+}
+
+
+.place-modal-wiki:hover {
+    background: #f39c12;
+    color: #04102e;
+}
+
+
+.place-modal-actions .hidden,
+.place-modal-guide.hidden {
+    display: none;
+}
+
+
+/* ---------------- Trekking by country rows ---------------- */
+
+
+.country-trek-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.country-trek-row {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 16px;
+    align-items: center;
+
+    padding: 16px 18px;
+
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius);
+
+    transition: all 0.2s ease;
+}
+
+
+.country-trek-row:hover {
+    border-color: rgba(0, 206, 201, 0.4);
+    box-shadow: var(--shadow-card);
+}
+
+
+.country-trek-flag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.country-trek-flag span {
+    font-size: 34px;
+    line-height: 1;
+}
+
+
+.country-trek-flag strong {
+    font-size: 13px;
+    font-weight: 700;
+    font-family: var(--font-display);
+
+    text-align: center;
+}
+
+
+.country-trek-main h3 {
+    font-size: 15.5px;
+    font-weight: 700;
+    font-family: var(--font-display);
+
+    color: #f8c471;
+
+    margin: 0 0 6px;
+}
+
+
+.country-trek-why {
+    font-size: 12.5px;
+    line-height: 1.6;
+
+    color: #c6cedd;
+
+    margin: 0 0 10px;
+}
+
+
+.country-trek-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+
+.country-trek-chips span {
+    padding: 3px 9px;
+
+    font-size: 10.5px;
+    font-weight: 600;
+
+    color: #7fb6ec;
+    background: rgba(46, 134, 222, 0.1);
+    border-radius: 999px;
+}
+
+
+.country-trek-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    min-width: 150px;
+}
+
+
+.country-trek-match,
+.country-trek-guide {
+    padding: 9px 14px;
+
+    font-size: 12.5px;
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+
+.country-trek-match {
+    color: #fff;
+    background: #f39c12;
+    border: 1px solid #f39c12;
+}
+
+
+.country-trek-match:hover {
+    background: #e67e22;
+    border-color: #e67e22;
+}
+
+
+.country-trek-guide {
+    color: #04102e;
+    background: #00cec9;
+    border: 1px solid #00cec9;
+}
+
+
+.country-trek-guide:hover {
+    background: #00b8b5;
+    border-color: #00b8b5;
+}
+
+
+@media (max-width: 820px) {
+
+    .country-trek-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .country-trek-flag {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+    .country-trek-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
 }
 
 

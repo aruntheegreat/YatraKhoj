@@ -2,7 +2,7 @@
    Network-first with cache fallback: keeps the app shell and the last
    API data available when the signal runs out on the trail. */
 
-const CACHE = "yatra-khoj-v2";
+const CACHE = "yatra-khoj-v3";
 const CORE = ["./", "index.html", "script.js", "places.js", "style.css"];
 
 self.addEventListener("install", (event) => {

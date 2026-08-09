@@ -33,6 +33,11 @@ const STATE_COOKIE = "yk_oauth_state";
 const sessions = new Map();
 const rateBuckets = new Map();
 
+// Cached currency tables so one visitor's page load (6 parallel requests)
+// doesn't hammer the upstream exchange-rate API repeatedly.
+const currencyCache = new Map();
+const CURRENCY_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
 function cleanupSessions() {
     const now = Date.now();
     sessions.forEach(function(session, token) {
@@ -67,15 +72,20 @@ function readBody(req, limit) {
     return new Promise(function(resolve, reject) {
         let size = 0;
         const chunks = [];
-        req.on("data", function(chunk) {
+        function onData(chunk) {
             size += chunk.length;
             if (size > limit) {
+                // Stop consuming the request and let the router send a clean 413
+                // instead of destroying the socket (which leaves the client with
+                // no response at all).
+                req.removeListener("data", onData);
+                req.pause();
                 reject(new Error("Body too large"));
-                req.destroy();
                 return;
             }
             chunks.push(chunk);
-        });
+        }
+        req.on("data", onData);
         req.on("end", function() {
             try {
                 const raw = Buffer.concat(chunks).toString("utf8");
@@ -115,8 +125,6 @@ function cookieString(name, value, options) {
 
 function secureCookies() {
     return (
-        config.googleClientId.length > 0 &&
-        typeof window === "undefined" &&
         process.env.NODE_ENV === "production"
     );
 }
@@ -204,7 +212,7 @@ const securityHeaders = {
         "script-src 'self' 'unsafe-inline' https://unpkg.com; " +
         "style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; " +
         "font-src 'self' https://fonts.gstatic.com data:; " +
-        "connect-src 'self' http://localhost:5000 https://open.er-api.com; " +
+        "connect-src 'self' http://localhost:5000 https://open.er-api.com https://en.wikipedia.org; " +
         "frame-ancestors 'none'"
 };
 
@@ -411,6 +419,7 @@ const REPORT_SEVERITIES = ["low", "medium", "high"];
 function validateReport(body) {
     if (!body) return "Missing report data";
     if (!body.place || typeof body.place !== "string") return "Place is required";
+    if (body.place.length > 60) return "Place is too long";
     if (REPORT_CATEGORIES.indexOf(body.category) === -1) return "Invalid category";
     if (REPORT_SEVERITIES.indexOf(body.severity) === -1) return "Invalid severity";
     if (body.title && body.title.length > 120) return "Title too long";
@@ -480,10 +489,18 @@ const server = http.createServer(async function(req, res) {
     const startedAt = Date.now();
     applySecurityHeaders(res);
 
-    // Friendly CORS for direct file:// dev usage
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    // CORS for direct file:// dev usage (frontend opened from disk) and
+    // localhost development. Same-origin browser usage needs no CORS at all,
+    // so we never emit a wildcard that would weaken the security headers.
+    const origin = req.headers.origin || "";
+    if (
+        origin === "null" ||
+        /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+    ) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+        res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    }
 
     if (req.method === "OPTIONS") {
         res.writeHead(204);
@@ -695,13 +712,30 @@ const server = http.createServer(async function(req, res) {
             if (isNaN(amount) || amount < 0) {
                 return sendError(res, 400, "Invalid amount", "validation");
             }
+            if (from.length > 5 || to.length > 5) {
+                return sendError(res, 400, "Invalid currency code", "validation");
+            }
 
-            const response = await fetchWithTimeout(
-                "https://open.er-api.com/v6/latest/" + from
-            );
-            const data = await response.json();
+            let rates;
+            const cached = currencyCache.get(from);
+            if (cached && Date.now() - cached.fetchedAt < CURRENCY_CACHE_TTL) {
+                rates = cached.rates;
+            } else {
+                const response = await fetchWithTimeout(
+                    "https://open.er-api.com/v6/latest/" + from
+                );
+                const data = await response.json();
 
-            if (data.result !== "success" || !data.rates || !data.rates[to]) {
+                if (data.result !== "success" || !data.rates) {
+                    return sendError(res, 400, "Currency not supported", "currency_error");
+                }
+
+                rates = data.rates;
+                currencyCache.set(from, { rates: rates, fetchedAt: Date.now() });
+                if (currencyCache.size > 64) currencyCache.clear();
+            }
+
+            if (!rates[to]) {
                 return sendError(res, 400, "Currency not supported", "currency_error");
             }
 
@@ -710,8 +744,9 @@ const server = http.createServer(async function(req, res) {
                 from: from,
                 to: to,
                 amount: amount,
-                rate: data.rates[to],
-                convertedAmount: Number((amount * data.rates[to]).toFixed(2))
+                rate: rates[to],
+                convertedAmount: Number((amount * rates[to]).toFixed(2)),
+                cached: !!cached
             });
             return logRequest(req, 200);
         }
@@ -781,6 +816,12 @@ const server = http.createServer(async function(req, res) {
             if (!text || typeof text !== "string") {
                 return sendError(res, 400, "Text is required", "validation");
             }
+            if (text.length > 2000) {
+                return sendError(res, 400, "Text too long (max 2000 characters)", "validation");
+            }
+            if (["en", "ne"].indexOf(from) === -1 || ["en", "ne"].indexOf(to) === -1) {
+                return sendError(res, 400, "Unsupported language pair", "validation");
+            }
 
             const response = await fetchWithTimeout(
                 "https://api.mymemory.translated.net/get?q=" +
@@ -809,9 +850,18 @@ const server = http.createServer(async function(req, res) {
         return sendError(res, 404, "Route not found", "not_found");
     } catch (err) {
         console.log("Unhandled error:", err);
-        const status = err && err.message === "Body too large" ? 413 : 500;
+        const message = err && err.message;
+        const isClientError = message === "Body too large" || message === "Invalid JSON";
+        const status = message === "Body too large" ? 413 : (isClientError ? 400 : 500);
         if (!res.headersSent) {
-            sendError(res, status, err.message || "Internal error", "internal");
+            // Only ever surface client-triggered errors. Anything else must stay
+            // server-side so internals are never leaked to users.
+            sendError(
+                res,
+                status,
+                isClientError ? message : "Internal server error",
+                isClientError ? "validation" : "internal"
+            );
         } else {
             res.end();
         }
